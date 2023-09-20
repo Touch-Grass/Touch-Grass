@@ -1,53 +1,100 @@
 :root {
- --rich-black: #011627;
- --baby-powder: #FdFFFC;
- --our-red: #E71D36;
- --orange-peel: #FF9F1C;
- --jade: #5DA271;
- --dark-jade: #446B4A;
+  --rich-black: #011627;
+  --baby-powder: #fdfffc;
+  --our-red: #e71d36;
+  --orange-peel: #ff9f1c;
+  --jade: #5da271;
+  --dark-jade: #446b4a;
 }
 
-.navbar{
-height:10%;
-background-color: var(--jade);
-color: var(--baby-powder);
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
-/* its Moul in the figma, but I havent downloaded it yet*/
-font-style: normal;
-font-size: 3rem;
+.navbar {
+  height: 10%;
+  background-color: var(--jade);
+  color: var(--baby-powder);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  /* its Moul in the figma, but I havent downloaded it yet*/
+  font-style: normal;
+  width: 100%;
+  font-size: 2rem;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 1%;
+  z-index: 1;
 }
 
-body{
-font-weight: 400;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;/* its Inter in the figma, but I havent downloaded it yet*/
+.menu {
+  padding-left: 70%;
 }
 
-input{
-background-color: var(--baby-powder);
-color: var(--rich-black);
-opacity: 0.8;
-border-radius: 50px;
+body {
+  font-weight: 400;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; /* its Inter in the figma, but I havent downloaded it yet*/
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+main {
+  background-image: url(../../public/minecraft-grass.png);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
 }
 
-input:placeholder-shown{
-color: var(--our-red);
+input {
+  background-color: var(--baby-powder);
+  color: var(--rich-black);
+  opacity: 0.8;
+  border-radius: 50px;
+  border-width: 0px;
+  font-weight: 200;
 }
 
-button{
+input:placeholder-shown {
+  color: var(--our-red);
+}
+
+button {
   background-color: var(--jade);
   color: var(--baby-powder);
   border-radius: 50px;
   border-width: 0px;
+  width: 5rem;
+  height: 2rem;
 }
 
-button:hover
-{
-background-color: var(--dark-jade);
-color: var(--rich-black);
+button:hover {
+  background-color: var(--dark-jade);
+  color: var(--rich-black);
 }
 
-img{
+img {
   border-radius: 25px;
   box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.25);
 }
 
+.container {
+  border-radius: 50px;
+  opacity: 0.9;
+  background: var(--Baby-Powder);
+  box-shadow: 0px 4px 40px 50px rgba(0, 0, 0, 0.05);
+  display:flex;
+  flex-direction: column;
+  padding: 2%;
+  width:80%;
+  align-content: center;
+  row-gap: 1%;
+}
+
+.trail-list-heading{
+display: flex;
+flex-direction: row;
+padding: 1%;
+column-gap: 1%;
+color: var(--rich-black);
+font-size: 2rem;
+font-weight: 700;
+}
