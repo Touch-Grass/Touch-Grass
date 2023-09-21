@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { RequestHandler } from '@utils/HTTPHandler/HTTPHandler';
+import { RequestHandler } from '@/utils/HTTPHandler/HTTPHandler';
 import { UserService } from './service';
-import { UserInterface } from '@models/users';
+import { UserInterface } from '@/models/users';
 
 class UserHandler extends RequestHandler {
   constructor() {

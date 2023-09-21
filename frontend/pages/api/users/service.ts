@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
-import { UserModel, UserInterface } from "@models/users";
-import { CryptographyUtils } from '@utils/Cryptography/CryptographicUtils';
+import { UserModel, UserInterface } from "@/models/users";
+import { CryptographyUtils } from '@/utils/Cryptography/CryptographicUtils';
 
 export class UserService {
     /**
