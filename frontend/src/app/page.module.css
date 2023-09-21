@@ -1,4 +1,3 @@
-
 #search{
   padding-right: 2%;
   padding-left: 2%;
@@ -15,12 +14,89 @@
   opacity: 1;
 }
 
-.signin{
+.signinButton{
   color: var(--baby-powder);
   background-color: var(--our-red);
+  cursor: pointer;
+  width: 8rem;
 }
 
-.signin:hover{
+.signinButton:hover{
   color: var(--rich-black);
   background-color: var(--orange-peel);
+}
+
+.signinUsername{
+  height: 5rem;
+  flex-direction: row;
+}
+
+.signinPassword{
+  height: 5rem;
+  flex-direction: row;
+}
+
+.signup{
+  height: 18rem;
+  flex-direction: column;
+}
+
+.hide{
+  display: none;
+}
+
+.buttonNext{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.buttonNext:hover{
+  color: var(--baby-powder);
+}
+
+.buttonSignin{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.buttonSignin:hover{
+  color: var(--baby-powder);
+}
+
+.buttonSignup{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.buttonSignup:hover{
+  color: var(--baby-powder);
+}
+
+.inputUsernameEmail{
+  width: 80%;
+  height: 1rem;
+  padding-right: 2%;
+  padding-left: 5%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.inputPassword{
+  width: 80%;
+  height: 1rem;
+  padding-right: 2%;
+  padding-left: 5%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-style: italic;
 }
