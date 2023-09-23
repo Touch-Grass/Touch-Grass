@@ -1,0 +1,90 @@
+.top-right-popup-container {
+    border-radius: 20px;
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    width: 30vw;
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: var(--orange-peel);
+}
+
+.signin-form-username{
+    height: 5rem;
+    flex-direction: row;
+}
+
+.signin-form-password{
+    height: 5rem;
+    flex-direction: row;
+}
+
+.signup-form{
+    height: 18rem;
+    flex-direction: column;
+}
+
+.hide{
+    display: none;
+}
+
+.button-next{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.button-next:hover{
+    color: var(--baby-powder);
+}
+
+.button-signin{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.button-signin:hover{
+    color: var(--baby-powder);
+}
+
+.button-signup{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.button-signup:hover{
+    color: var(--baby-powder);
+}
+
+.input-username-email{
+    width: 80%;
+    height: 1rem;
+    padding-right: 2%;
+    padding-left: 5%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.input-password{
+    width: 80%;
+    height: 1rem;
+    padding-right: 2%;
+    padding-left: 5%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+}

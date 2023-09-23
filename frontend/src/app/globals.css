@@ -76,22 +76,6 @@ img {
   box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.25);
 }
 
-.top-right-popup-container {
-  border-radius: 20px;
-  position: fixed;
-  top: 2vh;
-  right: 2vw;
-  width: 30vw;
-  display: flex;
-  padding-left: 2%;
-  padding-right: 2%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  background-color: var(--orange-peel);
-}
-
 .trail-container {
   border-radius: 50px;
   opacity: 0.9;
