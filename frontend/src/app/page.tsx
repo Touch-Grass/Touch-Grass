@@ -1,11 +1,15 @@
 'use client'
 import React, { useState } from 'react';
+import Image from 'next/image';
 import styles from './page.module.css';
-import Signin from '../components/signin/signin';
+import Signin from '@/components/signin/signin';
+import UserIcon from '@/components/userIcon/userIcon';
+import UserMenu from '@/components/userMenu/userMenu';
 
 export default function Home() {
-  const [isSignInVisible, setIsSignInVisible] = useState(true);
-  const [signInStep, setSignInStep] = useState(0);
+  const [isSignInVisible, setIsSignInVisible] = useState(false);
+  const [isUserMenuVisible, setIsUserMenuVisible] = useState(false);
+  const [signInStep, setSignInStep] = useState(4);
   const openSignIn = () => {
     // setIsSignInVisible(true);
     setSignInStep(1);
@@ -17,10 +21,19 @@ export default function Home() {
   return (
     <body>
       <nav className='navbar'> 
-        <img src='../../public/logo-no-dots.svg'></img>
+        <Image src='logo-no-dots.svg' alt='logo' width={45} height={45}></Image>
         <header>TouchGrass</header>
         <div className='menu'>
-          <button className={styles.signinButton} onClick={openSignIn}>Sign in/Sign up</button>
+          {signInStep < 4?
+            <button className={styles.signinButton} onClick={openSignIn}>
+              Sign in/Sign up
+            </button>:
+            <UserIcon 
+              username='Chris' 
+              userProfilePic='/userIcon.png'
+              onUserProfilePicClicked={()=>setIsUserMenuVisible(true)}
+            ></UserIcon>
+          }
         </div>
       </nav>
       <main>
@@ -32,9 +45,16 @@ export default function Home() {
                 signInStep={signInStep} 
                 onUsernameEmail={()=>{setSignInStep(2)}}
                 onPassword={()=>{setSignInStep(3)}}
-                onSignup={()=>{setSignInStep(0)}}
+                onSignup={()=>{setSignInStep(4)}}
               />
         }
+        <UserMenu 
+          isUserMenuVisible={isUserMenuVisible} 
+          onMyTrailsClicked={()=>{}}
+          onAddTrailClicked={()=>{}}
+          onEditAccountClicked={()=>{}}
+          onLogOutClicked={()=>{}}
+        ></UserMenu>
       </main>
     </body>
   )

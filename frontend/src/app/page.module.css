@@ -19,6 +19,7 @@
   background-color: var(--our-red);
   cursor: pointer;
   width: 8rem;
+  height: 2rem;
 }
 
 .signinButton:hover{
