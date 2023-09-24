@@ -1,4 +1,3 @@
-
 export default function MyTrails() {
   return (
     <body>
@@ -9,7 +8,7 @@ export default function MyTrails() {
       Sign in</button></div>
     </nav>
     <main>
-      <div className='container'>
+      <div className='trail-container'>
         <div className='trail-list-heading'><h1>My Trails</h1> </div>
          </div>
     </main>
