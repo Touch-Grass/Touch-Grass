@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import styles from './page.module.css';
+import './page.css';
 import Signin from '../components/signin/signin';
 
 export default function Home() {
@@ -20,11 +20,11 @@ export default function Home() {
         <img src='../../public/logo-no-dots.svg'></img>
         <header>TouchGrass</header>
         <div className='menu'>
-          <button className={styles.signinButton} onClick={openSignIn}>Sign in/Sign up</button>
+          <button className='signin-button' onClick={openSignIn}>Sign in/Sign up</button>
         </div>
       </nav>
       <main>
-        <input type='text' placeholder='Where is the grass?' id={styles.search}></input>
+        <input type='text' placeholder='Where is the grass?' id='search'></input>
         {
           isSignInVisible 
           && <Signin 
