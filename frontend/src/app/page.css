@@ -1,4 +1,3 @@
-
 #search{
   padding-right: 2%;
   padding-left: 2%;
@@ -15,12 +14,14 @@
   opacity: 1;
 }
 
-.signin{
+.signin-button{
   color: var(--baby-powder);
   background-color: var(--our-red);
+  cursor: pointer;
+  width: 8rem;
 }
 
-.signin:hover{
+.signin-button:hover{
   color: var(--rich-black);
   background-color: var(--orange-peel);
 }
