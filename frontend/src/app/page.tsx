@@ -16,15 +16,11 @@ export default function Home() {
   };
   return (
     <body>
-      <nav className='navbar'> 
-        <img src='../../public/logo-no-dots.svg'></img>
-        <header>TouchGrass</header>
-        <div className='menu'>
-          <button className='signin-button' onClick={openSignIn}>Sign in/Sign up</button>
-        </div>
-      </nav>
       <main>
-        <input type='text' placeholder='Where is the grass?' id='search'></input>
+        <div className="home-command">You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d" className='home-link'>touch grass</a> today.</div>
+        <input type='text' placeholder='Where do you want to go?' className='search-bar' id='home-search-bar'> 
+        </input>
+
         {
           isSignInVisible 
           && <Signin 
