@@ -1,4 +1,5 @@
 import './userMenu.css'
+import Link from 'next/link'
 
 interface UserMenuProps {
     isUserMenuVisible: boolean;
@@ -13,11 +14,11 @@ const UserMenu: React.FC<UserMenuProps> = ({isUserMenuVisible, onMyTrailsClicked
         isUserMenuVisible?
         <div className='user-menu-container'>
             <p><b><i>Trails</i></b></p>
-            <div id='menu-item-my-trails' className='menu-item' onClick={onMyTrailsClicked}><i>My Trails</i></div>
-            <div id='menu-item-add-trail' className='menu-item' onClick={onAddTrailClicked}><i>Add Trail</i></div>
+            <div id='menu-item-my-trails' className='menu-item' onClick={onMyTrailsClicked}><Link href='/my-trail-list'><i>My Trails</i></Link></div>
+            <div id='menu-item-add-trail' className='menu-item' onClick={onAddTrailClicked}><Link href='/add-trail'><i>Add Trail</i></Link></div>
             <p></p>
             <p><b><i>Account</i></b></p>
-            <div id='menu-item-edit-account' className='menu-item' onClick={onEditAccountClicked}><i>Edit account</i></div>
+            <div id='menu-item-edit-account' className='menu-item' onClick={onEditAccountClicked}><Link href='/edit-account'><i>Edit account</i></Link></div>
             <div id='menu-item-log-out' className='menu-item' onClick={onLogOutClicked}><i>Log out</i></div>
         </div>:
         <></>
