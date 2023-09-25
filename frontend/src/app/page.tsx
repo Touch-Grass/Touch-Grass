@@ -1,10 +1,10 @@
 'use client'
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from './page.module.css';
 import Signin from '@/components/signin/signin';
 import UserIcon from '@/components/userIcon/userIcon';
 import UserMenu from '@/components/userMenu/userMenu';
+import './page.css';
 
 export default function Home() {
   const [isSignInVisible, setIsSignInVisible] = useState(false);
@@ -25,9 +25,7 @@ export default function Home() {
         <header>TouchGrass</header>
         <div className='menu'>
           {signInStep < 4?
-            <button className={styles.signinButton} onClick={openSignIn}>
-              Sign in/Sign up
-            </button>:
+            <button className='signin-button' onClick={openSignIn}>Sign in/Sign up</button>:
             <UserIcon 
               username='Chris' 
               userProfilePic='/userIcon.png'
@@ -37,7 +35,7 @@ export default function Home() {
         </div>
       </nav>
       <main>
-        <input type='text' placeholder='Where is the grass?' id={styles.search}></input>
+        <input type='text' placeholder='Where is the grass?' id='search'></input>
         {
           isSignInVisible 
           && <Signin 

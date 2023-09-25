@@ -14,7 +14,7 @@
   opacity: 1;
 }
 
-.signinButton{
+.signin-button{
   color: var(--baby-powder);
   background-color: var(--our-red);
   cursor: pointer;
@@ -22,7 +22,7 @@
   height: 2rem;
 }
 
-.signinButton:hover{
+.signin-button:hover{
   color: var(--rich-black);
   background-color: var(--orange-peel);
 }
