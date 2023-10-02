@@ -64,16 +64,14 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 50%;
-  height: 2%;
   font-size: 1.5rem;
   font-style: italic;
-  margin: auto;
-  margin-top: 2%;
   background-color: var(--baby-powder);
   color: var(--grey);
   opacity: 1;
   border-radius: 59px;
   border: 3px solid var(--grey);
+  margin-right: 1%;
 }
 
 button {
