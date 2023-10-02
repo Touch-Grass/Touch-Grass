@@ -20,5 +20,25 @@
 }
 
 .menu-item:hover{
-    background-color: var(--orange-peel);
+    background-color: var(--light-gray);
+}
+
+.menu-item a{
+    text-decoration: none;
+}
+
+.menu-item a:hover{
+    color: var(--rich-black);
+}
+
+.menu-item a:visited{
+    color: var(--rich-black);
+}
+
+/* #menu-trails-text{
+
+} */
+
+#menu-account-text{
+    margin-top: 1.5rem;
 }

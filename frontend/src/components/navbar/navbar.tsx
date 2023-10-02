@@ -31,9 +31,9 @@ const Navbar: React.FC<NavbarProps> = (
   return (
     <>
       <nav className='navbar'> 
-        <Image src='/logo-no-dots.svg' alt='logo' width={45} height={45}></Image>
-        <header><Link href='/' style={{ textDecoration: 'none' }}>TouchGrass</Link></header>
-        <div className='menu'>
+        <Image className='navbar-logo' src='/logo-no-dots.svg' alt='logo' width={45} height={45}></Image>
+        <header><Link href='/'>TouchGrass.</Link></header>
+        <div className='signin-container'>
           {signInStep < 4?
             <button className='signin-button' onClick={onOpenSignIn}>Sign in/Sign up</button>:
             <UserIcon 
@@ -47,19 +47,20 @@ const Navbar: React.FC<NavbarProps> = (
       <UserMenu 
         isUserMenuVisible={isUserMenuVisible} 
         onMyTrailsClicked={()=>{}}
+        onSavedTrailsClicked={()=>{}}
         onAddTrailClicked={()=>{}}
         onEditAccountClicked={()=>{}}
         onLogOutClicked={onLogOut}
       ></UserMenu>
       {
-      signInStep>0 
-      && <Signin 
-            signInStep={signInStep}
-            onUsernameEmail={onInputUsernameEmail}
-            onPassword={onInputPassword}
-            onSignup={onSignup}
-          />
-    }
+        signInStep>0 
+        && <Signin 
+              signInStep={signInStep}
+              onUsernameEmail={onInputUsernameEmail}
+              onPassword={onInputPassword}
+              onSignup={onSignup}
+            />
+      }
     </>
   );
 }

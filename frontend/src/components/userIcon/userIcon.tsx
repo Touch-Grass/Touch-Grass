@@ -10,7 +10,7 @@ interface UserIconProps {
 const UserIcon: React.FC<UserIconProps> = ({username, userProfilePic, onUserProfilePicClicked}) => {
     return (
         <div className='user-icon-container'>
-            <div className='text-username'>Hi, {username}!</div>
+            <div className='text-username'>{username}</div>
             <Image 
                 className='user-icon-profile-pic'
                 src={userProfilePic} 

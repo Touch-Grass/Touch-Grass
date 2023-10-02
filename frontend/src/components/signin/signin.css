@@ -12,7 +12,7 @@
     align-items: center;
     z-index: 100;
     background-color: var(--baby-powder);
-    box-shadow: 2px 2px 2px #888888;
+    box-shadow: 2px 2px 2px 1px #888888;
 }
 
 .signin-form-username{

@@ -19,7 +19,11 @@ export default function Home() {
         onSignup={()=>setSignInStep(4)}
       />
       <main>
-        <input type='text' placeholder='Where is the grass?' id='search'></input>
+        <div className='main-container'>
+          <div className='search-container'>
+            <input className='search' id='search-home' type='text' placeholder='Where do you want to go?'></input>
+          </div>
+        </div>
       </main>
     </body>
   )
