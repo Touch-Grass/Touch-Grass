@@ -19,11 +19,10 @@ export default function Home() {
         onSignup={()=>setSignInStep(4)}
       />
       <main>
-        <div className='main-container'>
-          <div className='search-container'>
-            <input className='search' id='search-home' type='text' placeholder='Where do you want to go?'></input>
-          </div>
-        </div>
+        <div className="home-command">You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d" className='home-link'>touch grass</a> today.</div>
+        <div className='home-container'><input type='text' placeholder='Where do you want to go?' className='search-bar' id='home-search-bar'/>
+        <button className='home-search-button'>Search</button></div>
+        <div className='home-command-bottom'>Scroll down to discover</div>
       </main>
     </body>
   )
