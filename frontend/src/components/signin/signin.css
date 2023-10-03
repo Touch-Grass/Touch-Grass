@@ -11,7 +11,8 @@
     justify-content: center;
     align-items: center;
     z-index: 100;
-    background-color: var(--orange-peel);
+    background-color: var(--baby-powder);
+    box-shadow: 2px 2px 2px 1px #888888;
 }
 
 .signin-form-username{
@@ -73,6 +74,7 @@
     margin-bottom: 0.5rem;
     font-size: 1rem;
     font-style: italic;
+    border-color: var(--jade);
 }
 
 .input-password{
@@ -87,4 +89,5 @@
     margin-bottom: 0.5rem;
     font-size: 1rem;
     font-style: italic;
+    border-color: var(--jade);
 }

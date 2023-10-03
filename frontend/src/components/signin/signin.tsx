@@ -2,14 +2,13 @@ import React from 'react';
 import './signin.css';
 
 interface SigninProps {
-  isVisible: boolean;
   signInStep: number;
   onUsernameEmail: () => void;
   onPassword: () => void;
   onSignup: () => void;
 }
 
-const Signin: React.FC<SigninProps> = ({isVisible, signInStep, onUsernameEmail, onPassword, onSignup}) => {
+const Signin: React.FC<SigninProps> = ({signInStep, onUsernameEmail, onPassword, onSignup}) => {
   switch(signInStep){
     // enter username/password
     case 1: {
