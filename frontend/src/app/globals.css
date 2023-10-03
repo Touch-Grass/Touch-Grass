@@ -68,6 +68,7 @@ body {
   width: 50%;
   font-size: 1.5rem;
   font-style: italic;
+  font-weight: 500;
   background-color: var(--baby-powder);
   color: var(--grey);
   opacity: 1;

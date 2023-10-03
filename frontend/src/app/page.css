@@ -35,9 +35,6 @@ input {
   font-weight: 10;
 }
 
-input:placeholder-shown {
-  color: var(--baby-powder);
-}
 
 #search-home{
   padding-right: 2%;
