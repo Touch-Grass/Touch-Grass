@@ -1,7 +1,7 @@
 "use client";
 import React, {useState} from "react";
 import Navbar from "@/components/navbar/navbar";
-import "./page.css";
+import "./page.scss";
 
 export default function Home() {
     const [isUserMenuVisible, setIsUserMenuVisible] = useState(false);

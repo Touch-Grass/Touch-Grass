@@ -3,7 +3,7 @@ import Link from "next/link";
 import UserIcon from "../userIcon/userIcon";
 import UserMenu from "@/components/userMenu/userMenu";
 import Signin from "@/components/signin/signin";
-import "./navbar.css";
+import "./navbar.scss";
 
 interface NavbarProps {
     signInStep: number;
