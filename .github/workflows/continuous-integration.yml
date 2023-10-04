@@ -22,7 +22,24 @@ jobs:
                     node-version: latest
 
             -   name: Install dependencies
-                run: npm run ci-install
+                run: npm run ci-install-next-app
 
             -   name: Lint
                 run: npm run lint-next-app
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Check out latest commit
+                uses: actions/checkout@v4
+
+            -   name: Install node.js
+                uses: actions/setup-node@v3
+                with:
+                    node-version: latest
+
+            -   name: Install dependencies
+                run: npm run ci-install
+
+            -   name: Build
+                run: npm run build
