@@ -52,6 +52,16 @@
   z-index: 1;
 }
 
+main {
+  background-image: url(../../public/touch-grass-background.jpg);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  mix-blend-mode: hard-light;
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-weight: 400;
   font-family: 'Space Grotesk';
@@ -89,6 +99,17 @@ button {
 button:hover {
   background-color: var(--dark-jade);
   color: var(--rich-black);
+}
+
+input {
+  opacity: 0.8;
+  border-radius: 20px;
+  border-width: 1px;
+  font-weight: 10;
+}
+
+input:placeholder-shown {
+  color: var(--baby-powder);
 }
 
 .trail-list-container {

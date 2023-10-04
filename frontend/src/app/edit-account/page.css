@@ -6,9 +6,14 @@
 .profile-info-container{
     width: 50%;
     height: 70%;
-    margin: 10% 5% 10% 30%;
+    margin: 10% 5% 10% 5%;
     display: flex;
     flex-direction: column;
+}
+
+.profile-pic-container {
+    margin: 10% 0 10% 15%;
+    cursor: pointer;
 }
 
 .profile-entry-container{
@@ -34,7 +39,7 @@
 }
 
 .profile-button{
-    /* height: 100%; */
+    height: 2rem;
     width: 30%;
     margin: 0rem 5% 0rem 5%;
 }
