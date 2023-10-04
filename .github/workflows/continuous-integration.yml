@@ -42,4 +42,4 @@ jobs:
                 run: npm run ci-install-next-app
 
             -   name: Build
-                run: npm run build
+                run: npm run build-next-app
