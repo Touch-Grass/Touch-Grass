@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/navbar/navbar';
+import ImageUpload from '@/components/imageUpload/imageUpload';
 import './page.css';
-import { NextPage } from 'next';
 
 interface EditAccountProps {
   onProfilePicClicked: () => void;
@@ -27,7 +27,8 @@ export default function EditAccount(props: EditAccountProps) {
         <main>
           <div className='profile-page-container'>
             <div className='profile-pic-container' onClick={props.onProfilePicClicked}>
-              <Image src='/userIcon.png' alt='profile-pic' width={200} height={200}></Image>
+              {/* <Image src='/userIcon.png' alt='profile-pic' width={200} height={200}></Image> */}
+              <ImageUpload imageUrl='/userIcon.png'></ImageUpload>
             </div>
             <div className='profile-info-container'>
               <div className='profile-entry-container'>
