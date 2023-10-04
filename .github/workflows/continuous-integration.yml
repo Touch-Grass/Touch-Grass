@@ -39,7 +39,7 @@ jobs:
                     node-version: latest
 
             -   name: Install dependencies
-                run: npm run ci-install
+                run: npm run ci-install-next-app
 
             -   name: Build
                 run: npm run build
