@@ -1,4 +1,4 @@
-.user-menu-container{
+.user-menu-container {
     position: fixed;
     top: 11%;
     right: 2%;
@@ -13,25 +13,25 @@
     z-index: 2;
 }
 
-.menu-item{
+.menu-item {
     cursor: pointer;
     border-radius: 5px;
     padding: 0.2rem 0.2rem 0.2rem 0.5rem;
 }
 
-.menu-item:hover{
+.menu-item:hover {
     background-color: var(--light-gray);
 }
 
-.menu-item a{
+.menu-item a {
     text-decoration: none;
 }
 
-.menu-item a:hover{
+.menu-item a:hover {
     color: var(--rich-black);
 }
 
-.menu-item a:visited{
+.menu-item a:visited {
     color: var(--rich-black);
 }
 
@@ -39,6 +39,6 @@
 
 } */
 
-#menu-account-text{
+#menu-account-text {
     margin-top: 1.5rem;
 }

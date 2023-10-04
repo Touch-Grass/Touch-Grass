@@ -1,4 +1,4 @@
-let bcrypt = require('bcryptjs');
+let bcrypt = require("bcryptjs");
 
 export const SALT_ROUNDS = 10;
 

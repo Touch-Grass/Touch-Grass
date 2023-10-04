@@ -1,22 +1,21 @@
-import { prop } from "@typegoose/typegoose";
-import { nanoid } from "nanoid";
-import { getModelForClass } from "@typegoose/typegoose";
+import {getModelForClass, prop} from "@typegoose/typegoose";
+import {nanoid} from "nanoid";
 
 export class User {
-    @prop({ default: () => nanoid(9) })
+    @prop({default: () => nanoid(9)})
     _id: string;
     @prop()
-    name:string;
+    name: string;
     @prop()
-    surname:string;
+    surname: string;
     @prop()
-    email:string;
+    email: string;
     @prop()
-    password:string;
+    password: string;
 }
 
 export type UserInterface = {
     [K in keyof User]: User[K];
-  };
+};
 
 export const UserModel = getModelForClass(User);

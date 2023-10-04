@@ -4,6 +4,8 @@
     "private": true,
     "description": "",
     "scripts": {
+        "ci-install": "cd next-app && npm ci",
+        "lint-next-app": "cd next-app && npm run lint",
         "start": "cd next-app && npm run dev"
     },
     "repository": {

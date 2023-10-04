@@ -15,54 +15,54 @@
     box-shadow: 2px 2px 2px 1px #888888;
 }
 
-.signin-form-username{
+.signin-form-username {
     height: 5rem;
     flex-direction: row;
 }
 
-.signin-form-password{
+.signin-form-password {
     height: 5rem;
     flex-direction: row;
 }
 
-.signup-form{
+.signup-form {
     height: 18rem;
     flex-direction: column;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.button-next{
+.button-next {
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
-.button-next:hover{
+.button-next:hover {
     color: var(--baby-powder);
 }
 
-.button-signin{
+.button-signin {
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
-.button-signin:hover{
+.button-signin:hover {
     color: var(--baby-powder);
 }
 
-.button-signup{
+.button-signup {
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
 }
 
-.button-signup:hover{
+.button-signup:hover {
     color: var(--baby-powder);
 }
 
-.input-username-email{
+.input-username-email {
     width: 80%;
     height: 1rem;
     padding-right: 2%;
@@ -77,7 +77,7 @@
     border-color: var(--jade);
 }
 
-.input-password{
+.input-password {
     width: 80%;
     height: 1rem;
     padding-right: 2%;

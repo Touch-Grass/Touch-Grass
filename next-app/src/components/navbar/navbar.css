@@ -7,7 +7,7 @@
     background-color: transparent;
     color: var(--baby-powder);
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
+    "Lucida Sans", Arial, sans-serif;
     font-style: normal;
     font-size: 2rem;
     padding: 1%;
@@ -17,7 +17,7 @@
     z-index: 2;
 }
 
-.navbar header{
+.navbar header {
     color: var(--baby-powder);
     float: none;
     position: absolute;
@@ -26,15 +26,15 @@
     transform: translate(-50%, -50%);
 }
 
-.navbar a{
+.navbar a {
     text-decoration: none;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     color: var(--baby-powder);
 }
 
-.navbar a:visited{
+.navbar a:visited {
     color: var(--baby-powder);
 }
 
@@ -47,7 +47,7 @@
     margin: auto;
 }
 
-.signin-button{
+.signin-button {
     color: var(--rich-black);
     background-color: var(--baby-powder);
     cursor: pointer;
@@ -55,12 +55,12 @@
     height: 2rem;
 }
 
-.signin-button:hover{
+.signin-button:hover {
     color: var(--rich-black);
     background-color: var(--light-gray);
 }
 
-.navbar-logo{
+.navbar-logo {
     position: absolute;
     float: none;
     top: 1rem;

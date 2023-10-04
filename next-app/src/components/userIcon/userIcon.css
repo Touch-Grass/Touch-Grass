@@ -1,4 +1,4 @@
-.user-icon-container{
+.user-icon-container {
     width: 8rem;
     height: 2rem;
     display: flex;
@@ -7,10 +7,10 @@
     z-index: 2;
 }
 
-.text-username{
+.text-username {
     margin-right: 1rem;
 }
 
-.user-icon-profile-pic{
+.user-icon-profile-pic {
     cursor: pointer;
 }

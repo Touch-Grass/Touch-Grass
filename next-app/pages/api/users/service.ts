@@ -1,6 +1,6 @@
-import { Document } from 'mongoose';
-import { UserModel, UserInterface } from "@/models/users";
-import { CryptographyUtils } from '@/utils/Cryptography/CryptographicUtils';
+import {Document} from "mongoose";
+import {UserInterface, UserModel} from "@/models/users";
+import {CryptographyUtils} from "@/utils/Cryptography/CryptographicUtils";
 
 export class UserService {
     /**
@@ -10,17 +10,17 @@ export class UserService {
      * @returns {Promise<IUserModel>} The user object or null
      */
 
-    public static async findAll() : Promise<Document[]> {
+    public static async findAll(): Promise<Document[]> {
         return await UserModel.find({});
     }
 
-    public static async insertOne(newUser : UserInterface) : Promise<Document>{
+    public static async insertOne(newUser: UserInterface): Promise<Document> {
         const user = await new UserModel({
             name: newUser.name,
             surname: newUser.surname,
             email: newUser.email,
             password: await CryptographyUtils.hashString(newUser.password)
-          });
+        });
         return await user.save();
     }
 }
