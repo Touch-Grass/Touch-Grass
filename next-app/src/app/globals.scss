@@ -1,51 +1,50 @@
 @import "include/typeface";
 @import "vars/color-palette";
+@import "vars/mixins";
 
 html, body {
+    @include flex-column;
     font-weight: 400;
     font-family: "Space Grotesk", sans-serif;
     width: 100%;
     min-height: 100vh;
     padding: 0;
     margin: 0;
+
+    // To use REM, we have to specify a base font size on the root.
+    // We make it easy for ourselves by using 10px as a reference size.
+    // On a monitor >= 1080p, 1rem equates to 10px :)
+    font-size: 10px;
 }
 
-.navbar {
-    height: 10%;
-    background-color: $jade;
-    color: $baby-powder;
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    width: 98%;
-    font-size: 2rem;
-    padding: 1%;
-    display: flex;
-    flex-direction: row;
-    column-gap: 1%;
-    z-index: 1;
+// Phones.
+@media (max-width: 767px) {
+    html, body {
+        font-size: 0.5208vw; // TODO: Select reasonable value! Probably something around 2vw?
+    }
 }
 
-.search-bar {
-    padding: 1rem 2%;
-    width: 50%;
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: 500;
-    background-color: $baby-powder;
-    color: $grey;
-    opacity: 1;
-    border-radius: 59px;
-    border: 3px solid $grey;
-    margin-right: 1%;
+// Small screens and tablets.
+@media (min-width: 768px) {
+    html, body {
+        font-size: 0.5208vw;
+    }
+}
+
+// Desktop.
+@media (min-width: 1920px) {
+    html, body {
+        font-size: 10px;
+    }
 }
 
 button {
     background-color: $jade;
     color: $baby-powder;
-    border-radius: 50px;
+    font-family: "Space Grotesk", sans-serif;
+    border-radius: 5rem;
     border-width: 0;
-    width: 5rem;
-    height: 2rem;
+    padding: 1rem 1.618rem;
 }
 
 button:hover {
@@ -53,6 +52,7 @@ button:hover {
     color: $rich-black;
 }
 
+// TODO: Get the following stuff out of globals!
 .trail-list-container {
     border-radius: 50px;
     background: $baby-powder;

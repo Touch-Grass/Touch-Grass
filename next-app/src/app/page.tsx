@@ -7,7 +7,7 @@ export default function Home() {
     const [isUserMenuVisible, setIsUserMenuVisible] = useState(false);
     const [signInStep, setSignInStep] = useState(0);
     return (
-        <body>
+        <>
             <Navbar
                 signInStep={signInStep}
                 isUserMenuVisible={isUserMenuVisible}
@@ -21,16 +21,20 @@ export default function Home() {
                 onInputPassword={() => setSignInStep(3)}
                 onSignup={() => setSignInStep(4)}
             />
-            <main>
-                <div className="home-command">You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d"
-                    className='home-link'>touch grass</a> today.
+            <main className={"hero"}>
+                <div className={"hero-column"}>
+                    <div className="hero-tagline">
+                        You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d">touch grass</a> today.
+                    </div>
+                    <div className={"hero-search-container"}>
+                        <input type='text'
+                               placeholder='Where do you want to go?'
+                               className='hero-search-bar' />
+                        <button className='hero-search-button'>Search</button>
+                    </div>
                 </div>
-                <div className='home-container'><input type='text' placeholder='Where do you want to go?'
-                    className='search-bar' id='home-search-bar'></input>
-                <button className='home-search-button'>Search</button>
-                </div>
-                <div className='home-command-bottom'>Scroll down to discover</div>
+                <div className='hero-scroll-tip'>Scroll down to discover</div>
             </main>
-        </body>
+        </>
     );
 }

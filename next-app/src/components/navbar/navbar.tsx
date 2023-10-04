@@ -31,17 +31,19 @@ const Navbar: React.FC<NavbarProps> = (
     return (
         <>
             <nav className='navbar'>
-                <Image className='navbar-logo' src='/logo-no-dots.svg' alt='logo' width={45} height={45}></Image>
-                <header><Link href='/'>TouchGrass.</Link></header>
-                <div className='signin-container'>
-                    {signInStep < 4 ?
-                        <button className='signin-button' onClick={onOpenSignIn}>Sign in/Sign up</button> :
-                        <UserIcon
-                            username='Chris'
-                            userProfilePic='/userIcon.png'
-                            onUserProfilePicClicked={onOpenUserMenu}
-                        ></UserIcon>
-                    }
+                <div className={"navbar-content"}>
+                    <Image className='navbar-logo' src='/logo-no-dots.svg' alt='logo' width={0} height={0} ></Image>
+                    <Link className={"navbar-title"} href='/'>TouchGrass.</Link>
+                    <div className='signin-container'>
+                        {signInStep < 4 ?
+                            <button className='signin-button' onClick={onOpenSignIn}>Sign in/Sign up</button> :
+                            <UserIcon
+                                username='Chris'
+                                userProfilePic='/userIcon.png'
+                                onUserProfilePicClicked={onOpenUserMenu}
+                            ></UserIcon>
+                        }
+                    </div>
                 </div>
             </nav>
             <UserMenu

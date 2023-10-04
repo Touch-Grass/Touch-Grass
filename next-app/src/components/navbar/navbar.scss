@@ -1,70 +1,67 @@
 @import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
 
 .navbar {
+    @include flex-row(true, true);
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 10%;
-    background-color: transparent;
-    color: $baby-powder;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-    font-style: normal;
+
     font-size: 2rem;
-    padding: 1%;
-    display: flex;
-    flex-direction: row;
-    column-gap: 1%;
-    z-index: 2;
-}
+    z-index: 1;
 
-.navbar header {
-    color: $baby-powder;
-    float: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    box-sizing: border-box;
+    padding-top: 2rem;
 
-.navbar a {
-    text-decoration: none;
-}
+    > .navbar-content {
+        @include flex-row(false, true);
+        justify-content: space-between;
+        position: relative;
 
-.navbar a:hover {
-    color: $baby-powder;
-}
+        width: $safe-col-width;
 
-.navbar a:visited {
-    color: $baby-powder;
-}
+        > .navbar-logo {
+            flex-shrink: 0;
+            width: 10rem;
+            height: 10rem;
+        }
 
-.signin-container {
-    width: 10%;
-    position: absolute;
-    top: 1rem;
-    right: 4rem;
-    float: none;
-    margin: auto;
+        > .navbar-title {
+            @include unselectable;
+
+            // We center the title manually because here we cannot rely on flex space-between.
+            // The elements on the sides have different widths.
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $rich-black;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-decoration: none;
+
+            &:visited {
+                color: $rich-black;
+            }
+
+            &:hover {
+                color: $baby-powder;
+            }
+        }
+    }
 }
 
 .signin-button {
     color: $rich-black;
     background-color: $baby-powder;
     cursor: pointer;
-    width: 8rem;
-    height: 2rem;
+    flex-shrink: 0;
 }
 
 .signin-button:hover {
     color: $rich-black;
     background-color: $light-gray;
-}
-
-.navbar-logo {
-    position: absolute;
-    float: none;
-    top: 1rem;
-    left: 2rem;
 }
