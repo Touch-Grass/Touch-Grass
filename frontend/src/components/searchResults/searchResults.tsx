@@ -3,7 +3,7 @@ import Trail from '@/components/trail/trail';
 import Signin from '@/components/signin/signin';
 import type { UserInterface } from "../../models/users";
 import type { TrailInterface } from "../../models/trails";
-import './searchResult.css';
+import './searchResults.css';
 
 interface SearchProps {
   search: string;
@@ -11,13 +11,14 @@ interface SearchProps {
   trail1:TrailInterface;
   trail2:TrailInterface;
   trail3:TrailInterface;
+  //trailArray:any;           //TODO: Implement an array version of this, though consider lazy loading of this
 }
 
 const SearchResult: React.FC<SearchProps> = (
     {
       search,
       finds,
-      trail1,
+      trail1,           
       trail2,
       trail3
     }
