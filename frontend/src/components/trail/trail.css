@@ -1,0 +1,23 @@
+.trail-container {
+  height: 0.25vh;
+  display: inline;
+}
+
+.trail-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.trail-image {
+  width: 1591px;
+  height: 1061px;
+  flex-shrink: 0;
+}
+
+.trail-difficulty {
+  width: 427px;
+  height: 23px;
+  flex-shrink: 0;
+  border-radius: 46px;
+}
