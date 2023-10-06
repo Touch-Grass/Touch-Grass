@@ -77,3 +77,45 @@ Page1/
 ```
 
 This simplified project structure and naming conventions aim to keep our codebase clean, modular, and maintainable, while adhering to your specific requirements for component and page organization with separate folders for `.tsx` and `.css` files.
+
+## Local DB Setup
+
+### Deploy mongoDB 
+To deploy your mongoDB, just enter the /dev folder through your console and run 
+```
+docker compose up
+```
+
+### Create touch-grass database
+Now mongoDB is empty, but we need a brand new DB to contain all the information regarding Touch Grass. To do so, leave your current console open and create a new console where you will run
+```
+docker exec -it dev-mongo-1 bash
+```
+Et voilà, now you're inside the container! Now we need to access the mongo shell. Easy peasy, we just run 
+```
+mongosh --username  root --password root
+```
+And now we create the database by doing 
+```
+use touch-grass
+```
+
+### Create a admin user for touch-grass
+In the same console now run: 
+```
+db.createUser(
+  {
+    user: "local",
+    pwd: "local",
+    roles: [ { role: "root", db: "admin" } ]
+  }
+)
+```
+
+### Create .local.env file
+Now we need to tell our website what user to user. We create a new '.local.env' file in '/next-app' with the following content: 
+```
+MONGODB_URI=mongodb://local:local@127.0.0.1:27017/touch-grass
+```
+
+Now you should be ready to go. Rememeber to use the 'local' user to access your database while using any external tool, such as 'Robo3T'
