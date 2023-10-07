@@ -12,17 +12,9 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     networks:
       - touch-grass-network
-  backend:
+  next-app:
     build:
-      context: backend/
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    networks:
-      - touch-grass-network
-  frontend:
-    build:
-      context: frontend/
+      context: next-app/
       dockerfile: Dockerfile
     ports:
       - "3001:3000"

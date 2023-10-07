@@ -1,0 +1,22 @@
+{
+    "name": "touch-grass",
+    "version": "0.1.0",
+    "private": true,
+    "description": "",
+    "scripts": {
+        "ci-install-next-app": "cd next-app && npm ci",
+        "lint-next-app": "cd next-app && npm run lint",
+        "build-next-app": "cd next-app && npm run lint",
+        "start": "cd next-app && npm run dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Touch-Grass/Touch-Grass.git"
+    },
+    "author": "",
+    "license": "",
+    "bugs": {
+        "url": "https://github.com/Touch-Grass/Touch-Grass/issues"
+    },
+    "homepage": "https://github.com/Touch-Grass/Touch-Grass#readme"
+}
