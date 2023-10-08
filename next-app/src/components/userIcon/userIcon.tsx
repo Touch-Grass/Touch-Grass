@@ -1,4 +1,4 @@
-import "./userIcon.css";
+import "./user-icon.scss";
 import Image from "next/image";
 
 interface UserIconProps {

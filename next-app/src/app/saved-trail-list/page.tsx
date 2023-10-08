@@ -6,7 +6,7 @@ export default function MyTrails() {
     const [isUserMenuVisible, setIsUserMenuVisible] = useState(false);
     const [signInStep, setSignInStep] = useState(0);
     return (
-        <body>
+        <>
             <Navbar
                 signInStep={signInStep}
                 isUserMenuVisible={isUserMenuVisible}
@@ -25,6 +25,6 @@ export default function MyTrails() {
                     <div className='trail-list-heading'><h1>My Trails</h1></div>
                 </div>
             </main>
-        </body>
+        </>
     );
 }
