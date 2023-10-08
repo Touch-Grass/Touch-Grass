@@ -1,7 +1,7 @@
 import { prop } from "@typegoose/typegoose";
 import { nanoid } from "nanoid";
 import { getModelForClass } from "@typegoose/typegoose";
-import type { UserInterface } from "./users";
+import type { UserInterface } from "./users/users";
 
 export class Trail {
     @prop({ default: () => nanoid(9) })
