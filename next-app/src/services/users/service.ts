@@ -33,7 +33,7 @@ export class UserService {
     public static async findOne(username: string): Promise<UserInterface | null> {
         const result : UserInterface | null = await UserModel.findOne({ username: username});
         if(result == null)
-            throw new Error('User not found');
+            throw new Error("User not found");
         return {
             _id: result._id,
             username: result.username,
@@ -41,7 +41,7 @@ export class UserService {
             surname: result.surname,
             email: result.email,
             password: result.password
-        }
+        };
     }
 
     /**

@@ -21,7 +21,7 @@ class UserHandler extends RequestHandler {
             //Validate user data
             UserValidation.validateUser(user);
             if(await UserService.checkUserExists(user.username))
-                throw new Error('The username is already taken');
+                throw new Error("The username is already taken");
             //Insert user
             await UserService.insertOne(user);
             response.status(200).end();

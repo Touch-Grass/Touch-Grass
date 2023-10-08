@@ -24,8 +24,8 @@ class AuthHandler extends RequestHandler {
             //Try authentication
             const token = await AuthService.performAuthentication(parsedBody);
             //Set token
-            response.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=3600`);
-            return response.status(200).json({ message: 'Authentication successful' });
+            response.setHeader("Set-Cookie", "token=${token}; HttpOnly; Path=/; Max-Age=3600");
+            return response.status(200).json({ message: "Authentication successful" });
         }catch(e: any){
             return response.status(200).json({error: e?.message});
         }
