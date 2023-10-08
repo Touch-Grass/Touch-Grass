@@ -3,7 +3,8 @@ import {IUser} from "@/models/shared/user/user.interface";
 export interface ITrail<CreatorRef = IUser> {
     readonly name: string;
     readonly description: string;
-    readonly route: number[];
+    readonly polyline: number[];
+    readonly waypoints: number[];
     readonly difficulty: number;
     readonly length: number;
     readonly terrain: string;
