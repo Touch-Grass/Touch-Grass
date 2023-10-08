@@ -1,9 +1,6 @@
-import UserIcon from "../userIcon/userIcon";
-import Trail from '@/components/trail/trail';
-import Signin from '@/components/signin/signin';
-import type { UserInterface } from "../../models/users";
-import type { TrailInterface } from "../../models/trails";
-import './searchResults.css';
+import Trail from "@/components/trail/trail";
+import type {TrailInterface} from "../../models/trails";
+import "./searchResults.css";
 
 interface SearchProps {
   search: string;
@@ -18,7 +15,7 @@ const SearchResult: React.FC<SearchProps> = (
     {
       search,
       finds,
-      trail1,           
+      trail1,
       trail2,
       trail3
     }
@@ -33,6 +30,6 @@ const SearchResult: React.FC<SearchProps> = (
     </div>
     </>
   );
-}
+};
 
 export default SearchResult;
