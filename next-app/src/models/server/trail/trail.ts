@@ -1,11 +1,12 @@
 import type {Ref} from "@typegoose/typegoose";
 import {getModelForClass, prop, ReturnModelType} from "@typegoose/typegoose";
-import {Document, Schema} from "mongoose";
+import mongoose, {Document, Schema} from "mongoose";
 import {User} from "@/models/server/user/user";
-import {Mutable} from "@/models/shared/utility.types";
+import {Mutable, WithID} from "@/models/shared/utility.types";
 import {ITrail} from "@/models/shared/trail/trail.interface";
 
 export type ServerTrail = ITrail<Ref<User>>;
+export type ServerTrailWithID = WithID<ServerTrail, mongoose.Types.ObjectId>;
 
 export class Trail implements Mutable<ServerTrail> {
     @prop()
@@ -31,8 +32,16 @@ export class Trail implements Mutable<ServerTrail> {
     @prop()
     public creator: Ref<User>;
 
-    public static findByLocation(this: ReturnModelType<typeof Trail>, location: string) {
-        return this.find({location}).exec();
+    public static async findByLocation(
+        this: ReturnModelType<typeof Trail>,
+        location: string,
+        withCreator: boolean = false
+    ): Promise<ServerTrailWithID[]> {
+        let query = this.find({location});
+        if (withCreator) {
+            query = query.populate("creator");
+        }
+        return await query.exec();
     }
 
     public static async insertOne(trail: ServerTrail): Promise<Document> {
@@ -42,4 +51,5 @@ export class Trail implements Mutable<ServerTrail> {
     }
 }
 
-export const TrailModel = getModelForClass(Trail);
+type TrailModelType = ReturnModelType<typeof Trail>;
+export const TrailModel: TrailModelType = mongoose.models.Trail as TrailModelType ?? getModelForClass(Trail);
