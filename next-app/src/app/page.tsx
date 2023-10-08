@@ -2,14 +2,14 @@
 import React, {useState} from "react";
 import Navbar from "@/components/navbar/navbar";
 import SearchResult from "@/components/searchResults/searchResults";
-import { UserModel, type UserInterface } from "@/models/users/users";
-import { TrailModel, type TrailInterface } from "@/models/trails";
+// import { UserModel, type UserInterface } from "@/models/users/users";
+// import { TrailModel, type TrailInterface } from "@/models/trails";
 import "./page.scss";
 
 export default function Home() {
 
 
-    const userExample= new UserModel;
+    /*const userExample= new UserModel;
     userExample._id="2";
     userExample.name="users name",
         userExample.surname="surname",
@@ -25,7 +25,7 @@ export default function Home() {
     example.terrain= "stone";
     example.rating= 1.3;
     example.image= "@/public/lukasz-szmigiel-jFCViYFYcus-unsplash.jpg";
-    example.user= userExample;
+    example.user= userExample;*/
 
 
     const [isUserMenuVisible, setIsUserMenuVisible] = useState(false);
@@ -58,8 +58,8 @@ export default function Home() {
                     </div>
                 </div>
                 <div className='hero-scroll-tip'>Scroll down to discover</div>
-                <SearchResult search="example" finds={38548} trail1={example} trail2={example} trail3={example}
-                />
+                { /* <SearchResult search="example" finds={38548} trail1={example} trail2={example} trail3={example}
+                />*/}
             </main>
         </>
     );
