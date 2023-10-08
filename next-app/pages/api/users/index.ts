@@ -1,8 +1,9 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import {RequestHandler} from "@/utils/HTTPHandler/HTTPHandler";
-import {UserService} from "../../../src/services/users/service";
-import { User, UserInterface, UserValidation } from "@/models/users/users";
-
+import {UserService} from "@/services/users/service";
+import {User} from "@/models/server/user/user";
+import {IUser} from "@/models/shared/user/user.interface";
+import {UserValidation} from "@/models/shared/user/user.validation";
 class UserHandler extends RequestHandler {
     constructor() {
         super(); // Call the constructor of the parent class
@@ -17,7 +18,7 @@ class UserHandler extends RequestHandler {
      */
     public async handlePost(request: NextApiRequest, response: NextApiResponse): Promise<void> {
         try{
-            const user = new User(request.body as UserInterface);
+            const user = new User(request.body as IUser);
             //Validate user data
             UserValidation.validateUser(user);
             if(await UserService.checkUserExists(user.username))
