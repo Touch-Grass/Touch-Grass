@@ -1,6 +1,6 @@
 import Trail from "@/components/trail/trail";
-import type {TrailInterface} from "../../models/trails";
-import "./searchResults.css";
+import type {TrailInterface} from "@/models/trails";
+import "./searchResults.scss";
 
 interface SearchProps {
   search: string;

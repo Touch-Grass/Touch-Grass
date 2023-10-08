@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { UserInterface } from "../../models/users/users";
+import type { UserInterface } from "@/models/users/users";
 import UserIcon from "../userIcon/userIcon";
-import "./trail.css";
+import "./trail.scss";
 
 interface TrailProps {
   _id: string;
