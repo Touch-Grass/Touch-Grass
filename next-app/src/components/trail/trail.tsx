@@ -1,11 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
-import type { UserInterface } from "@/models/users/users";
-import UserIcon from "../userIcon/userIcon";
 import "./trail.scss";
+import {IUser} from "@/models/shared/user/user.interface";
 
 interface TrailProps {
-  _id: string;
   name: string;
   description: string;
   length: number;
@@ -13,11 +10,10 @@ interface TrailProps {
   terrain: string;
   rating: number;
   image: string;
-  user: UserInterface;
+  user: IUser;
 }
 
 const Trail: React.FC<TrailProps> = ({
-  _id,
   name,
   description,
   length,
@@ -25,13 +21,12 @@ const Trail: React.FC<TrailProps> = ({
   terrain,
   rating,
   image,
-  user,
 }) => {
   return (
     <>
       <div className="trail-container">
         <div>
-            <Image src={image} alt='image of the trail' className="trail-image"/>
+            <Image src={image} alt='image of the trail' className="trail-image" width={10} height={10}/>
             <div className="trail-text">
                 <h2>{name}</h2>
                 <div className="trail-description">{description}</div>

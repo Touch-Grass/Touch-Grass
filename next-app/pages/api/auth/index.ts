@@ -1,8 +1,8 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import {RequestHandler} from "@/utils/HTTPHandler/HTTPHandler";
-import {UserService} from "../../../src/services/users/service";
-import { AuthService } from "../../../src/services/auth/service";
-import {User, UserInterface, UserValidation} from "@/models/users/users";
+import {AuthService} from "@/services/auth/service";
+import {IUser} from "@/models/shared/user/user.interface";
+import {UserValidation} from "@/models/shared/user/user.validation";
 
 class AuthHandler extends RequestHandler {
     constructor() {
@@ -11,7 +11,7 @@ class AuthHandler extends RequestHandler {
 
     /**
      * Handles user authentication via HTTP POST request.
-     * 
+     *
      * @param {NextApiRequest} request - The incoming HTTP request.
      * @param {NextApiResponse} response - The HTTP response object.
      */
@@ -20,7 +20,7 @@ class AuthHandler extends RequestHandler {
         try{
             //Check data
             const parsedBody = JSON.parse(request.body);
-            UserValidation.validateAuthUser(parsedBody as UserInterface);
+            UserValidation.validateAuthUser(parsedBody as IUser);
             //Try authentication
             const token = await AuthService.performAuthentication(parsedBody);
             //Set token
