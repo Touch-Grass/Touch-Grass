@@ -1,0 +1,80 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+.profile-page-container {
+    @include flex-row(true, true);
+    background: url("/img/hero-bg.png") no-repeat center/cover;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    > .profile-pic-container {
+        @include flex-column(true, true);
+        width: 40%;
+        margin: 10% 0 10% 10%;
+    }
+
+    > .profile-info-container{
+        @include flex-column(true, true);
+        width: 60%;
+        height: 70%;
+        margin-top: 5%;
+        margin-right: 10%;
+
+        > .profile-entry-container{
+            @include flex-column(false, false);
+            width: 70%;
+            height: 15%;
+            margin-bottom: 2%;
+
+            > .profile-text{
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+                color: $baby-powder;
+            }
+
+            > .profile-input{
+                width: 90%;
+                height: 50%;
+                margin: auto;
+                padding: 0.5rem 2.68rem;
+                font-size: 2.5rem;
+                flex-grow: 1;
+                background-color: $baby-powder;
+                color: $grey;
+                font-family: "Space Grotesk", sans-serif;
+                opacity: 1;
+                border-radius: 5.9rem;
+                border: 0.3rem solid $grey;
+                outline: none;
+            }
+        }
+
+        > .profile-button-container{
+            @include flex-row(true, false);
+            margin-top: 5%;
+            width: 70%;
+            padding: 0rem 10% 0rem 10%;
+
+            > .profile-button{
+                height: 6rem;
+                width: 30%;
+                margin: 0rem 5% 0rem 5%;
+                box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.67);
+                color: $baby-powder;
+                cursor: pointer;
+            }
+
+            > #profile-delete-button{
+                background-color: $our-red;
+            }
+            
+            > #profile-delete-button:hover{
+                background-color: $dark-red;
+            }
+        }
+    }
+}

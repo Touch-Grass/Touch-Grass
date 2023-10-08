@@ -1,0 +1,21 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+.image-upload-container {
+    
+    > .image-display {
+        width: 100%;
+        > .profile-pic {
+            cursor: pointer;
+        }
+
+        > .button-remove-image {
+            cursor: pointer;
+        }
+    }
+
+    > .file-upload {
+        width: 100%;
+    }
+}
