@@ -23,7 +23,7 @@ export default async function Search(props: ServerSideProps) {
     // Query the resulting trails from our database.
     let trails: ServerTrailWithID[] = [];
     try {
-        trails = await TrailModel.findByLocation("Stockholm", true);
+        trails = await TrailModel.findByLocation(userRequestedLocation, true);
     } catch (error) {
         console.error("Error fetching data:", error);
     }
