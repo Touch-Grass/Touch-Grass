@@ -1,4 +1,5 @@
-let bcrypt = require("bcryptjs");
+import {compare, hash} from "bcryptjs";
+import {sign, verify} from "jsonwebtoken";
 
 export const SALT_ROUNDS = 10;
 
@@ -14,7 +15,7 @@ export class CryptographyUtils {
      * @returns {Promise<string>} The generated hash
      */
     public static async hashString(input: string): Promise<string> {
-        return await bcrypt.hash(input, SALT_ROUNDS);
+        return await hash(input, SALT_ROUNDS);
     }
 
     /**
@@ -24,6 +25,20 @@ export class CryptographyUtils {
      * @returns {Promise<boolean>} Is the input equal to the value of the hash?
      */
     public static async checkHashMatch(plainInput: string, hashToCheck: string): Promise<boolean> {
-        return await bcrypt.compare(plainInput, hashToCheck);
+        return await compare(plainInput, hashToCheck);
+    }
+
+    /**
+     * Signs a JWT using a private key.
+     * @param username The subject of the JWT, being the username
+     * @param payload A payload to sign & encode within the JWT, can be empty object
+     * @param privateKey The private key to use for signing
+     */
+    public static signToken(username: string, payload: any, privateKey: string): string {
+        return sign({payload}, privateKey, {
+            algorithm: "RS256",
+            expiresIn: "30m",
+            subject: username
+        });
     }
 }

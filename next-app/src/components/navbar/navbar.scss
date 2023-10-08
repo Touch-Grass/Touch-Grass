@@ -5,9 +5,6 @@
 .navbar {
     @include flex-row(true, true);
 
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
 
     font-size: 2rem;

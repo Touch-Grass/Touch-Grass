@@ -1,0 +1,73 @@
+@import "vars/color-palette";
+
+.trail-container {
+  height: 15rem;
+  display: inline;
+}
+
+.trail-text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
+.trail-text h2 {
+  color: $rich-black;
+  font-family: "Space Grotesk";
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.trail-image {
+  width: 159.1rem;
+  height: 106.1rem;
+  flex-shrink: 0;
+}
+
+.trail-description {
+  color: $rich-black;
+  font-family: 'Space Grotesk';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.trail-difficulty{
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+}
+
+.trail-difficulty-container{
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
+}
+
+.trail-difficulty-container > *{
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
+
+.trail-difficulty-meter {
+  width: 42.7rem;
+  height: 2.3rem;
+  flex-shrink: 0;
+  border-radius: 46px;
+  background: linear-gradient(90deg, #6DA075 0%, #F1A241 52.08%, #D4373E 100%);
+  z-index: 1;
+}
+
+.trail-difficulty-white{
+  width: 42.7rem;
+  height: 2.3rem;
+  flex-shrink: 0;
+  border-radius: 46px;
+  background-color: #dddbdb;
+  z-index: 2;
+}

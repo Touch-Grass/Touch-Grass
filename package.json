@@ -6,7 +6,7 @@
     "scripts": {
         "ci-install-next-app": "cd next-app && npm ci",
         "lint-next-app": "cd next-app && npm run lint",
-        "build-next-app": "cd next-app && npm run lint",
+        "build-next-app": "cd next-app && npm run build",
         "start": "cd next-app && npm run dev"
     },
     "repository": {

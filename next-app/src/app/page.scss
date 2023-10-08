@@ -2,6 +2,12 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .hero {
     @include flex-column(true, true);
     background: url("../../public/img/hero-bg.png") no-repeat center/cover;
