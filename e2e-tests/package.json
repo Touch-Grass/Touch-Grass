@@ -1,0 +1,20 @@
+{
+    "name": "touch-grass-e2e-tests",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "scripts": {
+        "open": "cypress open",
+        "test": "npx cypress run --browser chrome",
+        "ci-test": "npx cypress run --browser chrome --config video=false",
+        "lint": "eslint cypress/**/*.ts"
+    },
+    "author": "",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.7.4",
+        "@typescript-eslint/parser": "^6.7.4",
+        "cypress": "^13.3.0",
+        "eslint": "^8.50.0",
+        "typescript": "^5.2.2"
+    }
+}

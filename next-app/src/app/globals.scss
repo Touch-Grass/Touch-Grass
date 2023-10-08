@@ -1,0 +1,109 @@
+@import "include/typeface";
+@import "vars/color-palette";
+@import "vars/mixins";
+
+html, body {
+    @include flex-column;
+    font-weight: 400;
+    font-family: "Space Grotesk", sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+
+    // To use REM, we have to specify a base font size on the root.
+    // We make it easy for ourselves by using 10px as a reference size.
+    // On a monitor >= 1080p, 1rem equates to 10px :)
+    font-size: 10px;
+}
+
+// Phones.
+@media (max-width: 767px) {
+    html, body {
+        font-size: 0.5208vw; // TODO: Select reasonable value! Probably something around 2vw?
+    }
+}
+
+// Small screens and tablets.
+@media (min-width: 768px) {
+    html, body {
+        font-size: 0.5208vw;
+    }
+}
+
+// Desktop.
+@media (min-width: 1920px) {
+    html, body {
+        font-size: 10px;
+    }
+}
+
+button {
+    background-color: $jade;
+    color: $baby-powder;
+    font-family: "Space Grotesk", sans-serif;
+    border-radius: 5rem;
+    border-width: 0;
+    padding: 1rem 1.618rem;
+}
+
+button:hover {
+    background-color: $dark-jade;
+    color: $rich-black;
+}
+
+// TODO: Get the following stuff out of globals!
+.trail-list-container {
+    border-radius: 50px;
+    background: $baby-powder;
+    box-shadow: 0 4px 40px 50px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 0 2% 2%;
+    align-content: center;
+    row-gap: 1%;
+    opacity: 0.8;
+    min-height: 75%;
+    margin: 2% 7% 7%;
+}
+
+.trail-container {
+    border-radius: 50px;
+    opacity: 0.9;
+    background: $baby-powder;
+    box-shadow: 0 4px 40px 50px rgba(0, 0, 0, 0.05);
+    display: flex;
+    padding: 2%;
+    width: 80%;
+    align-content: center;
+    row-gap: 1%;
+}
+
+.trail-list-heading {
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+    column-gap: 2%;
+    color: $rich-black;
+    font-size: 2rem;
+    font-weight: 700;
+    opacity: 0.15;
+    background: $rich-black;
+}
+
+.trail-text {
+    color: $rich-black;
+    opacity: 1;
+    font-style: normal;
+    font-weight: 400;
+    width: 66%;
+}
+
+.trail-img {
+    border-radius: 25px;
+    box-shadow: 0 4px 100px 0 rgba(0, 0, 0, 0.25);
+    width: 30%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+}

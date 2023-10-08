@@ -1,0 +1,23 @@
+{
+    "extends": "next/core-web-vitals",
+    "overrides": [
+        {
+            "files": [
+                "*.ts",
+                "*.tsx",
+                "*.js",
+                "*.jsx"
+            ],
+            "rules": {
+                "quotes": [
+                    "error",
+                    "double"
+                ],
+                "semi": [
+                    "error",
+                    "always"
+                ]
+            }
+        }
+    ]
+}
