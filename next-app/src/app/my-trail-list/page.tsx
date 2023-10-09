@@ -1,11 +1,9 @@
 "use client";
-import React, {useState} from "react";
-import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
+import React from "react";
 
 export default function MyTrails() {
     return (
         <>
-            <NavbarPresenter />
             <main>
                 <div className="trail-list-container">
                     <div className="trail-list-heading">
