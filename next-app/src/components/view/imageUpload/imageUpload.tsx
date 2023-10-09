@@ -11,26 +11,28 @@ const ImageUpload: React.FC<ImageUploadProps> = ({imageUrl}) => {
   const [image, setImage] = useState("");
 
   const handleImageClick = () => {
-    inputRef.current.click();
-  };  
-  
-  const handleImageChange = (event) => {
+      // TODO: FIX TYPE.
+      (inputRef as any)?.current?.click();
+  };
+
+  const handleImageChange = (event: any) => {
+      // TODO: FIX TYPE
     setImage(event.target.files[0]);
   };
 
   return (
     <div className="image-upload-container">
-        <div 
+        <div
           className="image-display"
           onClick={handleImageClick}
         >
-          { image ? 
+          { image ?
             <Image
               className="profile-pic"
               alt="image-upload"
               width={200}
               height={200}
-              src={URL.createObjectURL(image)}
+              src={URL.createObjectURL(image as any)}
             />
             :
             <Image
@@ -46,7 +48,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({imageUrl}) => {
           </div>
         </div>
         <button className="button-remove-image" onClick={() => setImage("")}>Remove</button>
-        
+
       <input className="file-upload"
         type="file"
         ref={inputRef}

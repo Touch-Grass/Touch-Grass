@@ -7,3 +7,5 @@ export interface Identified<IDType = string> {
 }
 
 export type WithID<T, IDType> = T & Identified<IDType>;
+
+export type Nullable<T> = T | null;
