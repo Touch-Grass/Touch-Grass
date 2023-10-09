@@ -1,9 +1,10 @@
-import {getModelForClass, prop} from "@typegoose/typegoose";
+import {getModelForClass, prop, ReturnModelType} from "@typegoose/typegoose";
 import {IUser} from "@/models/shared/user/user.interface";
 import {Mutable} from "@/models/shared/utility.types";
+import mongoose from "mongoose";
 
 export class User implements Mutable<IUser> {
-    @prop({ type: () => String })
+    @prop({type: () => String})
     username: string;
     @prop()
     name: string;
@@ -15,7 +16,7 @@ export class User implements Mutable<IUser> {
     password: string;
 
     //Constructor based on a user interface
-    constructor(user: IUser){
+    constructor(user: IUser) {
         this.username = user.username;
         this.name = user.name;
         this.surname = user.surname;
@@ -24,5 +25,6 @@ export class User implements Mutable<IUser> {
     }
 }
 
-export const UserModel = getModelForClass(User);
+type UserModelType = ReturnModelType<typeof User>;
+export const UserModel = mongoose.models.User as UserModelType ?? getModelForClass(User);
 
