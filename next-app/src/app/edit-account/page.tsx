@@ -26,17 +26,16 @@ export default function EditAccount(props: EditAccountProps) {
         />
         <main className="profile-page-container">
             <div className='profile-pic-container' onClick={props.onProfilePicClicked}>
-              {/* <Image src='/userIcon.png' alt='profile-pic' width={200} height={200}></Image> */}
               <ImageUpload imageUrl='/userIcon.png'></ImageUpload>
             </div>
             <div className='profile-info-container'>
               <div className='profile-entry-container'>
                   <div className='profile-text'>Username</div>
-                  <input className='profile-input' type='text'></input>
+                  <input className='profile-input' type='text' placeholder="Chris"></input>
               </div>
               <div className='profile-entry-container'>
                 <div className='profile-text'>Email address</div>
-                <input className='profile-input' type='text'></input>
+                <input className='profile-input' type='text'  placeholder="chris@mail.com"></input>
               </div>
               <div className='profile-entry-container'>
                 <div className='profile-text'>Password</div>

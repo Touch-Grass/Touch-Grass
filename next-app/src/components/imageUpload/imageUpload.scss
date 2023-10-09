@@ -3,19 +3,57 @@
 @import "vars/sizes";
 
 .image-upload-container {
-    
+    @include flex-column(true, true);
+    width: 100%;
+    height: 100%;
     > .image-display {
-        width: 100%;
+        @include flex-column(true, true);
+        width: 30rem;
+        height: 30rem;
+        position: relative;
+        cursor: pointer;
         > .profile-pic {
-            cursor: pointer;
+            @include flex-column(true, true);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: block;
+            width: 30rem;
+            height: 30rem;
+            object-fit: cover
         }
-
-        > .button-remove-image {
-            cursor: pointer;
+        > .image-overlay {
+            @include flex-column(true, true);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30rem;
+            width: 30rem;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: $grey;
+            font-size: 2.5rem;
+            color: $baby-powder;
+            &:hover{
+                opacity: 0.5;
+            }
         }
     }
-
+    > .button-remove-image {
+        height: 6rem;
+        width: 15rem;
+        margin-top: 10%;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.67);
+        color: $baby-powder;
+        background-color: $our-red;
+        cursor: pointer;
+    }
     > .file-upload {
         width: 100%;
+        display: none;
     }
 }

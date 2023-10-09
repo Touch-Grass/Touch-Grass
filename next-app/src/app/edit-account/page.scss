@@ -12,8 +12,9 @@
     left: 0;
 
     > .profile-pic-container {
-        @include flex-column(true, true);
+        @include flex-column(true, false);
         width: 40%;
+        height: 50%;
         margin: 10% 0 10% 10%;
     }
 
@@ -25,7 +26,7 @@
         margin-right: 10%;
 
         > .profile-entry-container{
-            @include flex-column(false, false);
+            @include flex-column(false, true);
             width: 70%;
             height: 15%;
             margin-bottom: 2%;
