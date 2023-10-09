@@ -1,8 +1,7 @@
-import dbConnect from "@/lib/dbConnection";
 import {UserModel} from "@/models/server/user/user";
-import {TrailModel} from "@/models/server/trail/trail";
 import {UserService} from "@/services/users/service";
-import {TRAIL_ONE, TRAIL_TWO, USER_ONE} from "@/seed-data";
+import {TrailModel} from "@/models/server/trail/trail";
+import {TRAIL_ONE, TRAIL_TWO, USER_ONE} from "@/seed/data";
 
 async function seedUsers() {
     // GUARD: If we already have users in the database, we assume that this step has been done already.
@@ -43,7 +42,7 @@ async function seedTrails() {
     console.log("Created trails.");
 }
 
-async function seed() {
+export async function seed() {
     const SEED_FUNCTIONS: (() => Promise<void>)[] = [
         seedUsers,
         seedTrails,
@@ -57,24 +56,5 @@ async function seed() {
         } catch (e) {
             console.error(`Error in seed routine "${fn.name}":\n`, e);
         }
-    }
-}
-
-/**
- * This function will be called on startup of the application.
- */
-export async function register() {
-    try {
-        console.log(`# Instrumentation for env: ${process.env.NEXT_RUNTIME}`);
-
-        console.log("# Connecting to database...");
-        await dbConnect();
-        console.log("# Connected to database.");
-
-        console.log("# Seeding database...");
-        await seed();
-        console.log("# Seeding completed.");
-    } catch (e) {
-        console.error("CRITICAL: STARTUP FAILED TO RUN.\n", e);
     }
 }

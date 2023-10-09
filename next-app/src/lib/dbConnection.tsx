@@ -1,4 +1,5 @@
 import mongoose, {Connection} from "mongoose";
+import {seed} from "@/seed/seed";
 
 let cachedConnection: Connection | null = null;
 
@@ -20,6 +21,15 @@ export default async function dbConnect(): Promise<Connection> {
 
         const connection = await mongoose.connect(MONGODB_URI, opts);
         cachedConnection = connection.connection;
+
+        try {
+            console.log("Seeding database...");
+            seed();
+            console.log("Seeded database...");
+        } catch (e) {
+            console.error("Error during data seeding:\n", e);
+        }
+
         return cachedConnection;
     } catch (error) {
         throw error;
