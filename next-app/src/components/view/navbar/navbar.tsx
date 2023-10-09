@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import UserIcon from "../userIcon/userIcon";
-import UserMenu from "@/components/userMenu/userMenu";
-import Signin from "@/components/signin/signin";
 import "./navbar.scss";
+import UserMenu from "@/components/view/userMenu/userMenu";
+import UserIcon from "@/components/view/userIcon/userIcon";
+import Signin from "@/components/view/signin/signin";
 
 interface NavbarProps {
     signInStep: number;

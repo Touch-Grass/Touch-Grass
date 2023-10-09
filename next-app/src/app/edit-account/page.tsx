@@ -1,9 +1,8 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import Navbar from "@/components/navbar/navbar";
-import ImageUpload from "@/components/imageUpload/imageUpload";
+import React, {useState} from "react";
 import "./page.scss";
+import ImageUpload from "@/components/view/imageUpload/imageUpload";
+import Navbar from "@/components/view/navbar/navbar";
 
 interface EditAccountProps {
   onProfilePicClicked: () => void;
@@ -14,7 +13,7 @@ export default function EditAccount(props: EditAccountProps) {
   const [signInStep, setSignInStep] = useState(0);
     return (
       <body>
-        <Navbar 
+        <Navbar
           signInStep={signInStep}
           isUserMenuVisible={isUserMenuVisible}
           onOpenSignIn={()=>setSignInStep(1)}
