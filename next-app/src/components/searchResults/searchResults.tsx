@@ -1,13 +1,13 @@
 import Trail from "@/components/trail/trail";
-import type {TrailInterface} from "@/models/trails";
+import type {ITrail} from "@/models/shared/trail/trail.interface";
 import "./searchResults.scss";
 
 interface SearchProps {
   search: string;
   finds: number;
-  trail1:TrailInterface;
-  trail2:TrailInterface;
-  trail3:TrailInterface;
+  trail1:ITrail;
+  trail2:ITrail;
+  trail3:ITrail;
   //trailArray:any;           //TODO: Implement an array version of this, though consider lazy loading of this
 }
 
@@ -24,9 +24,9 @@ const SearchResult: React.FC<SearchProps> = (
     <>
     <div className="search-container">
       <div className="search-heading"> <div>{finds} trails in {search}</div></div>
-      <Trail _id={trail1._id} name={trail1.name} description={trail1.description} length={trail1.length} difficulty={trail1.difficulty} terrain={trail1.terrain} rating={trail1.rating} image={trail1.image} user={trail1.user}/>
-      <Trail _id={trail2._id} name={trail2.name} description={trail2.description} length={trail2.length} difficulty={trail2.difficulty} terrain={trail2.terrain} rating={trail2.rating} image={trail2.image} user={trail2.user}/>
-      <Trail _id={trail3._id} name={trail3.name} description={trail3.description} length={trail3.length} difficulty={trail3.difficulty} terrain={trail3.terrain} rating={trail3.rating} image={trail3.image} user={trail3.user}/>
+      <Trail name={trail1.name} description={trail1.description} length={trail1.length} difficulty={trail1.difficulty} terrain={trail1.terrain} rating={0} image={trail1.images[0]} user={trail1.creator}/>
+      <Trail name={trail2.name} description={trail2.description} length={trail2.length} difficulty={trail2.difficulty} terrain={trail2.terrain} rating={0} image={trail1.images[0]} user={trail2.creator}/>
+      <Trail name={trail3.name} description={trail3.description} length={trail3.length} difficulty={trail3.difficulty} terrain={trail3.terrain} rating={0} image={trail1.images[0]} user={trail3.creator}/>
     </div>
     </>
   );
