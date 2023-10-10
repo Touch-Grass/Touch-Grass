@@ -1,5 +1,5 @@
 import React from "react";
-import "./page.scss";
+import "./not-found.scss";
 
 export default function FourOhFour() {
     return (

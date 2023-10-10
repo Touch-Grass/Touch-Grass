@@ -1,5 +1,5 @@
 import React from "react";
-import {redirect} from "next/navigation";
+import {notFound, redirect} from "next/navigation";
 import dbConnect from "@/lib/dbConnection";
 import {TrailsService} from "@/services/trails/trails.service";
 import {Nullable} from "@/models/shared/utility.types";
@@ -14,7 +14,7 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
     // GUARD: If the user does not supply a trail to search for, we bail out to 404.
     const trailId = props?.trailId;
     if (!trailId) {
-        redirect("/404");
+        notFound();
     }
 
     // Ensure that the database connection is available.
@@ -28,7 +28,7 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
 
     // GUARD: If the trail shows to be non-existent, we bail out to 404.
     if (!trail) {
-        redirect("/404");
+        notFound();
     }
 
     return (
