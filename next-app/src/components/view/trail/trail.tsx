@@ -13,16 +13,16 @@ const TrailComponent: React.FC<Trailprops> = (props) => {
     return (
       <>
         <div className="trail-container">
-            <div>
-              <div>
+            <div className="trail-image-text-placement">
+              <div className="trail-image-container">
                 <Image
                     src={props.trail.images[0]}
                     alt="image of the trail"
                     className="trail-image"
-                    width={10}
-                    height={10}
+                    width={100}
+                    height={100}
                 />
-                <button className="trail-heart"><Image src="../../../public/Heart.svg" alt="heart" width={10}height={10}/></button>
+                <button className="trail-heart"><Image src="/Heart.svg" alt="heart" width={25}height={25}/></button>
                 </div>
                 <div className="trail-text">
                     <h2>{props.trail.name}</h2>
@@ -38,9 +38,8 @@ const TrailComponent: React.FC<Trailprops> = (props) => {
                         </div>
                     </div>
                     <div className="trail-extras">
-                        {" "}
-                        <strong>Length</strong> {props.trail.length}{" "}
-                        <strong>Terrain</strong> {props.trail.terrain}
+                        <div><strong>Length</strong> {props.trail.length}</div>
+                        <div><strong>Terrain</strong> {props.trail.terrain}</div>
                         <div className="trail-user"> </div>
                     </div>
                 </div>

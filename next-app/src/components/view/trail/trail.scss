@@ -2,75 +2,132 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-.trail-container {
-  height: 25rem;
+$t: trail;
+.#{$t}-container {
   display: inline;
   margin-top: 5rem;
+  width: inherit;
 }
 
-.trail-text {
+.#{$t}-image-text-placement{
+  @include flex-row;
+}
+
+.#{$t}-heart
+{
+  align-self: flex-end;
+  justify-self: right;
+  justify-content: center;
+  align-items: center;
   display: flex;
+  height: 6rem;
+  width: 6rem;
+  margin: 1rem;
+  background-color: $baby-powder;
+  color: $our-red;
+}
+
+.#{$t}-heart > img
+{
+  height: 4rem;
+  width: 4rem;
+}
+
+.#{$t}-text {
+  display: flex;
+  width: 80rem;
   flex-direction: column;
   row-gap: 1rem;
-  text-align: left;
   justify-content: left;
-  align-items: center;
+  align-items: left;
+  text-align: left;
+  align-self: right;
 }
-.trail-text h2 {
+
+.#{$t}-text h2 {
   color: $rich-black;
+  text-align: left;
   font-family: "Space Grotesk";
-  font-size: 1.5rem;
+  font-size: 4rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin-top: 5rem;
 }
 
-.trail-image {
-  width: 159.1rem;
-  height: 106.1rem;
-  flex-shrink: 0;
+.#{$t}-image {
+  width: inherit;
+  height: inherit;
 }
 
-.trail-description {
+.#{$t}-image-container{
+  width: 35rem;
+  height: 50rem;
+  display: grid;
+  place-content: center;
+  margin: 5rem;
+  background-color: $jade;
+  border-radius: 10px;
+}
+
+.#{$t}-image-container > *{
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
+
+.#{$t}-description {
   color: $rich-black;
   font-family: 'Space Grotesk';
-  font-size: 1rem;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-.trail-difficulty{
+.#{$t}-extras{
+  @include flex-row;
+  font-size: 2rem;
+  justify-content: left;
+  column-gap: 20rem;
+
+}
+
+.#{$t}-difficulty{
   display: flex;
   flex-direction: row;
   column-gap: 1rem;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-.trail-difficulty-container{
+.#{$t}-difficulty-container{
   display: grid;
   grid-template: 1fr / 1fr;
-  place-items: center;
+  place-items: left;
+  align-items: center;
 }
 
-.trail-difficulty-container > *{
+.#{$t}-difficulty-container > *{
   grid-column: 1 / 1;
   grid-row: 1 / 1;
 }
 
-.trail-difficulty-meter {
-  width: 42.7rem;
-  height: 2.3rem;
+.#{$t}-difficulty-meter {
+  width: 43rem;
+  height: 2.7rem;
   flex-shrink: 0;
   border-radius: 46px;
   background: linear-gradient(90deg, #6DA075 0%, #F1A241 52.08%, #D4373E 100%);
   z-index: 1;
 }
 
-.trail-difficulty-white{
-  width: 42.7rem;
-  height: 2.3rem;
+.#{$t}-difficulty-white{
+  width: 42rem;
+  height: 2rem;
   flex-shrink: 0;
   border-radius: 46px;
-  background-color: #dddbdb;
+  background-color: $baby-powder;
   z-index: 2;
+  margin: 0.4rem;
 }

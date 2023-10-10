@@ -3,31 +3,38 @@
 @import "vars/sizes";
 
 $s: search;
-.#{$s}-container{
+.#{$s}-container {
     @include flex-column;
     width: $safe-col-width;
     margin: auto;
     text-align: center;
-    
 }
-.#{$s}-title{
+.#{$s}-title {
     @include flex-row;
     width: $safe-col-width;
-    column-gap: 2rem;
+    justify-content: space-between;
+    padding-left: 5rem;
     align-items: center;
-    svg
-    {
-        padding-left: 53rem;
+    font-size: 2rem;
+    svg {
+        margin: 2rem;
+        align-self: right;
     }
 }
+.#{$s}-title-space {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
-.#{$s}-input{
-    width: 35.5rem;
-    height: 5.4rem;
+.#{$s}-input {
+    width: 35rem;
+    height: 5rem;
     flex-shrink: 0;
     border-radius: 59px;
     border: 1px solid #606060;
-    background: #FFF;
+    background: #fff;
     padding-left: 4rem;
     align-self: flex-end;
+    font-size: 1.5rem;
 }
