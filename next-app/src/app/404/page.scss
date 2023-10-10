@@ -1,0 +1,65 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+
+html, body {
+    background-color: $jade;
+}
+
+
+.missing-wrapper {
+    @include flex-column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+    > .missing-tagline {
+        @include flex-row(false, true);
+        margin-bottom: 8rem;
+
+        > img {
+            $size: 26rem;
+            width: $size;
+            height: $size;
+            object-fit: contain;
+            margin-right: 3rem;
+            margin-top: 6rem;
+        }
+
+        > .missing-tagline-text {
+            @include flex-column;
+            font-weight: 700;
+
+            > .missing-tagline-code {
+                font-size: 24rem;
+            }
+            > .missing-tagline-slogan {
+                font-size: 8.5rem;
+                margin-top: -4rem;
+            }
+        }
+    }
+
+    > .missing-explanation {
+        @include flex-column;
+        max-width: 76rem;
+
+        > .missing-explanation-main-line {
+            font-size: 3.5rem;
+        }
+
+        > .missing-explanation-cta {
+            margin-top: 4rem;
+            font-size: 2rem;
+
+            > a {
+                display: inline-block;
+                font-weight: 700;
+                text-decoration: underline;
+                color: white;
+                margin-left: 2rem;
+            }
+        }
+    }
+}
