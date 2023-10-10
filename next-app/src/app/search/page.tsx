@@ -1,13 +1,14 @@
 import React from "react";
 import dbConnect from "@/lib/dbConnection";
-import {ServerTrailWithID, TrailModel} from "@/models/server/trail/trail";
-import {redirect} from "next/navigation";
+import { ServerTrailWithID, TrailModel } from "@/models/server/trail/trail";
+import { redirect } from "next/navigation";
 import "./page.scss";
+import TrailComponent from "@/components/view/trail/trail";
 
 interface ServerSideProps {
     searchParams?: {
         l?: string; // Location.
-    }
+    };
 }
 
 export default async function Search(props: ServerSideProps) {
@@ -30,9 +31,17 @@ export default async function Search(props: ServerSideProps) {
 
     return (
         <>
-            {
-                trails.map(trail => (<div key={trail._id.toString()}>{trail.name}</div>))
-            }
+            <div className="search-container">
+                <div className="search-title">
+                <h1>{trails.length} trails in {userRequestedLocation} </h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12" fill="none">
+                <path d="M3 7H15V5H3M0 0V2H18V0M7 12H11V10H7V12Z" fill="black"/></svg>
+                <input className="search-input"  placeholder={userRequestedLocation}/>
+                </div>
+                {trails.map((trail) => (
+                    <TrailComponent trail={trail} />
+                ))}
+            </div>
         </>
     );
 }

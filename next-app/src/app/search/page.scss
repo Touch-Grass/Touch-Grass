@@ -1,0 +1,33 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$s: search;
+.#{$s}-container{
+    @include flex-column;
+    width: $safe-col-width;
+    margin: auto;
+    text-align: center;
+    
+}
+.#{$s}-title{
+    @include flex-row;
+    width: $safe-col-width;
+    column-gap: 2rem;
+    align-items: center;
+    svg
+    {
+        padding-left: 53rem;
+    }
+}
+
+.#{$s}-input{
+    width: 35.5rem;
+    height: 5.4rem;
+    flex-shrink: 0;
+    border-radius: 59px;
+    border: 1px solid #606060;
+    background: #FFF;
+    padding-left: 4rem;
+    align-self: flex-end;
+}
