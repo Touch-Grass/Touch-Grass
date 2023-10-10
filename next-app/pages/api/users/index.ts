@@ -20,13 +20,16 @@ class UserHandler extends RequestHandler {
         try{
             const user = new User(request.body as IUser);
             //Validate user data
+            console.log(user)
             UserValidation.validateUser(user);
+            
             if(await UserService.checkUserExists(user.username))
                 throw new Error("The username is already taken");
             //Insert user
             await UserService.insertOne(user);
             response.status(200).end();
         }catch(e: any){
+            console.log(e?.message);
             return response.status(400).json({ error: e?.message });
         }
     }

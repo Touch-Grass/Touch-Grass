@@ -19,6 +19,7 @@ export default function Home() {
     example.creator = userExample;*/
     return (
         <>
+            <NavbarPresenter/>
             <main className={"hero"}>
                 <div className={"hero-column"}>
                     <div className="hero-tagline">

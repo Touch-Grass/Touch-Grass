@@ -1,0 +1,9 @@
+@import "vars/color-palette";
+
+body{
+    background-color: $dark-jade;
+}
+
+.signin-container{
+    visibility: hidden;
+}
