@@ -41,7 +41,7 @@ export default async function Search(props: ServerSideProps) {
                 </div>
                 </div>
                 {trails.map((trail) => (
-                    <TrailComponent trail={trail} />
+                    <TrailComponent key={trail._id.toString()} trail={trail} />
                 ))}
             </div>
         </>
