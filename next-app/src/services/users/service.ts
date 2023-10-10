@@ -59,4 +59,14 @@ export class UserService {
         });
         return await user.save();
     }
+
+    // TODO: Account for _id with WithID<> everywhere. Use projection to eliminate _v.
+    // TODO: Separate user model for client to be without password.
+    public static convertToClientModel(user: IUser): IUser {
+        const copy = {...user};
+        delete (copy as any)["_id"];
+        delete (copy as any)["__v"];
+        delete (copy as any)["password"];
+        return copy;
+    }
 }

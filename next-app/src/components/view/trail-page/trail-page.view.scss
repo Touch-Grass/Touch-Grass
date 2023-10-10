@@ -17,8 +17,14 @@ $c: trail-page;
             @include flex-row;
             width: 100%;
 
+            > .#{$c}-right {
+                flex-grow: 1;
+                height: 35rem;
+            }
+
             > .#{$c}-left {
                 width: 61.8%;
+                flex-shrink: 0;
                 font-size: 2rem;
 
                 > .#{$c}-description {
