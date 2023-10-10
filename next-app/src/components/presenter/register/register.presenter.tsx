@@ -6,9 +6,7 @@ import { UserValidation } from "@/models/shared/user/user.validation";
 import { IUser } from "@/models/shared/user/user.interface";
 import { useRouter } from 'next/navigation'
 
-interface RegisterPresenterProps {
-    validateForm: (data:RegisterFormFields) => void;
-}
+interface RegisterPresenterProps {}
 
 export interface RegisterFormFields{
     name: string,
