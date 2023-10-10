@@ -1,0 +1,67 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: trail-page;
+
+.#{$c}-full-width-container {
+    @include flex-column(true, false);
+    margin-top: 9rem;
+    width: 100%;
+
+    > .#{$c}-boxed-container {
+        @include flex-column;
+        width: $safe-col-width;
+
+        > .#{$c}-split {
+            @include flex-row;
+            width: 100%;
+
+            > .#{$c}-left {
+                width: 61.8%;
+                font-size: 2rem;
+
+                > .#{$c}-description {
+                    margin-top: 4rem;
+                }
+
+                > .#{$c}-basic-properties {
+                    @include flex-row(false, true);
+
+                    > .#{$c}-prop {
+                        @include flex-row(false, true);
+
+                        > .#{$c}-prop-label {
+                            font-weight: 700;
+                            margin-right: 2rem;
+                        }
+
+                        &:not(:last-child) {
+                            margin-right: 1.68 * 2rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        > .trail-header {
+            @include flex-column;
+            position: relative;
+            width: 100%;
+            height: 45rem;
+            background-color: gray;
+            border-radius: 1.5rem;
+            margin-bottom: 4rem;
+
+            > .trail-header-label {
+                position: absolute;
+                $padding: 4rem;
+                left: $padding;
+                bottom: $padding;
+                font-size: 4rem;
+                color: white;
+                font-weight: 700;
+            }
+        }
+    }
+}
