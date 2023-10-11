@@ -29,7 +29,7 @@ export namespace UserValidation {
     export function validatePassword(password: string) {
         const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!*()])(?!.*\s).{8,20}$/;
         if (!passwordPattern.test(password))
-            throw new Error("Invalid password");
+            throw new Error("Invalid password type. It needs to contain 8 to 20 letters. At least one letter in lower case, another one in upper case, one number and one special character");
     }
 
     export function validateAuthUser(user: IUser) {
@@ -43,7 +43,7 @@ export namespace UserValidation {
         if (!user.password)
             throw new Error("Unexistent password");
         if (typeof user.password !== "string")
-            throw new Error("Invalid password type");
+            throw new Error("Invalid password type, needs to contain 8 to 20 letters. At least one letter in lower case, another one in upper case, one number and one special character");
     }
 
     export function validateUser(user: User) {
@@ -74,7 +74,8 @@ export namespace UserValidation {
         if (!user.password)
             throw new Error("Unexistent password");
         if (typeof user.password !== "string")
-            throw new Error("Invalid password type");
+            throw new Error("Invalid password type, needs to contain 8 to 20 letters. At least one letter in lower case, another one in upper case, one number and one special character");
+    
         validatePassword(user.password);
     }
 }
