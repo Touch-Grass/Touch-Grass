@@ -1,6 +1,10 @@
 import React from "react";
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from "react-scroll";
 import "./page.scss";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
+import HeroSearchSection from "@/components/view/heroSearchSection/heroSearchSection";
+import FeaturedTrailsSection from "@/components/view/featuredTrailsSection/featuredTrailsSection";
+import StatisticsSection from "@/components/view/statisticsSection/statisticsSection";
 
 export default function Home() {
     /*const userExample = {} as Mutable<IUser>;
@@ -20,7 +24,10 @@ export default function Home() {
     return (
         <>
             <main className={"hero"}>
-                <div className={"hero-column"}>
+                <HeroSearchSection/>
+                <FeaturedTrailsSection/>
+                <StatisticsSection/>
+                {/* <div className={"hero-column"}>
                     <div className="hero-tagline">
                         You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d">touch grass</a> today.
                     </div>
@@ -31,7 +38,7 @@ export default function Home() {
                         <button className='hero-search-button'>Search</button>
                     </div>
                 </div>
-                <div className='hero-scroll-tip'>Scroll down to discover</div>
+                <div className='hero-scroll-tip'>Scroll down to discover</div> */}
                 { /* <SearchResult search="example" finds={38548} trail1={example} trail2={example} trail3={example}/> */}
             </main>
         </>
