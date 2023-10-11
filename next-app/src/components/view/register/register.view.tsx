@@ -9,7 +9,7 @@ interface RegisterViewProps {
 
 const RegisterView: React.FC<RegisterViewProps> = (
     {
-        validateForm, 
+        validateForm,
         errorString,
     }
 ) =>{
@@ -22,7 +22,7 @@ const RegisterView: React.FC<RegisterViewProps> = (
         password: '',
         passwordRepeat: '',
       });
-    
+
       const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -30,7 +30,7 @@ const RegisterView: React.FC<RegisterViewProps> = (
           [name]: value,
         }));
       };
-    
+
       const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         validateForm(formData);

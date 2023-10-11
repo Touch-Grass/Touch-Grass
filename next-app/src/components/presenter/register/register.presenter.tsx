@@ -1,10 +1,10 @@
 "use client";
 
 import React, {useState} from "react";
-import RegisterView from "@/components/view/register/register";
+import RegisterView from "@/components/view/register/register.view";
 import { UserValidation } from "@/models/shared/user/user.validation";
 import { IUser } from "@/models/shared/user/user.interface";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 interface RegisterPresenterProps {}
 
@@ -23,7 +23,7 @@ const RegisterPresenter: React.FC<RegisterPresenterProps> = props => {
 
     const registerUser = async (user: IUser) => {
         //Call register API
-        await fetch("/api/users", {method: 'POST', headers: {'Content-Type': 'application/json',}, body: JSON.stringify(user),})
+        await fetch("/api/users", {method: "POST", headers: {"Content-Type": "application/json",}, body: JSON.stringify(user),})
             .then(async (response) => {
                 //Return error
               if (!response.ok) {
@@ -34,32 +34,32 @@ const RegisterPresenter: React.FC<RegisterPresenterProps> = props => {
             })
             .catch((error) => {
                 //Return error
-                console.error('Error:', error);
+                console.error("Error:", error);
                 const errorString = error.toString();
                 setErrorString(errorString);
             });
-    }
+    };
 
     const validateForm = (data: RegisterFormFields) => {
         //Check input format
         try{
             UserValidation.validateUsername(data.username);
-            UserValidation.validateName(data.name)
-            UserValidation.validateSurname(data.surname)
-            UserValidation.validateEmail(data.email)
+            UserValidation.validateName(data.name);
+            UserValidation.validateSurname(data.surname);
+            UserValidation.validateEmail(data.email);
             UserValidation.validatePassword(data.password);
         }catch(e:any){
             const errorString = e.toString();
             setErrorString(errorString);
             return;
         }
-        
+
         //Check passwords
         if(data.password != data.passwordRepeat){
             setErrorString("Passwords do not match.");
             return;
         }
-        
+
         //Try registering user
         try{
             const user : IUser = {
@@ -76,8 +76,7 @@ const RegisterPresenter: React.FC<RegisterPresenterProps> = props => {
             setErrorString(errorString);
             return;
         }
-        
-    }
+    };
 
     return (
         <RegisterView validateForm={validateForm} errorString={errorString}/>
