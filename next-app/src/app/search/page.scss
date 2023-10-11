@@ -1,0 +1,40 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$s: search;
+.#{$s}-container {
+    @include flex-column;
+    width: $safe-col-width;
+    margin: auto;
+    text-align: center;
+}
+.#{$s}-title {
+    @include flex-row;
+    width: $safe-col-width;
+    justify-content: space-between;
+    padding-left: 5rem;
+    align-items: center;
+    font-size: 2rem;
+    svg {
+        margin: 2rem;
+        align-self: right;
+    }
+}
+.#{$s}-title-space {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.#{$s}-input {
+    width: 35rem;
+    height: 5rem;
+    flex-shrink: 0;
+    border-radius: 59px;
+    border: 1px solid #606060;
+    background: #fff;
+    padding-left: 4rem;
+    align-self: flex-end;
+    font-size: 1.5rem;
+}

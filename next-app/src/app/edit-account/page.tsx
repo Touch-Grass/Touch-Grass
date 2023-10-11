@@ -8,7 +8,8 @@ interface EditAccountProps {
   onProfilePicClicked: () => void;
 }
 
-export default function EditAccount(props: EditAccountProps) {
+// TODO: FIX PROPS THIS IS NOT GONNA WORK!
+export default function EditAccount(props: any) {
   const [isUserMenuVisible, setIsUserMenuVisible] = useState(false);
   const [signInStep, setSignInStep] = useState(0);
     return (
