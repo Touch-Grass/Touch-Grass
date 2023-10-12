@@ -23,6 +23,7 @@ export default function Home() {
     example.creator = userExample;*/
     return (
         <>
+            <NavbarPresenter/>
             <main className={"hero"}>
                 <HeroSearchSection/>
                 <FeaturedTrailsSection/>
