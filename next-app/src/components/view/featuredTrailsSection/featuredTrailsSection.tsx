@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { IUser } from "@/models/shared/user/user.interface";
 import { ITrail } from "@/models/shared/trail/trail.interface";
 import FeaturedTrails from "../featuredTrails/featuredTrails";
@@ -65,7 +66,14 @@ export default function FeaturedTrailsSection(){
                     <FeaturedTrails trailsFeatured={trailsFeaturedMock}></FeaturedTrails>
                 </div>
                 <div className="it-is-time-part">
-                    <div className="text-it-is-time"><b>It&apos;s time to take a hike.</b></div>
+                    <Image className="walking-guy" src="/img/walking-guy.svg" alt="walking-guy" width={200} height={200}/>
+                    <div className="text-it-is-time-to-take-a-hike">
+                        <div className="text-it-is-time"><b>It&apos;s time to</b></div>
+                        <div className="text-take-a-hike-dot">
+                            <div className="text-take-a-hike"><b>take a hike</b></div>
+                            <div className="text-dot"><b>.</b></div>
+                        </div>
+                    </div>
                     <div className="register-column">
                         <div className="text-register">Registering only takes one minute.</div>
                         <button className="button-sign-up">Sign up</button>

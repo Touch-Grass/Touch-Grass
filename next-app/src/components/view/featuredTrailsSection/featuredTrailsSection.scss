@@ -40,13 +40,28 @@
             height: 26%;
             background-color: $jade;
             padding: 2% 10% 0% 10%;
-            > .text-it-is-time{
+            > .text-it-is-time-to-take-a-hike{
                 width: 30%;
+                margin-left: 5%;
                 font-size: 8rem;
+                > .text-it-is-time{
+                    color: $rich-black;
+                    width: 100%;
+                }
+                > .text-take-a-hike-dot{
+                    @include flex-row(false, false);
+                    > .text-take-a-hike{
+                        color: $baby-powder;
+                    }
+                    > .text-dot{
+                        color: $rich-black;
+                    }
+                }
             }
             > .register-column{
                 padding: 2% 0 0 0;
                 width: 20%;
+                margin-left: 5%;
                 @include flex-column(false, true);
                 > .text-register{
                     font-size: 3rem;
@@ -56,7 +71,7 @@
                     cursor: pointer;
                     font-size: 2rem;
                     margin-top: 5%;
-                    padding: 1.5rem 3rem 1.5rem 3rem;
+                    padding: 1.5rem 4rem 1.5rem 4rem;
                     &:hover{
                         color: $baby-powder;
                     }
