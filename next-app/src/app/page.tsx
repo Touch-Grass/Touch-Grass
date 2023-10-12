@@ -5,6 +5,7 @@ import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
 import HeroSearchSection from "@/components/view/heroSearchSection/heroSearchSection";
 import FeaturedTrailsSection from "@/components/view/featuredTrailsSection/featuredTrailsSection";
 import StatisticsSection from "@/components/view/statisticsSection/statisticsSection";
+import Footer from "@/components/view/footer/footer";
 
 export default function Home() {
     /*const userExample = {} as Mutable<IUser>;
@@ -28,6 +29,7 @@ export default function Home() {
                 <HeroSearchSection/>
                 <FeaturedTrailsSection/>
                 <StatisticsSection/>
+                <Footer/>
                 {/* <div className={"hero-column"}>
                     <div className="hero-tagline">
                         You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d">touch grass</a> today.
