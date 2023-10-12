@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { RegisterFormFields } from '@/components/presenter/register/register.presenter';
-import './register.scss'
+import React, { useState } from "react";
+import { RegisterFormFields } from "@/components/presenter/register/register.presenter";
+import "./register.scss";
 
 interface RegisterViewProps {
     validateForm: (data:RegisterFormFields) => void;
@@ -15,12 +15,12 @@ const RegisterView: React.FC<RegisterViewProps> = (
 ) =>{
 
     const [formData, setFormData] = useState<RegisterFormFields>({
-        name: '',
-        surname: '',
-        email: '',
-        username: '',
-        password: '',
-        passwordRepeat: '',
+        name: "",
+        surname: "",
+        email: "",
+        username: "",
+        password: "",
+        passwordRepeat: "",
       });
 
       const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +56,7 @@ const RegisterView: React.FC<RegisterViewProps> = (
                 <button type="submit" className='button-orange'>Register</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
 export default RegisterView;
