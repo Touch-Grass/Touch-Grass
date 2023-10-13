@@ -3,9 +3,9 @@
 import React, {useState} from "react";
 import { IUser } from "@/models/shared/user/user.interface";
 import { ITrail } from "@/models/shared/trail/trail.interface";
-import HeroSearchSection from "@/components/view/heroSearchSection/heroSearchSection.view";
+import HeroSearchSectionView from "@/components/view/heroSearchSection/heroSearchSection.view";
 import FeaturedTrailsSection from "@/components/view/featuredTrailsSection/featuredTrailsSection.view";
-import StatisticsSection from "@/components/view/statisticsSection/statisticsSection.view";
+import StatisticsSectionView from "@/components/view/statisticsSection/statisticsSection.view";
 
 interface MainPagePresenterProps {}
 
@@ -59,12 +59,12 @@ const trailsFeaturedMock: ITrail[]  = [
     }
 ];
 
-const MainPagePresenter:  React.FC<MainPagePresenterProps> = props => {
+const MainPagePresenter: React.FC<MainPagePresenterProps> = (props) => {
     return(
         <>
-            <HeroSearchSection/>
+            <HeroSearchSectionView/>
             <FeaturedTrailsSection trailsFeatured={trailsFeaturedMock}/>
-            <StatisticsSection/>
+            <StatisticsSectionView numberOfUsers={100} numberOfTrails={69} numberOfLocations={42}/>
         </>
     );
 };

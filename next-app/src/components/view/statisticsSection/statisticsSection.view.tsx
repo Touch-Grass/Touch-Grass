@@ -1,7 +1,14 @@
 import Image from "next/image";
 import "./statisticsSection.view.scss";
 
-export default function StatisticsSection(){
+interface StatisticsSectionViewProps {
+    numberOfUsers: number;
+    numberOfTrails: number;
+    numberOfLocations: number;
+}
+
+const StatisticsSectionView: React.FC<StatisticsSectionViewProps> = (props) =>
+{
     return (
         <div className="homepage-section" id="statistics-section">
             <div className="background-half"></div>
@@ -9,17 +16,17 @@ export default function StatisticsSection(){
                 <div className="statistics-entries">
                     <div className="statistics-entry">
                         <Image className="statistics-image" src="/img/statistics-icon-users.svg" alt="icon-user" width={50} height={50}/>
-                        <div className="statistics-number">100</div>
+                        <div className="statistics-number">{props.numberOfUsers}</div>
                         <div className="statistics-unit">users</div>
                     </div>
                     <div className="statistics-entry">
                         <Image className="statistics-image" src="/img/statistics-icon-trails.svg" alt="icon-trail" width={50} height={50}/>
-                        <div className="statistics-number">69</div>
+                        <div className="statistics-number">{props.numberOfTrails}</div>
                         <div className="statistics-unit">trails</div>
                     </div>
                     <div className="statistics-entry">
                         <Image className="statistics-image" src="/img/statistics-icon-locations.svg" alt="icon-location" width={50} height={50}/>
-                        <div className="statistics-number">42</div>
+                        <div className="statistics-number">{props.numberOfLocations}</div>
                         <div className="statistics-unit">locations</div>
                     </div>
                 </div>
@@ -27,4 +34,6 @@ export default function StatisticsSection(){
             </div>
         </div>
     );
-}
+};
+
+export default StatisticsSectionView;

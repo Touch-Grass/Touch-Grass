@@ -5,7 +5,7 @@ interface EditAccountViewProps {
     onProfilePicChanged: (imageUrl:string) => void;
 }
 
-const EditAccountView: React.FC<EditAccountViewProps> = props => {
+const EditAccountView: React.FC<EditAccountViewProps> = (props) => {
     return (
         <div className="profile-page-container">
             <div className='profile-pic-container'>

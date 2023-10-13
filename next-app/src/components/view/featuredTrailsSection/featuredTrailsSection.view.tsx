@@ -3,11 +3,11 @@ import { ITrail } from "@/models/shared/trail/trail.interface";
 import FeaturedTrails from "../featuredTrails/featuredTrails.view";
 import "./featuredTrailsSection.view.scss";
 
-interface FeaturedTrailsSectionProps {
+interface FeaturedTrailsSectionViewProps {
     trailsFeatured: ITrail[];
 }
 
-const FeaturedTrailsSection:  React.FC<FeaturedTrailsSectionProps> = props => {
+const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (props) => {
     return (
         <div className="homepage-section" id="featured-trails-section">
             <div className="featured-trails-column">
@@ -37,4 +37,4 @@ const FeaturedTrailsSection:  React.FC<FeaturedTrailsSectionProps> = props => {
     );
 };
 
-export default FeaturedTrailsSection;
+export default FeaturedTrailsSectionView;

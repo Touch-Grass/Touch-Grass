@@ -1,6 +1,8 @@
 import "./heroSearchSection.view.scss";
 
-export default function HeroSearchSection(){
+interface HeroSearchSectionViewProps {}
+
+const HeroSearchSectionView: React.FC<HeroSearchSectionViewProps> = (props) => {
     return (
         <div className="homepage-section" id="hero-search-section">
             <div className={"hero-column"}>
@@ -17,4 +19,6 @@ export default function HeroSearchSection(){
             <div className='hero-scroll-tip'>Scroll down to discover</div>
         </div>
     );
-}
+};
+
+export default HeroSearchSectionView;
