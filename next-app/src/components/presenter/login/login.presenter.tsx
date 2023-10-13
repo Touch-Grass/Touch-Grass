@@ -9,8 +9,8 @@ import { useRouter } from "next/navigation";
 interface LoginPresenterProps {}
 
 export interface LoginFormFields{
-    username: string,
-    password: string,
+    username: string;
+    password: string;
 }
 
 const LoginPresenter: React.FC<LoginPresenterProps> = props => {
@@ -20,28 +20,33 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
     const [ValidatingState, setValidatingState] = useState<Boolean>(false);
 
     const loginUser = async (user: Partial<IUser>) => {
-        //Call register API
         setValidatingState(true);
-        await fetch("/api/auth", {method: "POST", headers: {"Content-Type": "application/json",}, body: JSON.stringify(user),})
-            .then(async (response) => {
-                //Return error
-              if (!response.ok) {
+
+        try {
+            const response = await fetch("/api/auth", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify(user),
+            });
+
+            if (!response.ok) {
                 const errorData = await response.json();
                 setErrorString(errorData.error);
-              }else
+            } else {
                 router.push("/");
-            })
-            .catch((error) => {
-                //Return error
-                console.error("Error:", error);
-                const errorString = error.toString();
-                setErrorString(errorString);
-            }).finally(() => {
-                setValidatingState(false);
-            });;
-    };
+            }
+        } catch (error: any) {
+            console.error("Error:", error);
+            const errorString = error.toString();
+            setErrorString(errorString);
+        } finally {
+            setValidatingState(false);
+        }
+      };
 
-    const validateForm = (data: LoginFormFields) => {
+    const handleForm = (data: LoginFormFields) => {
         //Check input format
         try{
             UserValidation.validateUsername(data.username);
@@ -69,7 +74,7 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
 
 
     return (
-        <LoginView validating={ValidatingState} validateForm={validateForm} errorString={errorString}/>
+        <LoginView validating={ValidatingState} handleForm={handleForm} errorString={errorString}/>
     );
 };
 

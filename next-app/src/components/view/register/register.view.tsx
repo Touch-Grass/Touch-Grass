@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { RegisterFormFields } from "@/components/presenter/register/register.presenter";
 import ButtonView from "../button/button";
 import { ButtonType } from "../button/button";
@@ -20,15 +20,6 @@ const RegisterView: React.FC<RegisterViewProps> = (
         errorString,
     }
 ) =>{
-
-    const [errorVisibility, setErrorVisibility] = useState<Boolean>(false);
-
-    useEffect(()=>{
-        if(errorString.length > 0)
-            setErrorVisibility(true);
-        else
-            setErrorVisibility(false);
-    }, [errorString]);
 
     const [formData, setFormData] = useState<RegisterFormFields>({
         name: "",
@@ -64,7 +55,7 @@ const RegisterView: React.FC<RegisterViewProps> = (
             :
             <form onSubmit={handleSubmit}>
                 <h2>Sign in.</h2>
-                <p className={"form-error-string" + (errorVisibility?"":" hidden")}>{errorString}</p>
+                <p className={"form-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" placeholder="Name" required value={formData.name} onChange={handleChange}/>
                 <label htmlFor="surname">Surname</label>

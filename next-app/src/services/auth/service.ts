@@ -24,10 +24,10 @@ export class AuthService {
             throw new Error("Incorrect password");
 
         //Check existance of private key
-        if (!process.env.JWT_KEY)
+        if (!process.env.PRIVATE_KEY)
             throw new Error("Missing private key");
 
         //return token
-        return CryptographyUtils.signToken(userData.username, {}, process.env.JWT_KEY.replace(/\\n/g, "\n"));
+        return CryptographyUtils.signToken(userData.username, {}, process.env.PRIVATE_KEY.replace(/\\n/g, "\n"));
     }
 }
