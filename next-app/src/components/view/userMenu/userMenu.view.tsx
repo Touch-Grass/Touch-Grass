@@ -1,4 +1,4 @@
-import "./user-menu.scss";
+import "./userMenu.view.scss";
 import Link from "next/link";
 
 interface UserMenuProps {

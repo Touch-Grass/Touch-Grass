@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import "./imageUpload.scss";
+import "./imageUpload.view.scss";
 
 interface ImageUploadProps {
     imageUrl: string;
+    onImageChanged: (imageUrl:string) => void;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({imageUrl}) => {
+const ImageUpload: React.FC<ImageUploadProps> = (props) => {
   const inputRef = useRef(null);
   const [image, setImage] = useState("");
 
@@ -18,6 +19,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({imageUrl}) => {
   const handleImageChange = (event: any) => {
       // TODO: FIX TYPE
     setImage(event.target.files[0]);
+    props.onImageChanged(props.imageUrl);
   };
 
   return (

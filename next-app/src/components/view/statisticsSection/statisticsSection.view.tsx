@@ -1,5 +1,5 @@
 import Image from "next/image";
-import "./statisticsSection.scss";
+import "./statisticsSection.view.scss";
 
 export default function StatisticsSection(){
     return (

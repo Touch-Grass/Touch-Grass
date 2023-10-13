@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import "./trail.scss";
+import "./trail.view.scss";
 import { IUser } from "@/models/shared/user/user.interface";
 import { ITrail } from "@/models/shared/trail/trail.interface";
 import { ServerTrailWithID } from "@/models/server/trail/trail";

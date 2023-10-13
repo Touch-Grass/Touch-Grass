@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { RegisterFormFields } from "@/components/presenter/register/register.presenter";
-import "./register.scss";
+import "./register.view.scss";
 
 interface RegisterViewProps {
     validateForm: (data:RegisterFormFields) => void;

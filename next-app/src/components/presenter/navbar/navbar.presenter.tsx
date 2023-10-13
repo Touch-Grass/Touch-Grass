@@ -1,7 +1,7 @@
 "use client";
 
 import React, {useState} from "react";
-import Navbar from "@/components/view/navbar/navbar";
+import Navbar from "@/components/view/navbar/navbar.view";
 
 interface NavbarPresenterProps {
 

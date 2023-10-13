@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ITrail } from "@/models/shared/trail/trail.interface";
-import "./featuredTrails.scss";
+import "./featuredTrails.view.scss";
 
 interface FeaturedTrailsProps{
     trailsFeatured: ITrail[];

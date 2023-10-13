@@ -1,5 +1,5 @@
 import React from "react";
-import "./signin.scss";
+import "./signin.view.scss";
 
 interface SigninProps {
     signInStep: number;

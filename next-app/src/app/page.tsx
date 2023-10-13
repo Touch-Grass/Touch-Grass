@@ -1,11 +1,8 @@
 import React from "react";
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from "react-scroll";
 import "./page.scss";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
-import HeroSearchSection from "@/components/view/heroSearchSection/heroSearchSection";
-import FeaturedTrailsSection from "@/components/view/featuredTrailsSection/featuredTrailsSection";
-import StatisticsSection from "@/components/view/statisticsSection/statisticsSection";
-import Footer from "@/components/view/footer/footer";
+import FooterPresenter from "@/components/presenter/footer/footer.presenter";
+import MainPagePresenter from "@/components/presenter/main-page/main-page.presenter";
 
 export default function Home() {
     /*const userExample = {} as Mutable<IUser>;
@@ -26,23 +23,8 @@ export default function Home() {
         <>
             <NavbarPresenter/>
             <main className={"hero"}>
-                <HeroSearchSection/>
-                <FeaturedTrailsSection/>
-                <StatisticsSection/>
-                <Footer/>
-                {/* <div className={"hero-column"}>
-                    <div className="hero-tagline">
-                        You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d">touch grass</a> today.
-                    </div>
-                    <div className={"hero-search-container"}>
-                        <input type='text'
-                               placeholder='Where do you want to go?'
-                               className='hero-search-bar'/>
-                        <button className='hero-search-button'>Search</button>
-                    </div>
-                </div>
-                <div className='hero-scroll-tip'>Scroll down to discover</div> */}
-                { /* <SearchResult search="example" finds={38548} trail1={example} trail2={example} trail3={example}/> */}
+                <MainPagePresenter/>
+                <FooterPresenter/>
             </main>
         </>
     );

@@ -3,7 +3,7 @@ import dbConnect from "@/lib/dbConnection";
 import { ServerTrailWithID, TrailModel } from "@/models/server/trail/trail";
 import { redirect } from "next/navigation";
 import "./page.scss";
-import TrailComponent from "@/components/view/trail/trail";
+import TrailComponent from "@/components/view/trail/trail.view";
 
 interface ServerSideProps {
     searchParams?: {

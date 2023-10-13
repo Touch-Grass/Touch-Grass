@@ -1,4 +1,4 @@
-import "./heroSearchSection.scss";
+import "./heroSearchSection.view.scss";
 
 export default function HeroSearchSection(){
     return (

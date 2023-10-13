@@ -19,9 +19,6 @@
         "url": "https://github.com/Touch-Grass/Touch-Grass/issues"
     },
     "homepage": "https://github.com/Touch-Grass/Touch-Grass#readme",
-    "dependencies": {
-        "react-scroll": "^1.9.0"
-    },
     "devDependencies": {
         "@types/react-scroll": "^1.8.8"
     }
