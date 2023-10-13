@@ -1,6 +1,7 @@
 @import "include/typeface";
 @import "vars/color-palette";
 @import "vars/mixins";
+@import "vars/sizes";
 
 html, body {
     @include flex-column;
@@ -38,16 +39,7 @@ html, body {
     }
 }
 
-main button {
-    background-color: $jade;
-    color: $baby-powder;
-    font-family: "Space Grotesk", sans-serif;
-    border-radius: 5rem;
-    border-width: 0;
-    padding: 1rem 1.618rem;
-}
-
-button:hover {
-    background-color: $dark-jade;
-    color: $rich-black;
+main{
+    min-width: 100vw;
+    min-height: calc(100vh - $navbar-height - $navbar-padding-top);
 }

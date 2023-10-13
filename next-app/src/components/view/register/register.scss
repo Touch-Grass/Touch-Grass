@@ -14,13 +14,13 @@
     flex-direction: column;
     margin: 3rem auto;
     padding: 2rem 10rem 3rem 10rem;
-    width: 50vw;
+    width: 70rem;
     background-color: $baby-powder;
     border-radius: 5px;
 }
 
 .process-form form label{
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: bold;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
@@ -34,8 +34,10 @@
 .process-form form input{
     padding: 8px;
     width: calc(100% - 16px);
+    height: 2.4rem;
     border-radius: 5px;
     border: 1px solid $dark-jade;
+    font-size: 1.8rem;
 }
 
 .process-form form input:last-of-type{
@@ -47,22 +49,6 @@
     outline: none;
 }
 
-.process-form form button{
-    width: 35rem;
-    margin: auto;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.process-form button{
-    background-color: $orange-peel;
-}
-
-.process-form button:hover{
-    color: $baby-powder;
-    filter: brightness(95%);
-}
-
 .form-error-string.hidden{
     display: none;
 }
@@ -72,4 +58,16 @@
     font-size: 1.8rem;
     font-weight: bold;
     color: $our-red;
+}
+
+.process-form-successful{
+    text-align: center;
+    >p:first-of-type{
+        font-size: 5rem;
+    }
+    >p{
+        color: $baby-powder;
+        font-size: 2rem;
+        margin-bottom: 5rem;
+    }
 }

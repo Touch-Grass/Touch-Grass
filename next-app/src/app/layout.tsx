@@ -16,7 +16,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <NavbarPresenter />
+                <NavbarPresenter/>
                 {children}
             </body>
         </html>

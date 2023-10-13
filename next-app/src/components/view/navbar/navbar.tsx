@@ -4,6 +4,8 @@ import "./navbar.scss";
 import UserMenu from "@/components/view/userMenu/userMenu";
 import UserIcon from "@/components/view/userIcon/userIcon";
 import Signin from "@/components/view/signin/signin";
+import ButtonView from "../button/button";
+import { ButtonType } from "../button/button";
 
 interface NavbarProps {
     signInStep: number;
@@ -36,7 +38,11 @@ const Navbar: React.FC<NavbarProps> = (
                     <Link className={"navbar-title"} href='/'>TouchGrass.</Link>
                     <div className='signin-container'>
                         {signInStep < 4 ?
-                            <button className='signin-button' onClick={onOpenSignIn}>Sign in/Sign up</button> :
+                            <div>
+                                <Link href='/register'><ButtonView text="Sign in" type={ButtonType.SIGNIN}/></Link>
+                                <Link href='/login'><ButtonView text="Log in" type={ButtonType.LOGIN}/></Link>
+                            </div>
+                            :
                             <UserIcon
                                 username='Chris'
                                 userProfilePic='/userIcon.png'

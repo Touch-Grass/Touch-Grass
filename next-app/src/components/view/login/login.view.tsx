@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { LoginFormFields } from "@/components/presenter/login/login.presenter";
+import ButtonView from "../button/button";
+import { ButtonType } from "../button/button";
 import "./login.scss";
 
 interface LoginViewProps {
     validateForm: (data:LoginFormFields) => void;
+    validating: Boolean;
     errorString: string;
 }
 
 const LoginView: React.FC<LoginViewProps> = (
     {
         validateForm,
+        validating,
         errorString,
     }
 ) => {
@@ -50,7 +54,7 @@ const LoginView: React.FC<LoginViewProps> = (
                 <input type="text" name="username" placeholder="Username" required value={formData.username} onChange={handleChange}/>
                 <label htmlFor="password">Password</label>
                 <input type="password" placeholder="Enter Password" name="password" required value={formData.password} onChange={handleChange}/>
-                <button type="submit" className='button-orange'>Log in</button>
+                <ButtonView loading={validating} text="Log in" type={ButtonType.DEFAULT}/>
             </form>
         </div>
     );

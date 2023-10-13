@@ -1,9 +1,14 @@
 @import "vars/color-palette";
+@import "vars/mixins";
 
 body{
     background-color: $dark-jade;
 }
 
-.signin-container{
-    visibility: hidden;
+.navbar{
+    position: relative;
+}
+
+main{
+    @include flex-column(true, true);
 }

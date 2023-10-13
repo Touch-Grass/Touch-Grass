@@ -17,9 +17,11 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
 
     const router = useRouter();
     const [errorString, setErrorString] = useState<string>("");
+    const [ValidatingState, setValidatingState] = useState<Boolean>(false);
 
     const loginUser = async (user: Partial<IUser>) => {
         //Call register API
+        setValidatingState(true);
         await fetch("/api/auth", {method: "POST", headers: {"Content-Type": "application/json",}, body: JSON.stringify(user),})
             .then(async (response) => {
                 //Return error
@@ -34,7 +36,9 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
                 console.error("Error:", error);
                 const errorString = error.toString();
                 setErrorString(errorString);
-            });
+            }).finally(() => {
+                setValidatingState(false);
+            });;
     };
 
     const validateForm = (data: LoginFormFields) => {
@@ -65,7 +69,7 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
 
 
     return (
-        <LoginView validateForm={validateForm} errorString={errorString}/>
+        <LoginView validating={ValidatingState} validateForm={validateForm} errorString={errorString}/>
     );
 };
 

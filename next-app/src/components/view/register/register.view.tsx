@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { RegisterFormFields } from "@/components/presenter/register/register.presenter";
+import ButtonView from "../button/button";
+import { ButtonType } from "../button/button";
+import Link from "next/link";
 import "./register.scss";
 
 interface RegisterViewProps {
     validateForm: (data:RegisterFormFields) => void;
+    validating: Boolean;
+    registrationCompleted: Boolean;
     errorString: string;
 }
 
 const RegisterView: React.FC<RegisterViewProps> = (
     {
         validateForm,
+        validating,
+        registrationCompleted,
         errorString,
     }
 ) =>{
@@ -47,6 +54,14 @@ const RegisterView: React.FC<RegisterViewProps> = (
 
     return(
         <div className='process-form'>
+            {(registrationCompleted?
+            <div className="process-form-successful">
+                <img src={"/Icon_circle_Check_white.png"} width={100} height={100} />
+                <p>Registration completed!</p>
+                <p>Welcome to the jungle {formData.username}! Click below to start walking with us.</p>
+                <Link href='/login'><ButtonView text="Log in" type={ButtonType.DEFAULT}/></Link>
+            </div>
+            :
             <form onSubmit={handleSubmit}>
                 <h2>Sign in.</h2>
                 <p className={"form-error-string" + (errorVisibility?"":" hidden")}>{errorString}</p>
@@ -62,8 +77,9 @@ const RegisterView: React.FC<RegisterViewProps> = (
                 <input type="password" placeholder="Enter Password" name="password" required value={formData.password} onChange={handleChange}/>
                 <label htmlFor="password-repeat">Repeat your password</label>
                 <input type="password" placeholder="Enter Password" name="passwordRepeat" required value={formData.passwordRepeat} onChange={handleChange}/>
-                <button type="submit" className='button-orange'>Register</button>
+                <ButtonView text="Register" loading={validating} type={ButtonType.DEFAULT}/>
             </form>
+            )}
         </div>
     );
 };

@@ -20,24 +20,43 @@ export interface RegisterFormFields{
 const RegisterPresenter: React.FC<RegisterPresenterProps> = props => {
     const router = useRouter();
     const [errorString, setErrorString] = useState<string>("");
+    const [ValidatingState, setValidatingState] = useState<Boolean>(false);
+    const [RegistrationCompleted, setRegistrationCompleted] = useState<Boolean>(false);
 
     const registerUser = async (user: IUser) => {
         //Call register API
-        await fetch("/api/users", {method: "POST", headers: {"Content-Type": "application/json",}, body: JSON.stringify(user),})
+        setValidatingState(true);
+        await fetch("/api/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          })
             .then(async (response) => {
-                //Return error
-              if (!response.ok) {
-                const errorData = await response.json();
-                setErrorString(errorData.error);
-              }else
-                router.push("/");
+                if (response.status === 500)
+                    setErrorString("Internal Server Error");
+                else if (!response.ok) {
+                    const errorData = await response.json();
+                    setErrorString(errorData.error);
+                }else{
+                    setRegistrationCompleted(true);
+                }
+
             })
             .catch((error) => {
-                //Return error
+            if (error instanceof Response && error.status === 500){
+                setErrorString("Server Internal Error");
+            } else {
                 console.error("Error:", error);
                 const errorString = error.toString();
                 setErrorString(errorString);
+              }
+            })
+            .finally(() => {
+              setValidatingState(false);
             });
+
     };
 
     const validateForm = (data: RegisterFormFields) => {
@@ -79,7 +98,7 @@ const RegisterPresenter: React.FC<RegisterPresenterProps> = props => {
     };
 
     return (
-        <RegisterView validateForm={validateForm} errorString={errorString}/>
+        <RegisterView validating={ValidatingState} registrationCompleted={RegistrationCompleted} validateForm={validateForm} errorString={errorString} />
     );
 };
 

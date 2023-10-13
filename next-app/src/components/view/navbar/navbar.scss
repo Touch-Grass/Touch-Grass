@@ -4,7 +4,7 @@
 
 .navbar {
     @include flex-row(true, true);
-
+    position: auto;
     width: 100%;
 
     font-size: 2rem;
@@ -49,16 +49,8 @@
             }
         }
     }
-}
 
-.signin-button {
-    color: $rich-black;
-    background-color: $baby-powder;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.signin-button:hover {
-    color: $rich-black;
-    background-color: $light-gray;
+    .signin-container{
+        visibility: visible;
+    }
 }
