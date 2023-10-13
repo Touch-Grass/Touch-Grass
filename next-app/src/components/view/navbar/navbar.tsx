@@ -39,8 +39,8 @@ const Navbar: React.FC<NavbarProps> = (
                     <div className='signin-container'>
                         {signInStep < 4 ?
                             <div>
-                                <Link href='/register'><ButtonView text="Sign in" type={ButtonType.SIGNIN}/></Link>
-                                <Link href='/login'><ButtonView text="Log in" type={ButtonType.LOGIN}/></Link>
+                                <ButtonView text="Sign in" loading={false} type={ButtonType.SIGNIN}/>
+                                <ButtonView text="Log in" loading={false} type={ButtonType.LOGIN}/>
                             </div>
                             :
                             <UserIcon

@@ -58,7 +58,7 @@ const RegisterView: React.FC<RegisterViewProps> = (
             <div className="process-form-successful">
                 <img src={"/Icon_circle_Check_white.png"} width={100} height={100} />
                 <p>Registration completed!</p>
-                <p>Welcome to the jungle {formData.username}! Click below to start walking with us.</p>
+                <p>Welcome to the jungle <b>{formData.username}</b>! Click below to start walking with us.</p>
                 <Link href='/login'><ButtonView text="Log in" type={ButtonType.DEFAULT}/></Link>
             </div>
             :
