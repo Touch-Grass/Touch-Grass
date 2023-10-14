@@ -15,7 +15,7 @@ const CommentComponent: React.FC<Commentprops> = (props) => {
         <div className="comment-title">{props.comment.title}</div>
         <div className="comment-text">{props.comment.text}</div>
         <div className="comment-user"> 
-        <div className="comment-commenter">{props.comment.commenter.username}</div> </div>
+        <div className="comment-commenter">{}</div> </div>
         </div>
         </>
     );
