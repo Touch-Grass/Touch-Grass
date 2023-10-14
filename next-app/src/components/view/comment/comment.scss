@@ -1,0 +1,28 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: comment;
+
+.#{$c}-container{
+    @include flex-column;
+    width:$safe-col-width;
+    padding-top:2rem;
+    row-gap: 1rem;
+}
+.#{$c}-title{
+    text-align:left;
+    font-weight:700;
+}
+.#{$c}-text{
+    text-align: left;
+    padding: 1rem;
+    font-weight: 400;
+    color: $rich-black;
+}
+
+.#{$c}-commenter{
+    text-align:left;
+    font-weight:400;
+    color:$rich-black;
+}
