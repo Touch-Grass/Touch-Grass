@@ -14,16 +14,6 @@ export default function EditAccount(props: any) {
   const [signInStep, setSignInStep] = useState(0);
     return (
       <body>
-        <Navbar
-          signInStep={signInStep}
-          isUserMenuVisible={isUserMenuVisible}
-          onOpenSignIn={()=>setSignInStep(1)}
-          onOpenUserMenu={()=>setIsUserMenuVisible(true)}
-          onLogOut={()=>{setSignInStep(0);setIsUserMenuVisible(false);}}
-          onInputUsernameEmail={()=>setSignInStep(2)}
-          onInputPassword={()=>setSignInStep(3)}
-          onSignup={()=>setSignInStep(4)}
-        />
         <main className="profile-page-container">
             <div className='profile-pic-container' onClick={props.onProfilePicClicked}>
               <ImageUpload imageUrl='/userIcon.png'></ImageUpload>
