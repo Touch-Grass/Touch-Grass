@@ -1,7 +1,7 @@
 import React from "react";
 import "./not-found.scss";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
-
+export const dynamic = "force-dynamic";
 export default function FourOhFour() {
     return (
         <div className={"missing-page-wrapper"}>

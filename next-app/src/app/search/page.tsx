@@ -8,7 +8,7 @@ interface ServerSideProps {
         l?: string; // Location.
     };
 }
-
+export const dynamic = "force-dynamic";
 export default async function Search(props: ServerSideProps) {
     const userRequestedLocation = props.searchParams?.l ?? null;
 

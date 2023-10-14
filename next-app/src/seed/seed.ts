@@ -3,6 +3,7 @@ import {UserService} from "@/services/users/service";
 import {TrailModel} from "@/models/server/trail/trail";
 import {TRAIL_ONE, TRAIL_THREE, TRAIL_TWO, USER_ONE} from "@/seed/data";
 
+export const dynamic = "force-dynamic";
 async function seedUsers() {
     // GUARD: If we already have users in the database, we assume that this step has been done already.
     const existingUser = await UserModel.findOne({}).exec();
@@ -17,7 +18,6 @@ async function seedUsers() {
 
     console.log("Created users.");
 }
-
 async function seedTrails() {
     // GUARD: If we already have users in the database, we assume that this step has been done already.
     const existingTrail = await TrailModel.findOne({}).exec();
