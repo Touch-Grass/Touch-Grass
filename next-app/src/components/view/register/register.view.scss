@@ -1,7 +1,10 @@
 @import "vars/color-palette";
+@import "vars/mixins";
 
 .process-form{
     width: 100%;
+    height: 100vh;
+    @include flex-column(true, true);
 }
 
 .process-form h2{
@@ -17,6 +20,7 @@
     width: 70rem;
     background-color: $baby-powder;
     border-radius: 5px;
+
 }
 
 .process-form form label{
@@ -40,10 +44,6 @@
     font-size: 1.8rem;
 }
 
-.process-form form input:last-of-type{
-    margin-bottom: 3rem;
-}
-
 .process-form form input:focus{
     border: 1px solid $jade;
     outline: none;
@@ -62,6 +62,8 @@
 
 .process-form-successful{
     text-align: center;
+    @include flex-column(true, true);
+
     >p:first-of-type{
         font-size: 5rem;
     }
@@ -70,4 +72,30 @@
         font-size: 2rem;
         margin-bottom: 5rem;
     }
+}
+
+.form-label-division{
+    display: flex;
+    flex-direction: row;
+
+    >*{
+        flex-grow: 1;
+    }
+
+    >div{
+        display: flex;
+        flex-direction: column;
+    }
+
+    >div:first-child{
+        margin-right: 1rem;
+    }
+
+    >div:last-child{
+        margin-left: 1rem;
+    }
+}
+
+.form-label-division:last-of-type{
+    margin-bottom: 3rem;
 }

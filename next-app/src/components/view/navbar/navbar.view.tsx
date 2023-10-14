@@ -5,7 +5,7 @@ import UserIcon from "@/components/view/userIcon/userIcon.view";
 import ButtonView from "../button/button.view";
 import { ButtonType } from "../button/button.view";
 import { IUser } from "@/models/shared/user/user.interface";
-import "./navbar.scss";
+import "./navbar.view.scss";
 
 interface NavbarProps {
     fixed: boolean;

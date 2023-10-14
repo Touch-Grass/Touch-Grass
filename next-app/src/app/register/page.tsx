@@ -6,7 +6,7 @@ import React from "react";
 export default async function Register() {
     return(
         <div className={"register-page-wrapper"}>
-            <NavbarPresenter fixed={false}/>
+            <NavbarPresenter fixed={true}/>
             <main>
                 <RegisterPresenter/>
             </main>

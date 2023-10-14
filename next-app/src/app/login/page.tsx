@@ -6,7 +6,7 @@ import React from "react";
 export default async function Login() {
     return(
         <div className={"login-page-wrapper"}>
-            <NavbarPresenter fixed={false}/>
+            <NavbarPresenter fixed={true}/>
             <main className='process-form'>
                 <LoginPresenter/>
             </main>
