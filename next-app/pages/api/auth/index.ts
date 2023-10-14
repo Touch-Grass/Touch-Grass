@@ -19,15 +19,15 @@ class AuthHandler extends RequestHandler {
         //Try authenticating
         try{
             //Check data
-            const parsedBody = JSON.parse(request.body);
-            UserValidation.validateAuthUser(parsedBody as IUser);
+            UserValidation.validateAuthUser(request.body as IUser);
             //Try authentication
-            const token = await AuthService.performAuthentication(parsedBody);
+            const token = await AuthService.performAuthentication(request.body);
             //Set token
             response.setHeader("Set-Cookie", "token=${token}; HttpOnly; Path=/; Max-Age=3600");
             return response.status(200).json({ message: "Authentication successful" });
         }catch(e: any){
-            return response.status(200).json({error: e?.message});
+            console.log(e);
+            return response.status(400).json({error: e?.message});
         }
     }
 }

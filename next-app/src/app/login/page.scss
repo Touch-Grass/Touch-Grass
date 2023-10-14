@@ -1,0 +1,9 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+
+.login-page-wrapper {
+    @include flex-column(true, false);
+    width: 100%;
+    background-color: $dark-jade;
+    min-height: 100vh;
+}

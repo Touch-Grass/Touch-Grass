@@ -1,13 +1,25 @@
 import React from "react";
-import { ServerTrailWithID } from "@/models/server/trail/trail";
+import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import "./trail-page.view.scss";
+import {ITrail} from "@/models/shared/trail/trail.interface";
+import dynamic from "next/dynamic";
+import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-meter.view";
 
 interface TrailPageViewProps {
-    trail: ServerTrailWithID;
+    trail: PopulatedServerTrailWithID;
+    clientTrail: ITrail;
 }
 
-const TrailPageView: React.FC<TrailPageViewProps> = async (props) => {
-    const trail = props.trail;
+const LazyLoadedTrailMapView = dynamic(
+    () => import("../trail-map/trail-map.view"),
+    {
+        ssr: false,
+        loading: () => (<div>loading...</div>), // TODO: Loading spinner
+    }
+);
+
+const TrailPageView: React.FC<TrailPageViewProps> = props => {
+    const {trail, clientTrail} = props;
 
     return (
         <div className={"trail-page-full-width-container"}>
@@ -36,9 +48,16 @@ const TrailPageView: React.FC<TrailPageViewProps> = async (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className={"trail-page-description"}>
-                            {trail.description}
+                        <div className={"trail-page-difficulty"}>
+                            <div className={"trail-page-difficulty-label"}>Difficulty</div>
+                            <div className={"trail-page-difficulty-meter-container"}>
+                                <DifficultyMeterView difficulty={trail.difficulty}></DifficultyMeterView>
+                            </div>
                         </div>
+                        <div className={"trail-page-description"}>{trail.description}</div>
+                    </div>
+                    <div className={"trail-page-right"}>
+                        <LazyLoadedTrailMapView trail={clientTrail}></LazyLoadedTrailMapView>
                     </div>
                 </div>
             </div>

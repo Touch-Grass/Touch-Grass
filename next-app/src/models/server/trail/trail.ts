@@ -7,6 +7,8 @@ import {ITrail} from "@/models/shared/trail/trail.interface";
 
 export type ServerTrail = ITrail<Ref<User>>;
 export type ServerTrailWithID = WithID<ServerTrail, mongoose.Types.ObjectId>;
+export type PopulatedServerTrail = ITrail<User>;
+export type PopulatedServerTrailWithID = WithID<PopulatedServerTrail, mongoose.Types.ObjectId>
 
 export class Trail implements Mutable<ServerTrail> {
     @prop()
@@ -31,18 +33,12 @@ export class Trail implements Mutable<ServerTrail> {
     public images: string[];
     @prop()
     public creator: Ref<User>;
-
-    public static async findByLocation(
-        this: ReturnModelType<typeof Trail>,
-        location: string,
-        withCreator: boolean = false
-    ): Promise<ServerTrailWithID[]> {
-        let query = this.find({location});
-        if (withCreator) {
-            query = query.populate("creator");
-        }
-        return await query.exec();
-    }
+    @prop()
+    public createdDate: number;
+    @prop()
+    public searchLocation: string;
+    @prop()
+    public featured: boolean;
 
     public static async insertOne(trail: ServerTrail): Promise<Document> {
         const record = new TrailModel({...trail});

@@ -1,10 +1,10 @@
 "use client";
 
 import React, {useState} from "react";
-import Navbar from "@/components/view/navbar/navbar";
+import Navbar from "@/components/view/navbar/navbar.view";
 
 interface NavbarPresenterProps {
-
+    fixed: boolean;
 }
 
 const NavbarPresenter: React.FC<NavbarPresenterProps> = props => {
@@ -12,7 +12,8 @@ const NavbarPresenter: React.FC<NavbarPresenterProps> = props => {
     const [signInStep, setSignInStep] = useState(0);
 
     return (
-        <Navbar signInStep={signInStep}
+        <Navbar fixed={props.fixed}
+                signInStep={signInStep}
                 isUserMenuVisible={isUserMenuVisible}
                 onOpenSignIn={() => setSignInStep(1)}
                 onOpenUserMenu={() => setIsUserMenuVisible(true)}

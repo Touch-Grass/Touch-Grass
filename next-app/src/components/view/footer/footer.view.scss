@@ -1,0 +1,24 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+@import "vars/animations";
+
+.footer{
+    @include flex-row(true, true);
+    width: 100%;
+    height: 35vh;
+    background-color: $rich-black;
+    color: $baby-powder;
+    > .footer-title{
+        font-size: 4rem;
+        margin-left: 5rem;
+    }
+    > .team-members{
+        @include flex-column(false, true);
+        font-size: 2rem;
+        margin-left: 40%;
+        > .team-member{
+            margin-top: 10%;
+        }
+    }
+}

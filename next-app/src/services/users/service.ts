@@ -9,7 +9,7 @@ export class UserService {
      * @param {IUser} user - The user object containing the username to check.
      * @returns {Promise<boolean>} A promise that resolves to true if the user exists, false otherwise.
      */
-    public static async checkUserExists(username: string): Promise<Boolean> {
+    public static async checkUserExists(username: string): Promise<boolean> {
         try{
             await this.findOne(username);
             return true;
@@ -23,7 +23,11 @@ export class UserService {
      * @returns {Promise<Document[]>} A promise that resolves to an array of user documents.
      */
     public static async findAll(): Promise<Document[]> {
-        return await UserModel.find({});
+        return await UserModel.find({}).exec();
+    }
+
+    public static async countUsers(): Promise<number> {
+        return await UserModel.find({}).count().exec();
     }
 
     /**
@@ -58,5 +62,15 @@ export class UserService {
             password: await CryptographyUtils.hashString(newUser.password)
         });
         return await user.save();
+    }
+
+    // TODO: Account for _id with WithID<> everywhere. Use projection to eliminate _v.
+    // TODO: Separate user model for client to be without password.
+    public static convertToClientModel(user: IUser): IUser {
+        const copy = {...user};
+        delete (copy as any)["_id"];
+        delete (copy as any)["__v"];
+        delete (copy as any)["password"];
+        return copy;
     }
 }

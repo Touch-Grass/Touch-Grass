@@ -1,7 +1,7 @@
 import {UserModel} from "@/models/server/user/user";
 import {UserService} from "@/services/users/service";
 import {TrailModel} from "@/models/server/trail/trail";
-import {TRAIL_ONE, TRAIL_TWO, USER_ONE} from "@/seed/data";
+import {TRAIL_ONE, TRAIL_THREE, TRAIL_TWO, USER_ONE} from "@/seed/data";
 
 async function seedUsers() {
     // GUARD: If we already have users in the database, we assume that this step has been done already.
@@ -38,6 +38,7 @@ async function seedTrails() {
 
     await TrailModel.insertOne(TRAIL_ONE(existingUser));
     await TrailModel.insertOne(TRAIL_TWO(existingUser));
+    await TrailModel.insertOne(TRAIL_THREE(existingUser));
 
     console.log("Created trails.");
 }

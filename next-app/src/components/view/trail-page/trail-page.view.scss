@@ -17,9 +17,34 @@ $c: trail-page;
             @include flex-row;
             width: 100%;
 
+            > .#{$c}-right {
+                flex-grow: 1;
+                height: 35rem;
+            }
+
             > .#{$c}-left {
                 width: 61.8%;
+                flex-shrink: 0;
                 font-size: 2rem;
+                padding-right: 4rem;
+                box-sizing: border-box;
+
+                > .#{$c}-difficulty {
+                    @include flex-row(false, true);
+                    margin-top: 4rem;
+                    box-sizing: border-box;
+                    width: 100%;
+
+                    > .#{$c}-difficulty-label {
+                        margin-right: 4rem;
+                        font-weight: 700;
+                        flex-shrink: 0;
+                    }
+
+                    > .#{$c}-difficulty-meter-container {
+                        flex-grow: 1;
+                    }
+                }
 
                 > .#{$c}-description {
                     margin-top: 4rem;

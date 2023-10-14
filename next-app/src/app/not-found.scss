@@ -2,11 +2,17 @@
 @import "vars/mixins";
 
 html, body {
-    background-color: $jade;
+    background-color: $dark-jade;
 }
 
+.missing-page-wrapper {
+    @include flex-column(true, false);
+    width: 100%;
+    background-color: $dark-jade;
+    min-height: 100vh;
+}
 
-.missing-wrapper {
+.missing-content-wrapper {
     @include flex-column;
     position: fixed;
     top: 50%;
