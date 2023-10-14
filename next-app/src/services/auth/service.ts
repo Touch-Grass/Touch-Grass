@@ -61,6 +61,30 @@ export class AuthService {
         }catch(error : any){
             return false;
         }
+    }
 
+    public static async getUserInfoFromToken(token:string):Promise<IUser|null> {
+        try{
+            if (!token || token.length == 0)
+            throw new Error("Token is empty");
+
+            //Check existance of private key
+            if (!process.env.PUBLIC_KEY)
+                throw new Error("Missing public key");
+
+            //Get user
+            const user = CryptographyUtils.validateToken(token, process.env.PUBLIC_KEY.replace(/\\n/g, "\n"));
+
+            //Validate user
+            const userData = await UserService.findOne(user);
+            if (!userData)
+                throw new Error("User does not exist");
+
+            //Validation correct
+            return userData;
+
+        }catch(error : any){
+            return null;
+        }
     }
 }

@@ -9,10 +9,10 @@ const NavbarPresenter: React.FC<NavbarPresenterProps> = async props => {
     // Ensure that the database connection is available.
     await dbConnect();
     const token = CookieService.getCookie();
-    const isUserLogged = await AuthService.performValidation(token);
+    const userInfo = await AuthService.getUserInfoFromToken(token);
 
     return (
-        <Navbar isUserLogged={isUserLogged} />
+        <Navbar user={userInfo}/>
     );
 };
 

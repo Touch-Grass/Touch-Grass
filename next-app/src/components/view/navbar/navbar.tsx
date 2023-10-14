@@ -1,20 +1,19 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import "./navbar.scss";
-import UserMenu from "@/components/view/userMenu/userMenu";
 import UserIcon from "@/components/view/userIcon/userIcon";
-import Signin from "@/components/view/signin/signin";
 import ButtonView from "../button/button";
 import { ButtonType } from "../button/button";
+import { IUser } from "@/models/shared/user/user.interface";
+import "./navbar.scss";
 
 interface NavbarProps {
-    isUserLogged: boolean;
+    user: IUser | null;
 }
 
 const Navbar: React.FC<NavbarProps> = (
     {
-        isUserLogged
+        user
     }
 ) => {
     return (
@@ -24,11 +23,10 @@ const Navbar: React.FC<NavbarProps> = (
                     <Image className='navbar-logo' src='/logo-no-dots.svg' alt='logo' width={0} height={0} ></Image>
                     <Link className={"navbar-title"} href='/'>TouchGrass.</Link>
                     <div className='signin-container'>
-                        {isUserLogged ?
+                        {user ?
                             <UserIcon
-                                username='Chris'
+                                username={user.username}
                                 userProfilePic='/userIcon.png'
-                                onUserProfilePicClicked={()=>{}}
                             ></UserIcon>
                             :
                             <div>
