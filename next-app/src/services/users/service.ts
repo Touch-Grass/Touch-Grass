@@ -9,7 +9,7 @@ export class UserService {
      * @param {IUser} user - The user object containing the username to check.
      * @returns {Promise<boolean>} A promise that resolves to true if the user exists, false otherwise.
      */
-    public static async checkUserExists(username: string): Promise<Boolean> {
+    public static async checkUserExists(username: string): Promise<boolean> {
         try{
             await this.findOne(username);
             return true;

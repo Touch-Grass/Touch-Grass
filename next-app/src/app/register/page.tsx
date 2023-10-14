@@ -4,7 +4,7 @@ import "./page.scss";
 export default async function Register() {
     return(
         <>
-            <main className='process-form'>
+            <main>
                 <RegisterPresenter/>
             </main>
         </>

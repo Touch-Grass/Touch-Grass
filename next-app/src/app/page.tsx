@@ -1,6 +1,7 @@
 import React from "react";
+import ButtonView from "@/components/view/button/button";
+import { ButtonType } from "@/components/view/button/button";
 import "./page.scss";
-import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
 
 export default function Home() {
     /*const userExample = {} as Mutable<IUser>;
@@ -19,7 +20,6 @@ export default function Home() {
     example.creator = userExample;*/
     return (
         <>
-            <NavbarPresenter/>
             <main className={"hero"}>
                 <div className={"hero-column"}>
                     <div className="hero-tagline">
@@ -29,7 +29,7 @@ export default function Home() {
                         <input type='text'
                                placeholder='Where do you want to go?'
                                className='hero-search-bar'/>
-                        <button className='hero-search-button'>Search</button>
+                        <ButtonView text="Search" type={ButtonType.SEARCH}/>
                     </div>
                 </div>
                 <div className='hero-scroll-tip'>Scroll down to discover</div>
