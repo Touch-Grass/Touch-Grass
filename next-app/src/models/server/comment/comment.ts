@@ -12,6 +12,8 @@ export class Comment implements Mutable<ServerComment>{
     @prop()
     commenter: Ref<User>;
     @prop()
+    title: string;
+    @prop()
     public text: string;
     @prop()
     date: number;
