@@ -1,9 +1,9 @@
 import React from "react";
-import {notFound, redirect} from "next/navigation";
+import {notFound} from "next/navigation";
 import dbConnect from "@/lib/dbConnection";
 import {TrailsService} from "@/services/trails/trails.service";
 import {Nullable} from "@/models/shared/utility.types";
-import {PopulatedServerTrailWithID, ServerTrailWithID} from "@/models/server/trail/trail";
+import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import TrailPageView from "@/components/view/trail-page/trail-page.view";
 
 interface TrailPagePresenterProps {
