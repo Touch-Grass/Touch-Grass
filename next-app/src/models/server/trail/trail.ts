@@ -7,6 +7,8 @@ import {ITrail} from "@/models/shared/trail/trail.interface";
 
 export type ServerTrail = ITrail<Ref<User>>;
 export type ServerTrailWithID = WithID<ServerTrail, mongoose.Types.ObjectId>;
+export type PopulatedServerTrail = ITrail<User>;
+export type PopulatedServerTrailWithID = WithID<PopulatedServerTrail, mongoose.Types.ObjectId>
 
 export class Trail implements Mutable<ServerTrail> {
     @prop()

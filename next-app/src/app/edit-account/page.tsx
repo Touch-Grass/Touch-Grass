@@ -7,7 +7,7 @@ export default async function EditAccount() {
   return(
     <>
       <main>
-        <NavbarPresenter/>
+        <NavbarPresenter fixed={false}/>
         <EditAccountPresenter/>
       </main>
     </>

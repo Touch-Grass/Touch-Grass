@@ -34,10 +34,10 @@
 .process-form form input{
     padding: 8px;
     width: calc(100% - 16px);
-    height: 2.4rem;
     border-radius: 5px;
     border: 1px solid $dark-jade;
     font-size: 1.8rem;
+    height: 2.4rem;
 }
 
 .process-form form input:last-of-type{
@@ -58,16 +58,4 @@
     font-size: 1.8rem;
     font-weight: bold;
     color: $our-red;
-}
-
-.process-form-successful{
-    text-align: center;
-    >p:first-of-type{
-        font-size: 5rem;
-    }
-    >p{
-        color: $baby-powder;
-        font-size: 2rem;
-        margin-bottom: 5rem;
-    }
 }

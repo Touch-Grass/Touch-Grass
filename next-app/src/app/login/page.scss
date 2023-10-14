@@ -1,7 +1,7 @@
 @import "vars/color-palette";
 @import "vars/mixins";
 
-.register-page-wrapper {
+.login-page-wrapper {
     @include flex-column(true, false);
     width: 100%;
     background-color: $dark-jade;
