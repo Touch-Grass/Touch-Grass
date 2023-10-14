@@ -2,93 +2,94 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-$t: search-result;
+$c: search-result;
 
-.#{$t}-container {
-  display: inline;
-  margin-top: 5rem;
-  width: inherit;
-}
+.#{$c}-container {
+    @include flex-row;
+    margin-top: 8rem;
+    width: inherit;
 
-.#{$t}-image-text-placement{
-  @include flex-row;
-}
+    > .#{$c}-image-container {
+        position: relative;
+        width: 35rem;
+        height: 50rem;
+        background-color: $jade;
+        border-radius: 10px;
+        margin-right: 5rem;
+        flex-shrink: 0;
 
-.#{$t}-heart
-{
-  align-self: flex-end;
-  justify-self: right;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  height: 6rem;
-  width: 6rem;
-  margin: 1rem;
-  background-color: $baby-powder;
-  color: $our-red;
-}
+        > .#{$c}-heart {
+            @include flex-column(true, true);
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            height: 6rem;
+            width: 6rem;
+            background-color: $baby-powder;
+            color: $our-red;
+            border-radius: 100%;
 
-.#{$t}-heart > img
-{
-  height: 4rem;
-  width: 4rem;
-}
+            > img {
+                height: 4rem;
+                width: 4rem;
+            }
+        }
+    }
 
-.#{$t}-text {
-  display: flex;
-  width: 80rem;
-  flex-direction: column;
-  row-gap: 1rem;
-  justify-content: left;
-  align-items: left;
-  text-align: left;
-  align-self: right;
-}
+    > .#{$c}-content {
+        @include flex-column;
+        flex-grow: 1;
 
-.#{$t}-text h2 {
-  color: $rich-black;
-  text-align: left;
-  font-family: "Space Grotesk";
-  font-size: 4rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin-top: 5rem;
-}
+        > .#{$c}-title {
+            color: $rich-black;
+            text-align: left;
+            font-size: 4rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
 
-.#{$t}-image {
-  width: inherit;
-  height: inherit;
-}
+        > .#{$c}-description {
+            margin: 3.5rem 0;
+            color: $rich-black;
+            font-size: 2rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
 
-.#{$t}-image-container{
-  width: 35rem;
-  height: 50rem;
-  display: grid;
-  place-content: center;
-  margin: 5rem;
-  background-color: $jade;
-  border-radius: 10px;
-}
+        > .#{$c}-extras {
+            @include flex-row;
+            margin: 3.5rem 0;
+            font-size: 2rem;
 
-.#{$t}-image-container > *{
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-}
+            > .#{$c}-extra {
+                @include flex-row(false, true);
 
-.#{$t}-description {
-  color: $rich-black;
-  font-family: 'Space Grotesk';
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
+                &:not(:last-child) {
+                    margin-right: 8rem;
+                }
 
-.#{$t}-extras{
-  @include flex-row;
-  font-size: 2rem;
-  justify-content: left;
-  column-gap: 20rem;
+                > span:first-child {
+                    font-weight: 700;
+                    margin-right: 2rem;
+                }
+            }
+        }
 
+        > .#{$c}-difficulty {
+            @include flex-row(false, true);
+            width: 100%;
+
+            > span {
+                font-size: 2.8rem;
+                font-weight: 700;
+                margin-right: 4rem;
+            }
+
+            > .#{$c}-difficulty-wrapper {
+                flex-grow: 1;
+            }
+        }
+    }
 }

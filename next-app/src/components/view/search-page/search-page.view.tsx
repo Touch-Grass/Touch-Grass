@@ -2,6 +2,7 @@ import React from "react";
 import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import "./search-page.view.scss";
 import SearchResultView from "@/components/view/search-result/search-result.view";
+import Link from "next/link";
 
 interface SearchPageViewProps {
     trails: PopulatedServerTrailWithID[];
@@ -21,8 +22,9 @@ const TrailPageView: React.FC<SearchPageViewProps> = props => {
                     </div>
                 </div>
                 {trails.map((trail) => (
-                    // FIX
-                    <SearchResultView key={trail._id.toString()} trail={trail as any}/>
+                    <Link key={trail._id.toString()} href={"/trail/" + trail._id.toString()}>
+                        <SearchResultView trail={trail as any}/>
+                    </Link>
                 ))}
             </div>
         </div>

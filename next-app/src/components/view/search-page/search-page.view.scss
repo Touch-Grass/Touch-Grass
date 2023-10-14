@@ -11,12 +11,17 @@ $c: search-page;
     > .#{$c}-container {
         @include flex-column;
         width: $safe-col-width;
+        margin-bottom: 11rem;
         margin-top: 11rem;
+
+        > a {
+            text-decoration: none;
+            color: black;
+        }
 
         > .#{$c}-title-row {
             @include flex-row(false, true);
             width: $safe-col-width;
-            padding-left: 5rem;
             align-items: center;
             font-size: 2rem;
 

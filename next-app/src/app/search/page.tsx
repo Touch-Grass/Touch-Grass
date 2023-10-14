@@ -1,6 +1,7 @@
 import React from "react";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
 import SearchPagePresenter from "@/components/presenter/search-page/search-page.presenter";
+import FooterPresenter from "@/components/presenter/footer/footer.presenter";
 
 interface ServerSideProps {
     searchParams?: {
@@ -15,6 +16,7 @@ export default async function Search(props: ServerSideProps) {
         <>
             <NavbarPresenter fixed={false}/>
             <SearchPagePresenter location={userRequestedLocation}></SearchPagePresenter>
+            <FooterPresenter></FooterPresenter>
         </>
     );
 }
