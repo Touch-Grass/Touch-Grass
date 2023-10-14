@@ -31,6 +31,9 @@ const trailsFeaturedMock: ITrail[]  = [
         location: "Location 1",
         images: ["image1.jpg", "image2.jpg"],
         creator: userMock,
+        featured: true,
+        createdDate: 0,
+        searchLocation: "location 1"
     },
     {
         name: "Trail 2",
@@ -44,6 +47,9 @@ const trailsFeaturedMock: ITrail[]  = [
         location: "Location 2",
         images: ["image3.jpg", "image4.jpg"],
         creator: userMock,
+        featured: true,
+        createdDate: 0,
+        searchLocation: "location 2"
     },
     {
         name: "Trail 3",
@@ -57,6 +63,9 @@ const trailsFeaturedMock: ITrail[]  = [
         location: "Location 3",
         images: ["image5.jpg"],
         creator: userMock,
+        featured: true,
+        createdDate: 0,
+        searchLocation: "location 3"
     }
 ];
 
