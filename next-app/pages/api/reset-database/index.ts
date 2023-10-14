@@ -26,7 +26,6 @@ class ResetHandler extends RequestHandler {
             await TrailModel.deleteMany({});
 
             await seed();
-
             return response.status(200).json({message: "Database reset"});
         } catch (e: any) {
             console.error(e);

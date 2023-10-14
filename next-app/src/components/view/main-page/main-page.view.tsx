@@ -1,14 +1,14 @@
 "use client";
 import React, {useEffect} from "react";
-import HeroSectionView from "@/components/view/hero-section/hero-section.view";
-import FeaturedTrailsSectionView from "@/components/view/featuredTrailsSection/featuredTrailsSection.view";
+import FeaturedTrailsSectionView from "@/components/view/featured-trails-section/featured-trails-section.view";
 import StatisticsSectionView from "@/components/view/statisticsSection/statisticsSection.view";
-import {ITrail} from "@/models/shared/trail/trail.interface";
 import hookScrollFadeIn from "@/utils/Animations/scrollFadeIn";
 import HeroSectionPresenter from "@/components/presenter/hero-section/hero-section.presenter";
+import {ServerTrailWithID} from "@/models/server/trail/trail";
+import MidPageCTASectionView from "@/components/view/mid-page-cta-section/mid-page-cta-section.view";
 
 interface MainPageViewProps {
-    featuredTrails: [ITrail, ITrail, ITrail];
+    featuredTrails: ServerTrailWithID[];
     statistics: {
         users: number;
         trails: number;
@@ -26,7 +26,8 @@ const MainPageView: React.FC<MainPageViewProps> = props => {
     return (
         <>
             <HeroSectionPresenter></HeroSectionPresenter>
-            <FeaturedTrailsSectionView trailsFeatured={featuredTrails}/>
+            <FeaturedTrailsSectionView trails={featuredTrails}/>
+            <MidPageCTASectionView></MidPageCTASectionView>
             <StatisticsSectionView numberOfUsers={statistics.users} numberOfTrails={statistics.trails}
                                    numberOfLocations={statistics.locations}/>
         </>
