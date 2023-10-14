@@ -1,7 +1,7 @@
 import React from "react";
 import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import "./search-page.view.scss";
-import TrailComponent from "@/components/view/trail/trail";
+import TrailComponent from "@/components/view/trail/trail.view";
 
 interface SearchPageViewProps {
     trails: PopulatedServerTrailWithID[];
