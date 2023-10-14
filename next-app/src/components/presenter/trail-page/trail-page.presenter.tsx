@@ -5,6 +5,8 @@ import {TrailsService} from "@/services/trails/trails.service";
 import {Nullable} from "@/models/shared/utility.types";
 import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import TrailPageView from "@/components/view/trail-page/trail-page.view";
+import { ServerCommentWithID } from "@/models/server/comment/comment";
+import { CommentsService } from "@/services/comments/comments.service";
 
 interface TrailPagePresenterProps {
     trailId?: Nullable<string>;
@@ -22,6 +24,7 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
 
     // Query the trail from the database.
     let trail: Nullable<PopulatedServerTrailWithID> = null;
+    
     try {
         trail = await TrailsService.findPopulatedById(trailId);
     } catch (e) {}
@@ -37,8 +40,15 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
     // TODO: Maybe we can do better here? WithId<ITrail, string>?
     const clientTrail = TrailsService.convertPopulatedToClientModel(trail);
 
+    //try to find the comments on that trail
+    let comments: Nullable<ServerCommentWithID[]>=null;
+
+    try{
+        comments= await CommentsService.findCommentsForTrail(clientTrail)
+    }catch (e) {}
+
     return (
-        <TrailPageView trail={trail} clientTrail={clientTrail}></TrailPageView>
+        <TrailPageView trail={trail} clientTrail={clientTrail} comments={comments}></TrailPageView>
     );
 };
 

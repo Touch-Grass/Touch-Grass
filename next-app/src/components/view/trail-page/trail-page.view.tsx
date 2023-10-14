@@ -4,10 +4,14 @@ import "./trail-page.view.scss";
 import {ITrail} from "@/models/shared/trail/trail.interface";
 import dynamic from "next/dynamic";
 import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-meter.view";
+import CommentComponent from "@/components/view/comment/comment";
+import { ServerCommentWithID } from "@/models/server/comment/comment";
+import { Nullable } from "@/models/shared/utility.types";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
     clientTrail: ITrail;
+    comments: Nullable<ServerCommentWithID[]>;
 }
 
 const LazyLoadedTrailMapView = dynamic(
@@ -63,6 +67,11 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
             </div>
             <div className="trail-page-comments">
                 <h1>Comments</h1>
+                    {
+                        /*mismatch between user type and comment type 
+                        props.comments?.map((comment) => (
+                        <CommentComponent key={comment._id.toString()}comment={comment}user={comment}/>))*/
+                    }
             </div>
         </div>
     );
