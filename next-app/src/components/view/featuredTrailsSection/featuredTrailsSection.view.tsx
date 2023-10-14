@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { ITrail } from "@/models/shared/trail/trail.interface";
-import FeaturedTrails from "../featuredTrails/featuredTrails.view";
+import FeaturedTrailsView from "../featuredTrails/featuredTrails.view";
 import "./featuredTrailsSection.view.scss";
+import Link from "next/link";
 
 interface FeaturedTrailsSectionViewProps {
     trailsFeatured: ITrail[];
+    goToFeaturedTrail: (featuredTrail: ITrail) => void;
 }
 
 const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (props) => {
@@ -16,7 +18,7 @@ const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (pro
                         <div className="text-featured-trails"><b>Featured hiking trails</b></div>
                         <div className="text-more"><b>&gt; More</b></div>
                     </div>
-                    <FeaturedTrails trailsFeatured={props.trailsFeatured}></FeaturedTrails>
+                    <FeaturedTrailsView trailsFeatured={props.trailsFeatured} onFeaturedTrailClicked={(trail) => props.goToFeaturedTrail(trail)}/>
                 </div>
                 <div className="it-is-time-part">
                     <Image className="walking-guy" src="/img/walking-guy.svg" alt="walking-guy" width={200} height={200}/>
@@ -29,7 +31,7 @@ const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (pro
                     </div>
                     <div className="register-column">
                         <div className="text-register">Registering only takes one minute.</div>
-                        <button className="button-sign-up">Sign up</button>
+                        <button className="button-sign-up"><Link href='/register'>Sign up</Link></button>
                     </div>
                 </div>
             </div>

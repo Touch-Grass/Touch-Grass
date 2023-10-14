@@ -40,11 +40,11 @@
             font-size: 2.5rem;
             text-decoration: none;
 
-            &:visited {
+            a:visited {
                 color: $rich-black;
             }
 
-            &:hover {
+            a:hover {
                 color: $baby-powder;
             }
         }
@@ -56,9 +56,12 @@
     background-color: $baby-powder;
     cursor: pointer;
     flex-shrink: 0;
-}
-
-.signin-button:hover {
-    color: $rich-black;
-    background-color: $light-gray;
+    &:hover{
+        color: $rich-black;
+        background-color: $light-gray;
+    }
+    a{
+        text-decoration: none;
+        color: $rich-black;
+    }
 }

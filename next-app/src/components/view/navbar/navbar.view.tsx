@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = (
                     <Link className={"navbar-title"} href='/'>TouchGrass.</Link>
                     <div className='signin-container'>
                         {signInStep < 4 ?
-                            <button className='signin-button' onClick={onOpenSignIn}>Sign in/Sign up</button> :
+                            <button className='signin-button' onClick={onOpenSignIn}><Link href='/register'>Sign in/Sign up</Link></button> :
                             <UserIcon
                                 username='Chris'
                                 userProfilePic='/userIcon.png'

@@ -60,10 +60,13 @@ const trailsFeaturedMock: ITrail[]  = [
 ];
 
 const MainPagePresenter: React.FC<MainPagePresenterProps> = (props) => {
+    function toFeaturedTrail(trail: ITrail){
+        console.log("go to featured trail", trail);
+    }
     return(
         <>
             <HeroSearchSectionView/>
-            <FeaturedTrailsSection trailsFeatured={trailsFeaturedMock}/>
+            <FeaturedTrailsSection trailsFeatured={trailsFeaturedMock} goToFeaturedTrail={toFeaturedTrail}/>
             <StatisticsSectionView numberOfUsers={100} numberOfTrails={69} numberOfLocations={42}/>
         </>
     );

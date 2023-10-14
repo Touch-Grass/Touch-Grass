@@ -72,7 +72,9 @@
                     font-size: 2rem;
                     margin-top: 5%;
                     padding: 1.5rem 4rem 1.5rem 4rem;
-                    &:hover{
+                    color: $baby-powder;
+                    a{
+                        text-decoration: none;
                         color: $baby-powder;
                     }
                 }
