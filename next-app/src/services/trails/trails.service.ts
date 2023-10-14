@@ -8,6 +8,7 @@ import {
 import {Nullable, WithID} from "@/models/shared/utility.types";
 import mongoose from "mongoose";
 import {UserService} from "@/services/users/service";
+import {ReturnModelType} from "@typegoose/typegoose";
 
 export class TrailsService {
     /**
@@ -40,6 +41,19 @@ export class TrailsService {
      */
     public static async findPopulatedById(id: string): Promise<Nullable<PopulatedServerTrailWithID>> {
         return await TrailModel.findById(id).populate("creator").exec() as unknown as Nullable<PopulatedServerTrailWithID>;
+    }
+
+    public static async findByLocation(
+        location: string,
+        withCreator: boolean = false
+    ): Promise<PopulatedServerTrailWithID[]> {
+        let query = TrailModel.find({location});
+        if (withCreator) {
+            query = query.populate("creator");
+        }
+
+        // TODO: I guess types need more fixing
+        return await query.exec() as unknown as PopulatedServerTrailWithID[];
     }
 
     public static convertPopulatedToClientModel(record: PopulatedServerTrail): ITrail {

@@ -34,18 +34,6 @@ export class Trail implements Mutable<ServerTrail> {
     @prop()
     public creator: Ref<User>;
 
-    public static async findByLocation(
-        this: ReturnModelType<typeof Trail>,
-        location: string,
-        withCreator: boolean = false
-    ): Promise<ServerTrailWithID[]> {
-        let query = this.find({location});
-        if (withCreator) {
-            query = query.populate("creator");
-        }
-        return await query.exec();
-    }
-
     public static async insertOne(trail: ServerTrail): Promise<Document> {
         const record = new TrailModel({...trail});
         // TODO: Perform validation. Especially type matching and check for additional/missing props. Can typegoose handle parts of this?
