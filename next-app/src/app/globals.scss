@@ -38,8 +38,3 @@ html, body {
         font-size: 10px;
     }
 }
-
-main{
-    min-width: 100vw;
-    min-height: calc(100vh - $navbar-height - $navbar-padding-top);
-}

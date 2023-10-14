@@ -1,14 +1,9 @@
 @import "vars/color-palette";
 @import "vars/mixins";
 
-body{
+.login-page-wrapper {
+    @include flex-column(true, false);
+    width: 100%;
     background-color: $dark-jade;
-}
-
-.navbar{
-    position: relative;
-}
-
-main{
-    @include flex-column(true, true);
+    min-height: 100vh;
 }

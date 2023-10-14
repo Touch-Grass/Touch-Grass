@@ -1,5 +1,4 @@
-import { MouseEventHandler } from "react";
-import "./button.scss";
+import "./button.view.scss";
 
 export enum ButtonType {
     DEFAULT = "button-default",

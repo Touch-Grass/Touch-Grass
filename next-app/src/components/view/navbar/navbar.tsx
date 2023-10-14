@@ -4,10 +4,11 @@ import "./navbar.scss";
 import UserMenu from "@/components/view/userMenu/userMenu";
 import UserIcon from "@/components/view/userIcon/userIcon";
 import Signin from "@/components/view/signin/signin";
-import ButtonView from "../button/button";
-import { ButtonType } from "../button/button";
+import ButtonView from "../button/button.view";
+import { ButtonType } from "../button/button.view";
 
 interface NavbarProps {
+    fixed: boolean;
     signInStep: number;
     isUserMenuVisible: boolean;
     onOpenSignIn: () => void;
@@ -20,6 +21,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = (
     {
+        fixed,
         signInStep,
         isUserMenuVisible,
         onOpenSignIn,
@@ -32,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = (
 ) => {
     return (
         <>
-            <nav className='navbar'>
+            <nav className={`navbar${fixed ? " fixed" : ""}`} >
                 <div className={"navbar-content"}>
                     <Image className='navbar-logo' src='/logo-no-dots.svg' alt='logo' width={0} height={0} ></Image>
                     <Link className={"navbar-title"} href='/'>TouchGrass.</Link>

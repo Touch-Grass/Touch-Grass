@@ -4,7 +4,6 @@
 
 .navbar {
     @include flex-row(true, true);
-    position: auto;
     width: 100%;
 
     font-size: 2rem;
@@ -12,6 +11,12 @@
 
     box-sizing: border-box;
     padding-top: 2rem;
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 
     > .navbar-content {
         @include flex-row(false, true);
