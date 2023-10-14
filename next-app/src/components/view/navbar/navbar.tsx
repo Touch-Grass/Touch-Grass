@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import "./navbar.scss";
@@ -8,26 +9,12 @@ import ButtonView from "../button/button";
 import { ButtonType } from "../button/button";
 
 interface NavbarProps {
-    signInStep: number;
-    isUserMenuVisible: boolean;
-    onOpenSignIn: () => void;
-    onOpenUserMenu: () => void;
-    onLogOut: () => void;
-    onInputUsernameEmail: () => void;
-    onInputPassword: () => void;
-    onSignup: () => void;
+    isUserLogged: boolean;
 }
 
 const Navbar: React.FC<NavbarProps> = (
     {
-        signInStep,
-        isUserMenuVisible,
-        onOpenSignIn,
-        onOpenUserMenu,
-        onLogOut,
-        onInputUsernameEmail,
-        onInputPassword,
-        onSignup
+        isUserLogged
     }
 ) => {
     return (
@@ -37,42 +24,21 @@ const Navbar: React.FC<NavbarProps> = (
                     <Image className='navbar-logo' src='/logo-no-dots.svg' alt='logo' width={0} height={0} ></Image>
                     <Link className={"navbar-title"} href='/'>TouchGrass.</Link>
                     <div className='signin-container'>
-                        {signInStep < 4 ?
+                        {isUserLogged ?
+                            <UserIcon
+                                username='Chris'
+                                userProfilePic='/userIcon.png'
+                                onUserProfilePicClicked={()=>{}}
+                            ></UserIcon>
+                            :
                             <div>
                                 <Link href='/register'><ButtonView text="Sign in" loading={false} type={ButtonType.SIGNIN}/></Link>
                                 <Link href='/login'><ButtonView text="Log in" loading={false} type={ButtonType.LOGIN}/></Link>
                             </div>
-                            :
-                            <UserIcon
-                                username='Chris'
-                                userProfilePic='/userIcon.png'
-                                onUserProfilePicClicked={onOpenUserMenu}
-                            ></UserIcon>
                         }
                     </div>
                 </div>
             </nav>
-            <UserMenu
-                isUserMenuVisible={isUserMenuVisible}
-                onMyTrailsClicked={() => {
-                }}
-                onSavedTrailsClicked={() => {
-                }}
-                onAddTrailClicked={() => {
-                }}
-                onEditAccountClicked={() => {
-                }}
-                onLogOutClicked={onLogOut}
-            ></UserMenu>
-            {
-                signInStep > 0
-                && <Signin
-                    signInStep={signInStep}
-                    onUsernameEmail={onInputUsernameEmail}
-                    onPassword={onInputPassword}
-                    onSignup={onSignup}
-                />
-            }
         </>
     );
 };

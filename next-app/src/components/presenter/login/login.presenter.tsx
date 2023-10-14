@@ -23,7 +23,7 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
         setValidatingState(true);
 
         try {
-            const response = await fetch("/api/auth", {
+            const response = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
@@ -35,6 +35,8 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
                 const errorData = await response.json();
                 setErrorString(errorData.error);
             } else {
+                //Refresh components and push main page
+                router.refresh();
                 router.push("/");
             }
         } catch (error: any) {

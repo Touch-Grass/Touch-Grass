@@ -1,5 +1,5 @@
 import {compare, hash} from "bcryptjs";
-import {sign, verify} from "jsonwebtoken";
+import {sign, verify, JwtPayload} from "jsonwebtoken";
 
 export const SALT_ROUNDS = 10;
 
@@ -40,5 +40,17 @@ export class CryptographyUtils {
             expiresIn: "30m",
             subject: username
         });
+    }
+
+    public static validateToken(token: string, secret: string) : string {
+        try {
+            const username = verify(token, secret).sub;
+            if(typeof username === "string")
+                return username;
+            else
+                throw new Error("Token verification failed");
+        } catch (error) {
+            throw new Error("Token verification failed");
+        }
     }
 }

@@ -4,7 +4,7 @@ import {AuthService} from "@/services/auth/service";
 import {IUser} from "@/models/shared/user/user.interface";
 import {UserValidation} from "@/models/shared/user/user.validation";
 
-class AuthHandler extends RequestHandler {
+class ValidateHandler extends RequestHandler {
     constructor() {
         super(); // Call the constructor of the parent class
     }
@@ -16,20 +16,14 @@ class AuthHandler extends RequestHandler {
      * @param {NextApiResponse} response - The HTTP response object.
      */
     public async handlePost(request: NextApiRequest, response: NextApiResponse): Promise<void> {
-        //Try authenticating
+        //Try validating
         try{
-            //Check data
-            UserValidation.validateAuthUser(request.body as IUser);
-            //Try authentication
-            const token = await AuthService.performAuthentication(request.body);
-            //Set token
-            response.setHeader("Set-Cookie", "token=${token}; HttpOnly; Path=/; Max-Age=3600");
-            return response.status(200).json({ message: "Authentication successful" });
+            if(await AuthService.performValidation(request.body.token))
+                return response.status(200).json({ message: "Validation successful" });
         }catch(e: any){
-            console.log(e);
             return response.status(400).json({error: e?.message});
         }
     }
 }
 
-export default new AuthHandler().handleRequest;
+export default new ValidateHandler().handleRequest;
