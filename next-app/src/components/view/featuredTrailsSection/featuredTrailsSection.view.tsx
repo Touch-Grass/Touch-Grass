@@ -6,7 +6,6 @@ import Link from "next/link";
 
 interface FeaturedTrailsSectionViewProps {
     trailsFeatured: ITrail[];
-    goToFeaturedTrail: (featuredTrail: ITrail) => void;
 }
 
 const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (props) => {
@@ -19,7 +18,7 @@ const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (pro
                         <div className="text-more"><b>&gt; More</b></div>
                     </div>
                     <div className="featured-trails-view-container scroll-fade-in">
-                        <FeaturedTrailsView trailsFeatured={props.trailsFeatured} onFeaturedTrailClicked={(trail) => props.goToFeaturedTrail(trail)}/>
+                        <FeaturedTrailsView trailsFeatured={props.trailsFeatured}/>
                     </div>
                 </div>
                 <div className="it-is-time-part">

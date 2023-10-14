@@ -7,6 +7,7 @@ import HeroSectionView from "@/components/view/hero-section/hero-section.view";
 import FeaturedTrailsSectionView from "@/components/view/featuredTrailsSection/featuredTrailsSection.view";
 import StatisticsSectionView from "@/components/view/statisticsSection/statisticsSection.view";
 import hookScrollFadeIn from "@/utils/Animations/scrollFadeIn";
+import MainPageView from "@/components/view/main-page/main-page.view";
 
 interface MainPagePresenterProps {}
 
@@ -18,7 +19,7 @@ const userMock: IUser = {
     password: "password1"
 };
 
-const trailsFeaturedMock: ITrail[]  = [
+const trailsFeaturedMock: [ITrail, ITrail, ITrail]  = [
     {
         name: "Trail 1",
         description: "Description 1",
@@ -73,15 +74,8 @@ const MainPagePresenter: React.FC<MainPagePresenterProps> = (props) => {
     useEffect(()=>{
         hookScrollFadeIn();
     }, []);
-    function toFeaturedTrail(trail: ITrail){
-        console.log("go to featured trail", trail);
-    }
     return(
-        <>
-            <HeroSectionView/>
-            <FeaturedTrailsSectionView trailsFeatured={trailsFeaturedMock} goToFeaturedTrail={toFeaturedTrail}/>
-            <StatisticsSectionView numberOfUsers={100} numberOfTrails={69} numberOfLocations={42}/>
-        </>
+        <MainPageView featuredTrails={trailsFeaturedMock}></MainPageView>
     );
 };
 

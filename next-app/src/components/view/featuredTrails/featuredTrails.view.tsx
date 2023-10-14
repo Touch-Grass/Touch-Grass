@@ -4,19 +4,17 @@ import "./featuredTrails.view.scss";
 
 interface FeaturedTrailsViewProps{
     trailsFeatured: ITrail[];
-    onFeaturedTrailClicked: (featuredTrail: ITrail) => void;
 }
 
 const FeaturedTrailsView: React.FC<FeaturedTrailsViewProps> = (props) => {
     function renderTrail(trail: ITrail){
         return(
             <div className="featured-trail" key={trail.name}>
-                <Image 
-                    className="featured-trail-image" 
-                    alt={trail.name} 
-                    src="/img/featured-trail.jpg" 
-                    onClick={() => props.onFeaturedTrailClicked(trail)} 
-                    height={180} 
+                <Image
+                    className="featured-trail-image"
+                    alt={trail.name}
+                    src="/img/featured-trail.jpg"
+                    height={180}
                     width={180}
                 />
                 <div className="featured-trail-location">{trail.location}</div>
