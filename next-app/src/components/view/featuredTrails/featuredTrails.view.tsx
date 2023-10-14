@@ -24,7 +24,7 @@ const FeaturedTrailsView: React.FC<FeaturedTrailsViewProps> = (props) => {
                 <div className="featured-trail-details">
                     <div className="featured-trail-detail">{trail.length}km</div>
                     <div className="featured-trail-detail">{trail.duration}h</div>
-                    <div className="featured-trail-detail">Level {trail.difficulty}</div>
+                    <div className="featured-trail-detail">{trail.difficulty}</div>
                 </div>
             </div>
         );
