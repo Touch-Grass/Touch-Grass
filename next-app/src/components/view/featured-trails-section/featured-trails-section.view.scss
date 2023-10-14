@@ -1,0 +1,36 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: featured-trails;
+
+.#{$c}-section{
+    @include flex-column(true, false);
+    margin-top: 11rem;
+    margin-bottom: 11rem;
+    width: 100%;
+
+    > .#{$c}-column{
+        width: $safe-col-width;
+
+        > .#{$c}-part{
+            @include flex-column;
+
+            > .#{$c}-header{
+                @include flex-row;
+                font-size: 4rem;
+                font-weight: 700;
+                margin-bottom: 4rem;
+
+            }
+
+            > .#{$c}-view-container{
+                @include flex-row;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 100%;
+            }
+        }
+
+    }
+}

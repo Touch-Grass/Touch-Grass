@@ -65,6 +65,13 @@ export class TrailsService {
         return results.length;
     }
 
+    public static async findRandomFeatured(): Promise<ServerTrailWithID[]> {
+        return await TrailModel.aggregate([
+            {$match: {featured: true}},
+            {$sample: {size: 3}}
+        ]).exec();
+    }
+
     public static convertPopulatedToClientModel(record: PopulatedServerTrail): ITrail {
         // TODO: Fix this, this is messed up...
         const copy = {...(record as any)["_doc"], creator: UserService.convertToClientModel((record as any)["_doc"].creator)};

@@ -1,0 +1,29 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: featured-trail;
+
+.#{$c} {
+    max-width: 35rem;
+    cursor: pointer;
+
+    > .featured-trail-image {
+        width: 35rem;
+        height: 35rem;
+        border-radius: 1rem;
+    }
+    > .featured-trail-location{
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+    > .featured-trail-name{
+        font-size: 3rem;
+    }
+    > .featured-trail-details{
+        width: 100%;
+        font-size: 2rem;
+        > .featured-trail-detail{
+        }
+    }
+}
