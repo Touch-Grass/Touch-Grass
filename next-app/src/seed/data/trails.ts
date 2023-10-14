@@ -1034,7 +1034,7 @@ export const TRAIL_THREE: TrailGenerator = <T>(creator: T) => ({
     location: "Stockholm",
     searchLocation: "stockholm",
     createdDate: 1697299440070,
-    featured: false,
+    featured: true,
     creator,
     waypoints: [
         59.28343274707943,

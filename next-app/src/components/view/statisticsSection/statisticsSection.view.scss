@@ -5,13 +5,13 @@
 #statistics-section{
     @include flex-column(true, true);
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
     position: relative;
     > .background-half{
         position: absolute;
         top: 0;
-        width: 100vw;
+        width: 100%;
         height: 50%;
         background-image: url("/img/lukasz-szmigiel-jFCViYFYcus-unsplash.jpg");
         background-size: cover;

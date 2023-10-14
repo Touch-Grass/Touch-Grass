@@ -1,0 +1,99 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: mid-page-cta;
+
+.#{$c} {
+    @include flex-row(true, true);
+    width: 100%;
+    height: 40rem;
+    background-color: $jade;
+
+    .#{$c}-column {
+        @include flex-row(false, true);
+        width: $safe-col-width;
+
+        > .#{$c}-walking-guy {
+            width: 36rem;
+            height: 36rem;
+            margin-left: -18rem;
+            margin-bottom: -4rem;
+            flex-shrink: 0;
+        }
+
+        > .#{$c}-slogan {
+            @include flex-column;
+            color: $rich-black;
+            font-size: 8rem;
+            font-weight: 700;
+            margin-left: 10rem;
+            flex-shrink: 0;
+
+            > div:last-child {
+                color: white;
+
+                > span {
+                    color: $rich-black;
+                }
+            }
+        }
+
+        > .#{$c}-action {
+            @include flex-column;
+            margin-left: 10rem;
+            margin-right: -18rem;
+
+            > div {
+                font-size: 4.4rem;
+                margin-bottom: 2rem;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+
+    }
+
+    > .text-it-is-time-to-take-a-hike{
+        width: 30%;
+        margin-left: 5%;
+        font-size: 7rem;
+        > .text-it-is-time{
+            color: $rich-black;
+            width: 100%;
+        }
+        > .text-take-a-hike-dot{
+            @include flex-row(false, false);
+            > .text-take-a-hike{
+                color: $baby-powder;
+            }
+            > .text-dot{
+                color: $rich-black;
+            }
+        }
+    }
+    > .register-column{
+        padding: 1% 0 0 0;
+        width: 20%;
+        margin-left: 5%;
+        @include flex-column(false, true);
+        > .text-register{
+            font-size: 3rem;
+        }
+        > .button-sign-up{
+            background-color: $rich-black;
+            cursor: pointer;
+            font-size: 2rem;
+            margin-top: 5%;
+            padding: 1.5rem 4rem 1.5rem 4rem;
+            color: $baby-powder;
+            a{
+                text-decoration: none;
+                color: $baby-powder;
+            }
+        }
+    }
+}
