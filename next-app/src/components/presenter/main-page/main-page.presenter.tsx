@@ -1,13 +1,10 @@
-"use client";
-
-import React, {useEffect} from "react";
-import { IUser } from "@/models/shared/user/user.interface";
-import { ITrail } from "@/models/shared/trail/trail.interface";
-import HeroSectionView from "@/components/view/hero-section/hero-section.view";
-import FeaturedTrailsSectionView from "@/components/view/featuredTrailsSection/featuredTrailsSection.view";
-import StatisticsSectionView from "@/components/view/statisticsSection/statisticsSection.view";
-import hookScrollFadeIn from "@/utils/Animations/scrollFadeIn";
+import React from "react";
+import {IUser} from "@/models/shared/user/user.interface";
+import {ITrail} from "@/models/shared/trail/trail.interface";
 import MainPageView from "@/components/view/main-page/main-page.view";
+import {TrailsService} from "@/services/trails/trails.service";
+import {Trail} from "@/models/server/trail/trail";
+import {UserService} from "@/services/users/service";
 
 interface MainPagePresenterProps {}
 
@@ -70,12 +67,17 @@ const trailsFeaturedMock: [ITrail, ITrail, ITrail]  = [
     }
 ];
 
-const MainPagePresenter: React.FC<MainPagePresenterProps> = (props) => {
-    useEffect(()=>{
-        hookScrollFadeIn();
-    }, []);
-    return(
-        <MainPageView featuredTrails={trailsFeaturedMock}></MainPageView>
+const MainPagePresenter: React.FC<MainPagePresenterProps> = async (props) => {
+
+    // TODO: We might want to move this into a StatisticsPresenter, however, that means that we need to move the animations
+    //  away from main page view, because this stuff cannot happen as a child of a client component.
+    const users = await UserService.countUsers();
+    const locations = await TrailsService.countLocations();
+    const trails = await TrailsService.countTrails();
+    const stats = {users, locations, trails};
+
+    return (
+        <MainPageView featuredTrails={trailsFeaturedMock} statistics={stats}></MainPageView>
     );
 };
 

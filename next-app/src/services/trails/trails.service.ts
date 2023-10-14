@@ -56,6 +56,15 @@ export class TrailsService {
         return await query.exec() as unknown as PopulatedServerTrailWithID[];
     }
 
+    public static async countTrails(): Promise<number> {
+        return await TrailModel.count().exec();
+    }
+
+    public static async countLocations(): Promise<number> {
+        const results = await TrailModel.find({}).distinct("searchLocation").exec();
+        return results.length;
+    }
+
     public static convertPopulatedToClientModel(record: PopulatedServerTrail): ITrail {
         // TODO: Fix this, this is messed up...
         const copy = {...(record as any)["_doc"], creator: UserService.convertToClientModel((record as any)["_doc"].creator)};

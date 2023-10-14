@@ -23,7 +23,11 @@ export class UserService {
      * @returns {Promise<Document[]>} A promise that resolves to an array of user documents.
      */
     public static async findAll(): Promise<Document[]> {
-        return await UserModel.find({});
+        return await UserModel.find({}).exec();
+    }
+
+    public static async countUsers(): Promise<number> {
+        return await UserModel.find({}).count().exec();
     }
 
     /**
