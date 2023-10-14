@@ -12,8 +12,10 @@ const CommentComponent: React.FC<Commentprops> = (props) => {
     return (
       <>
         <div className="comment-container">
-        <div className="comment-info"> <div className="comment-user">{props.comment.commenter}</div><div className="comment-date">{props.comment.date}</div></div>
+        <div className="comment-title">{props.comment.title}</div>
         <div className="comment-text">{props.comment.text}</div>
+        <div className="comment-user"> 
+        <div className="comment-commenter">{props.comment.commenter.username}</div> </div>
         </div>
         </>
     );
