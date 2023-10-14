@@ -5,6 +5,7 @@ import FeaturedTrailsSectionView from "@/components/view/featuredTrailsSection/f
 import StatisticsSectionView from "@/components/view/statisticsSection/statisticsSection.view";
 import {ITrail} from "@/models/shared/trail/trail.interface";
 import hookScrollFadeIn from "@/utils/Animations/scrollFadeIn";
+import HeroSectionPresenter from "@/components/presenter/hero-section/hero-section.presenter";
 
 interface MainPageViewProps {
     featuredTrails: [ITrail, ITrail, ITrail];
@@ -24,7 +25,7 @@ const MainPageView: React.FC<MainPageViewProps> = props => {
 
     return (
         <>
-            <HeroSectionView/>
+            <HeroSectionPresenter></HeroSectionPresenter>
             <FeaturedTrailsSectionView trailsFeatured={featuredTrails}/>
             <StatisticsSectionView numberOfUsers={statistics.users} numberOfTrails={statistics.trails}
                                    numberOfLocations={statistics.locations}/>
