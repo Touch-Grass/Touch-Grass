@@ -1,7 +1,6 @@
 @import "vars/color-palette";
 @import "vars/mixins";
 @import "vars/sizes";
-@import "vars/animations";
 
 .footer{
     @include flex-row(true, true);

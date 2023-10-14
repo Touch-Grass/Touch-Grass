@@ -10,13 +10,10 @@ interface FeaturedTrailsSectionViewProps {
 
 const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (props) => {
     return (
-        <div className="homepage-section" id="featured-trails-section">
+        <div className={"featured-trails-section"}>
             <div className="featured-trails-column">
                 <div className="featured-trails-part">
-                    <div className="featured-trails-header">
-                        <div className="text-featured-trails"><b>Featured hiking trails</b></div>
-                        <div className="text-more"><b>&gt; More</b></div>
-                    </div>
+                    <div className="featured-trails-header">Featured hiking trails</div>
                     <div className="featured-trails-view-container scroll-fade-in">
                         <FeaturedTrailsView trailsFeatured={props.trailsFeatured}/>
                     </div>
