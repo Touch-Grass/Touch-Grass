@@ -1,0 +1,22 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: comment;
+.#{$c}-container{
+    @include flex-column;
+    width:$safe-col-width;
+    padding:2rem;
+    row-gap: 1rem;
+}
+.#{$c}-info{
+    @include flex-row;
+    justify-content: space-evenly;
+    color: $jade;
+}
+.#{$c}--text{
+    text-align: left;
+    padding: 1rem;
+    font-weight: 500;
+    color: $rich-black;
+}
