@@ -3,7 +3,7 @@ import { RegisterFormFields } from "@/components/presenter/register/register.pre
 import ButtonView from "../button/button.view";
 import { ButtonType } from "../button/button.view";
 import Link from "next/link";
-import "./register.scss";
+import "./register.view.scss";
 
 interface RegisterViewProps {
     validateForm: (data:RegisterFormFields) => void;

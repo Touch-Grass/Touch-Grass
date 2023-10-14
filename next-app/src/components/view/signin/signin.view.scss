@@ -1,0 +1,89 @@
+@import "vars/color-palette";
+
+.top-right-popup-container {
+    border-radius: 20px;
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    width: 30vw;
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: $baby-powder;
+    box-shadow: 2px 2px 2px 1px #888888;
+}
+
+.signin-form-username {
+    height: 5rem;
+    flex-direction: row;
+}
+
+.signin-form-password {
+    height: 5rem;
+    flex-direction: row;
+}
+
+.signup-form {
+    height: 18rem;
+    flex-direction: column;
+}
+
+.hide {
+    display: none;
+}
+
+.button-next {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.button-next:hover {
+    color: $baby-powder;
+}
+
+.button-signin {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.button-signin:hover {
+    color: $baby-powder;
+}
+
+.button-signup {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.button-signup:hover {
+    color: $baby-powder;
+}
+
+.input-username-email {
+    width: 80%;
+    height: 1rem;
+    padding: 0.5rem 2% 0.5rem 5%;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+    border-color: $jade;
+}
+
+.input-password {
+    width: 80%;
+    height: 1rem;
+    padding: 0.5rem 2% 0.5rem 5%;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+    border-color: $jade;
+}

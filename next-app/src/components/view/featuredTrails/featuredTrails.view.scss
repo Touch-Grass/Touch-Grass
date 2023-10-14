@@ -1,0 +1,34 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+.featured-trails-container{
+    @include flex-row(true, true);
+    width: 100%;
+    height: 60%;
+    margin-top: 5%;
+    > .featured-trail{
+        @include flex-column(false, true);   
+        margin: 0% 5% 0% 5%;
+        cursor: pointer;
+        > .featured-trail-image{
+            // margin-top: 10%;
+            border-radius: 1rem;
+        }
+        > .featured-trail-location{
+            margin-top: 5%;
+            font-size: 2rem;
+        }
+        > .featured-trail-name{
+            font-size: 3rem;
+        }
+        > .featured-trail-details{
+            @include flex-row(false, true);
+            width: 100%;
+            font-size: 2rem;
+            > .featured-trail-detail{
+                margin: 0% 10% 0% 0%;
+            }
+        }
+    }
+}
