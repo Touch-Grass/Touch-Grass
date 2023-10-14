@@ -63,9 +63,6 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
             </div>
             <div className="trail-page-comments">
                 <h1>Comments</h1>
-                {comments.map((comment) => (
-                    <CommentComponent key={comment._id.toString()}comment={comment}/>
-                ))}
             </div>
         </div>
     );
