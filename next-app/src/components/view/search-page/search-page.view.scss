@@ -1,0 +1,52 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: search-page;
+
+.#{$c}-wrapper {
+    @include flex-column(true, false);
+    width: 100%;
+
+    > .#{$c}-container {
+        @include flex-column;
+        width: $safe-col-width;
+        margin-bottom: 11rem;
+        margin-top: 11rem;
+
+        > a {
+            text-decoration: none;
+            color: black;
+        }
+
+        > .#{$c}-title-row {
+            @include flex-row(false, true);
+            width: $safe-col-width;
+            align-items: center;
+            font-size: 2rem;
+
+            > .#{$c}-title {
+                font-weight: 700;
+                font-size: 4rem;
+            }
+
+            > .#{$c}-auxilliary-title-content {
+                @include flex-row(false, true);
+                margin-left: auto;
+
+                > .#{$c}-input {
+                    width: 35rem;
+                    height: 5rem;
+                    box-sizing: border-box;
+                    flex-shrink: 0;
+                    border-radius: 59px;
+                    border: 1px solid #606060;
+                    background: #fff;
+                    padding-left: 4rem;
+                    align-self: flex-end;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}

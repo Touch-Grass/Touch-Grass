@@ -18,5 +18,11 @@
     "bugs": {
         "url": "https://github.com/Touch-Grass/Touch-Grass/issues"
     },
-    "homepage": "https://github.com/Touch-Grass/Touch-Grass#readme"
+    "homepage": "https://github.com/Touch-Grass/Touch-Grass#readme",
+    "devDependencies": {
+        "@types/react-scroll": "^1.8.8"
+    },
+    "dependencies": {
+        "leaflet": "^1.9.4"
+    }
 }

@@ -1,6 +1,14 @@
 import {ITrail} from "@/models/shared/trail/trail.interface";
-import {ServerTrailWithID, TrailModel} from "@/models/server/trail/trail";
-import {Nullable} from "@/models/shared/utility.types";
+import {
+    PopulatedServerTrail,
+    PopulatedServerTrailWithID,
+    ServerTrailWithID,
+    TrailModel
+} from "@/models/server/trail/trail";
+import {Nullable, WithID} from "@/models/shared/utility.types";
+import mongoose from "mongoose";
+import {UserService} from "@/services/users/service";
+import {ReturnModelType} from "@typegoose/typegoose";
 
 export class TrailsService {
     /**
@@ -25,5 +33,43 @@ export class TrailsService {
      */
     public static async findById(id: string): Promise<Nullable<ServerTrailWithID>> {
         return await TrailModel.findById(id).exec();
+    }
+
+    /**
+     * Finds one trail with id.
+     * @param id The id to match.
+     */
+    public static async findPopulatedById(id: string): Promise<Nullable<PopulatedServerTrailWithID>> {
+        return await TrailModel.findById(id).populate("creator").exec() as unknown as Nullable<PopulatedServerTrailWithID>;
+    }
+
+    public static async findByLocation(
+        location: string,
+        withCreator: boolean = false
+    ): Promise<PopulatedServerTrailWithID[]> {
+        let query = TrailModel.find({searchLocation: location.toLowerCase()});
+        if (withCreator) {
+            query = query.populate("creator");
+        }
+
+        // TODO: I guess types need more fixing
+        return await query.exec() as unknown as PopulatedServerTrailWithID[];
+    }
+
+    public static async countTrails(): Promise<number> {
+        return await TrailModel.count().exec();
+    }
+
+    public static async countLocations(): Promise<number> {
+        const results = await TrailModel.find({}).distinct("searchLocation").exec();
+        return results.length;
+    }
+
+    public static convertPopulatedToClientModel(record: PopulatedServerTrail): ITrail {
+        // TODO: Fix this, this is messed up...
+        const copy = {...(record as any)["_doc"], creator: UserService.convertToClientModel((record as any)["_doc"].creator)};
+        delete (copy as any)["_id"];
+        delete (copy as any)["__v"];
+        return copy;
     }
 }

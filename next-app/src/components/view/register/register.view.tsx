@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { RegisterFormFields } from "@/components/presenter/register/register.presenter";
-import ButtonView from "../button/button";
-import { ButtonType } from "../button/button";
+import ButtonView from "../button/button.view";
+import { ButtonType } from "../button/button.view";
 import Link from "next/link";
-import "./register.scss";
+import "./register.view.scss";
 
 interface RegisterViewProps {
     validateForm: (data:RegisterFormFields) => void;

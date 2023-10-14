@@ -1,0 +1,78 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: search-result;
+
+.#{$c}-container {
+    @include flex-row;
+    margin-top: 8rem;
+    width: inherit;
+
+    > .#{$c}-image-container {
+        position: relative;
+        width: 35rem;
+        height: 50rem;
+        background-color: $jade;
+        border-radius: 10px;
+        margin-right: 5rem;
+        flex-shrink: 0;
+    }
+
+    > .#{$c}-content {
+        @include flex-column;
+        flex-grow: 1;
+
+        > .#{$c}-title {
+            color: $rich-black;
+            text-align: left;
+            font-size: 4rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        > .#{$c}-description {
+            margin: 3.5rem 0;
+            color: $rich-black;
+            font-size: 2rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        > .#{$c}-extras {
+            @include flex-row;
+            margin: 3.5rem 0;
+            font-size: 2rem;
+
+            > .#{$c}-extra {
+                @include flex-row(false, true);
+
+                &:not(:last-child) {
+                    margin-right: 8rem;
+                }
+
+                > span:first-child {
+                    font-weight: 700;
+                    margin-right: 2rem;
+                }
+            }
+        }
+
+        > .#{$c}-difficulty {
+            @include flex-row(false, true);
+            width: 100%;
+
+            > span {
+                font-size: 2.8rem;
+                font-weight: 700;
+                margin-right: 4rem;
+            }
+
+            > .#{$c}-difficulty-wrapper {
+                flex-grow: 1;
+            }
+        }
+    }
+}

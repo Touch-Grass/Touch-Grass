@@ -1,7 +1,7 @@
 import "./globals.scss";
 import type {Metadata} from "next";
-import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
 import React from "react";
+import "leaflet/dist/leaflet.css";
 
 export const metadata: Metadata = {
     title: "Touch Grass",
@@ -16,7 +16,6 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <NavbarPresenter/>
                 {children}
             </body>
         </html>

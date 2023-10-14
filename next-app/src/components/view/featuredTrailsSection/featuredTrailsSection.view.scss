@@ -1,0 +1,81 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: featured-trails;
+
+.#{$c}-section{
+    margin-top: 11rem;
+    width: 100%;
+
+    > .#{$c}-column{
+        width: 100%;
+
+        > .#{$c}-part{
+            @include flex-column(true, true);
+
+
+            > .#{$c}-header{
+                @include flex-row(false, true);
+                width: $safe-col-width;
+                font-size: 4rem;
+                font-weight: 700;
+                margin-bottom: 4rem;
+
+            }
+            > .#{$c}-view-container{
+                @include flex-row(true, true);
+            }
+        }
+
+        > .it-is-time-part{
+            @include flex-row(false, false);
+            width: 100%;
+            height: 30%;
+            background-color: $jade;
+            padding: 2% 10% 0% 10%;
+            > .walking-guy{
+                transform: translateY(-7rem);
+            }
+            > .text-it-is-time-to-take-a-hike{
+                width: 30%;
+                margin-left: 5%;
+                font-size: 7rem;
+                > .text-it-is-time{
+                    color: $rich-black;
+                    width: 100%;
+                }
+                > .text-take-a-hike-dot{
+                    @include flex-row(false, false);
+                    > .text-take-a-hike{
+                        color: $baby-powder;
+                    }
+                    > .text-dot{
+                        color: $rich-black;
+                    }
+                }
+            }
+            > .register-column{
+                padding: 1% 0 0 0;
+                width: 20%;
+                margin-left: 5%;
+                @include flex-column(false, true);
+                > .text-register{
+                    font-size: 3rem;
+                }
+                > .button-sign-up{
+                    background-color: $rich-black;
+                    cursor: pointer;
+                    font-size: 2rem;
+                    margin-top: 5%;
+                    padding: 1.5rem 4rem 1.5rem 4rem;
+                    color: $baby-powder;
+                    a{
+                        text-decoration: none;
+                        color: $baby-powder;
+                    }
+                }
+            }
+        }
+    }
+}

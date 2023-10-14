@@ -1,0 +1,65 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+
+.user-icon-container-presentation {
+    @include flex-row(true, true);
+    cursor: pointer;
+    background-color: rgba(253, 255, 252, 50%);
+    padding: 1rem;
+    border-top-right-radius:5px;
+    border-top-left-radius:5px;
+
+    >.user-icon-profile-pic {
+        margin: 0px 1rem;
+    }
+
+    >.user-icon-chevrown-down{
+        transition: transform 0.3s;
+        &.open{
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.user-icon-container-menu{
+    @include flex-column(true, true);
+    width: 100%;
+    position: relative;
+    display: none;
+    >.user-icon-container-menu-content{
+        position: absolute;
+        width: 100%;
+        background-color: rgba(253, 255, 252, 50%);
+        border-bottom-right-radius:5px;
+        border-bottom-left-radius:5px;
+
+        >ul{
+            margin: 0px;
+            padding:2rem;
+            text-align: right;
+            list-style-type: none;
+        }
+
+        >ul >p{
+            font-weight: bold;
+            text-align: left;
+        }
+
+        >ul >p:first-child{
+            margin-top: 0px;
+        }
+
+        >ul >li{
+            cursor: pointer;
+        }
+
+        >ul >li >a{
+            color: $rich-black;
+        }
+    }
+
+    &.open{
+        display: block;
+    }
+
+}

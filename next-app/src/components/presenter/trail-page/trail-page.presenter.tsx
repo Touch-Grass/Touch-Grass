@@ -1,9 +1,9 @@
 import React from "react";
-import {notFound, redirect} from "next/navigation";
+import {notFound} from "next/navigation";
 import dbConnect from "@/lib/dbConnection";
 import {TrailsService} from "@/services/trails/trails.service";
 import {Nullable} from "@/models/shared/utility.types";
-import {ServerTrailWithID} from "@/models/server/trail/trail";
+import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import TrailPageView from "@/components/view/trail-page/trail-page.view";
 
 interface TrailPagePresenterProps {
@@ -21,9 +21,9 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
     await dbConnect();
 
     // Query the trail from the database.
-    let trail: Nullable<ServerTrailWithID> = null;
+    let trail: Nullable<PopulatedServerTrailWithID> = null;
     try {
-        trail = await TrailsService.findById(trailId);
+        trail = await TrailsService.findPopulatedById(trailId);
     } catch (e) {}
 
     // GUARD: If the trail shows to be non-existent, we bail out to 404.
@@ -31,8 +31,14 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
         notFound();
     }
 
+    // We need to supply a separate variant of the trail.
+    // Some features are rendered client-side and need an appropriate variant,
+    // while other features need, for example, the ID.
+    // TODO: Maybe we can do better here? WithId<ITrail, string>?
+    const clientTrail = TrailsService.convertPopulatedToClientModel(trail);
+
     return (
-        <TrailPageView trail={trail}></TrailPageView>
+        <TrailPageView trail={trail} clientTrail={clientTrail}></TrailPageView>
     );
 };
 
