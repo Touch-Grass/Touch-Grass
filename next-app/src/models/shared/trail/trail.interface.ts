@@ -10,6 +10,9 @@ export interface ITrail<CreatorRef = IUser> {
     readonly terrain: string;
     readonly duration: number;
     readonly location: string;
+    readonly searchLocation: string;
     readonly images: string[];
+    readonly featured: boolean;
+    readonly createdDate: number;
     readonly creator: CreatorRef;
 }

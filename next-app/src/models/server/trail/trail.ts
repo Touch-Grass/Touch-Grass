@@ -33,6 +33,12 @@ export class Trail implements Mutable<ServerTrail> {
     public images: string[];
     @prop()
     public creator: Ref<User>;
+    @prop()
+    public createdDate: number;
+    @prop()
+    public searchLocation: string;
+    @prop()
+    public featured: boolean;
 
     public static async insertOne(trail: ServerTrail): Promise<Document> {
         const record = new TrailModel({...trail});

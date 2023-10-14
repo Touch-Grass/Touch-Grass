@@ -2,38 +2,46 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-$s: search;
-.#{$s}-container {
-    @include flex-column;
-    width: $safe-col-width;
-    margin: auto;
-    text-align: center;
-}
-.#{$s}-title {
-    @include flex-row;
-    width: $safe-col-width;
-    justify-content: space-between;
-    padding-left: 5rem;
-    align-items: center;
-    font-size: 2rem;
-    svg {
-        margin: 2rem;
-    }
-}
-.#{$s}-title-space {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
+$c: search-page;
 
-.#{$s}-input {
-    width: 35rem;
-    height: 5rem;
-    flex-shrink: 0;
-    border-radius: 59px;
-    border: 1px solid #606060;
-    background: #fff;
-    padding-left: 4rem;
-    align-self: flex-end;
-    font-size: 1.5rem;
+.#{$c}-wrapper {
+    @include flex-column(true, false);
+    width: 100%;
+
+    > .#{$c}-container {
+        @include flex-column;
+        width: $safe-col-width;
+        margin-top: 11rem;
+
+        > .#{$c}-title-row {
+            @include flex-row(false, true);
+            width: $safe-col-width;
+            padding-left: 5rem;
+            align-items: center;
+            font-size: 2rem;
+
+            > .#{$c}-title {
+                font-weight: 700;
+                font-size: 4rem;
+            }
+
+            > .#{$c}-auxilliary-title-content {
+                @include flex-row(false, true);
+                margin-left: auto;
+
+                > .#{$c}-input {
+                    width: 35rem;
+                    height: 5rem;
+                    box-sizing: border-box;
+                    flex-shrink: 0;
+                    border-radius: 59px;
+                    border: 1px solid #606060;
+                    background: #fff;
+                    padding-left: 4rem;
+                    align-self: flex-end;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
 }

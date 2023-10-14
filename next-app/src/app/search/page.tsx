@@ -1,6 +1,4 @@
 import React from "react";
-import "./page.scss";
-import TrailComponent from "@/components/view/trail/trail.view";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
 import SearchPagePresenter from "@/components/presenter/search-page/search-page.presenter";
 
