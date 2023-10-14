@@ -1,0 +1,8 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+.trail-creator-view {
+    height: 80rem;
+    width: $safe-col-width;
+}
