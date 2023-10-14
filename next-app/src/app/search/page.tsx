@@ -1,5 +1,4 @@
 import React from "react";
-import "./page.scss";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
 import SearchPagePresenter from "@/components/presenter/search-page/search-page.presenter";
 

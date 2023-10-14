@@ -47,7 +47,7 @@ export class TrailsService {
         location: string,
         withCreator: boolean = false
     ): Promise<PopulatedServerTrailWithID[]> {
-        let query = TrailModel.find({location});
+        let query = TrailModel.find({searchLocation: location.toLowerCase()});
         if (withCreator) {
             query = query.populate("creator");
         }

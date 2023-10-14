@@ -2,7 +2,8 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-$t: trail;
+$t: search-result;
+
 .#{$t}-container {
   display: inline;
   margin-top: 5rem;
@@ -90,44 +91,4 @@ $t: trail;
   justify-content: left;
   column-gap: 20rem;
 
-}
-
-.#{$t}-difficulty{
-  display: flex;
-  flex-direction: row;
-  column-gap: 1rem;
-  font-size: 3rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.#{$t}-difficulty-container{
-  display: grid;
-  grid-template: 1fr / 1fr;
-  place-items: left;
-  align-items: center;
-}
-
-.#{$t}-difficulty-container > *{
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
-}
-
-.#{$t}-difficulty-meter {
-  width: 43rem;
-  height: 2.7rem;
-  flex-shrink: 0;
-  border-radius: 46px;
-  background: linear-gradient(90deg, #6DA075 0%, #F1A241 52.08%, #D4373E 100%);
-  z-index: 1;
-}
-
-.#{$t}-difficulty-white{
-  width: 42rem;
-  height: 2rem;
-  flex-shrink: 0;
-  border-radius: 46px;
-  background-color: $baby-powder;
-  z-index: 2;
-  margin: 0.4rem;
 }
