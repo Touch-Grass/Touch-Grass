@@ -1,8 +1,8 @@
-import "./heroSearchSection.view.scss";
+import "./hero-section.view.scss";
 
-interface HeroSearchSectionViewProps {}
+interface HeroSectionViewProps {}
 
-const HeroSearchSectionView: React.FC<HeroSearchSectionViewProps> = (props) => {
+const HeroSectionView: React.FC<HeroSectionViewProps> = (props) => {
     return (
         <div className="homepage-section" id="hero-search-section">
             <div className={"hero-column"}>
@@ -21,4 +21,4 @@ const HeroSearchSectionView: React.FC<HeroSearchSectionViewProps> = (props) => {
     );
 };
 
-export default HeroSearchSectionView;
+export default HeroSectionView;
