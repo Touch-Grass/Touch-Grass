@@ -3,7 +3,6 @@ import { ITrail } from "@/models/shared/trail/trail.interface";
 import FeaturedTrailsView from "../featuredTrails/featuredTrails.view";
 import "./featuredTrailsSection.view.scss";
 import Link from "next/link";
-import hookScrollFadeIn from "@/utils/Animations/scrollFadeIn";
 
 interface FeaturedTrailsSectionViewProps {
     trailsFeatured: ITrail[];
@@ -11,7 +10,6 @@ interface FeaturedTrailsSectionViewProps {
 }
 
 const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (props) => {
-    hookScrollFadeIn();
     return (
         <div className="homepage-section" id="featured-trails-section">
             <div className="featured-trails-column">

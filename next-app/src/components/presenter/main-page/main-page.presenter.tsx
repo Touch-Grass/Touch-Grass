@@ -1,11 +1,12 @@
 "use client";
 
-import React, {useState} from "react";
+import React, {useEffect} from "react";
 import { IUser } from "@/models/shared/user/user.interface";
 import { ITrail } from "@/models/shared/trail/trail.interface";
 import HeroSearchSectionView from "@/components/view/heroSearchSection/heroSearchSection.view";
 import FeaturedTrailsSection from "@/components/view/featuredTrailsSection/featuredTrailsSection.view";
 import StatisticsSectionView from "@/components/view/statisticsSection/statisticsSection.view";
+import hookScrollFadeIn from "@/utils/Animations/scrollFadeIn";
 
 interface MainPagePresenterProps {}
 
@@ -60,6 +61,9 @@ const trailsFeaturedMock: ITrail[]  = [
 ];
 
 const MainPagePresenter: React.FC<MainPagePresenterProps> = (props) => {
+    useEffect(()=>{
+        hookScrollFadeIn();
+    }, []);
     function toFeaturedTrail(trail: ITrail){
         console.log("go to featured trail", trail);
     }

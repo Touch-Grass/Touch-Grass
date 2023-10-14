@@ -1,10 +1,12 @@
 .scroll-fade-in {
     opacity: 0; 
+    visibility: hidden;
     transform: translateY(2rem);
-    transition: opacity 0.5s, transform 0.5s; 
+    transition: opacity 1s, transform 1s; 
 }
 
 .scroll-fade-in-shown {
     opacity: 1; 
+    visibility: visible;
     transform: translateY(0); 
 }

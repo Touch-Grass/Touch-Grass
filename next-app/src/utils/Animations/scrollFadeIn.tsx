@@ -17,8 +17,8 @@ function hookScrollFadeIn() {
             }
         }
     }, {
-        rootMargin: "-0% 0% -10% 0%",
-        threshold: 0
+        rootMargin: "-0% 0% -15% 0%",
+        threshold: 0.2
     });
 
 

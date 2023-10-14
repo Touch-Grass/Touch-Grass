@@ -12,7 +12,7 @@ const StatisticsSectionView: React.FC<StatisticsSectionViewProps> = (props) =>
     return (
         <div className="homepage-section" id="statistics-section">
             <div className="background-half"></div>
-            <div className="statistics-board">
+            <div className="statistics-board scroll-fade-in">
                 <div className="statistics-entries">
                     <div className="statistics-entry">
                         <Image className="statistics-image" src="/img/statistics-icon-users.svg" alt="icon-user" width={50} height={50}/>
