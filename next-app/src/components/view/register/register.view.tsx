@@ -56,18 +56,31 @@ const RegisterView: React.FC<RegisterViewProps> = (
             <form onSubmit={handleSubmit}>
                 <h2>Sign in.</h2>
                 <p className={"form-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
-                <label htmlFor="name">Name</label>
-                <input type="text" name="name" placeholder="Name" required value={formData.name} onChange={handleChange}/>
-                <label htmlFor="surname">Surname</label>
-                <input type="text" name="surname" placeholder="Surname" required value={formData.surname} onChange={handleChange}/>
+                <div className="form-label-division">
+                    <div>
+                        <label htmlFor="name">Name</label>
+                        <input type="text" name="name" placeholder="Name" required value={formData.name} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="surname">Surname</label>
+                        <input type="text" name="surname" placeholder="Surname" required value={formData.surname} onChange={handleChange}/>
+                    </div>
+                </div>
+
                 <label htmlFor="email">Email</label>
                 <input type="text" name="email" placeholder="Your email" required value={formData.email} onChange={handleChange}/>
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" placeholder="Username" required value={formData.username} onChange={handleChange}/>
-                <label htmlFor="password">Password</label>
-                <input type="password" placeholder="Enter Password" name="password" required value={formData.password} onChange={handleChange}/>
-                <label htmlFor="password-repeat">Repeat your password</label>
-                <input type="password" placeholder="Enter Password" name="passwordRepeat" required value={formData.passwordRepeat} onChange={handleChange}/>
+                <div className="form-label-division">
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" placeholder="Enter Password" name="password" required value={formData.password} onChange={handleChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor="password-repeat">Repeat your password</label>
+                        <input type="password" placeholder="Enter Password" name="passwordRepeat" required value={formData.passwordRepeat} onChange={handleChange}/>
+                    </div>
+                </div>
                 <ButtonView text="Register" loading={validating} type={ButtonType.DEFAULT}/>
             </form>
             )}

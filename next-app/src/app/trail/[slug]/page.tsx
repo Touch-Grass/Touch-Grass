@@ -7,7 +7,7 @@ interface ServerSideProps {
         slug?: string;
     }
 }
-
+export const dynamic = "force-dynamic";
 export default async function TrailPage(props: ServerSideProps) {
     const slug = props?.params?.slug ?? null;
 

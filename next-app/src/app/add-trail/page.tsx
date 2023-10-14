@@ -1,6 +1,6 @@
 import React from "react";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
-
+export const dynamic = "force-dynamic";
 export default function AddTrail() {
     return (
         <>

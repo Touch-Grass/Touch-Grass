@@ -24,7 +24,7 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
 
     // Query the trail from the database.
     let trail: Nullable<PopulatedServerTrailWithID> = null;
-    
+
     try {
         trail = await TrailsService.findPopulatedById(trailId);
     } catch (e) {}
@@ -44,7 +44,7 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
     let comments: Nullable<ServerCommentWithID[]>=null;
 
     try{
-        comments= await CommentsService.findCommentsForTrail(clientTrail)
+        comments= await CommentsService.findCommentsForTrail(clientTrail);
     }catch (e) {}
 
     return (

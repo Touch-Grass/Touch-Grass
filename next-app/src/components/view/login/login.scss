@@ -1,7 +1,10 @@
 @import "vars/color-palette";
+@import "vars/mixins";
 
 .process-form{
     width: 100%;
+    height: 100vh;
+    @include flex-column(true, true);
 }
 
 .process-form h2{
