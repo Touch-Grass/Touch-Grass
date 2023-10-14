@@ -1,4 +1,4 @@
-import React, {CSSProperties} from "react";
+import React from "react";
 
 interface TrailPageHeaderViewProps {
     name: string;
@@ -6,17 +6,15 @@ interface TrailPageHeaderViewProps {
 
 /**
  * This view showcases the difficulty of a trail as a progress bar.
- * @param props {DifficultyMeterViewProps} The properties of this progress bar.
+ * @param props {TrailPageHeaderViewProps} The properties of this progress bar.
  */
-const DifficultyMeterView: React.FC<DifficultyMeterViewProps> = (props: DifficultyMeterViewProps) => {
-    const {difficulty} = props;
+const TrailPageHeaderView: React.FC<TrailPageHeaderViewProps> = (props: TrailPageHeaderViewProps) => {
+
 
     return (
-        <div className={"difficulty-meter"} style={{"--difficulty-meter-progress": `${difficulty}`} as CSSProperties}>
-            <div className={"difficulty-meter-gray-out"} ></div>
-            <div className={"difficulty-meter-marker"}></div>
+        <div>
         </div>
     );
 };
 
-export default DifficultyMeterView;
+export default TrailPageHeaderView;
