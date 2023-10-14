@@ -4,7 +4,7 @@ import React, {useEffect} from "react";
 import { IUser } from "@/models/shared/user/user.interface";
 import { ITrail } from "@/models/shared/trail/trail.interface";
 import HeroSearchSectionView from "@/components/view/heroSearchSection/heroSearchSection.view";
-import FeaturedTrailsSection from "@/components/view/featuredTrailsSection/featuredTrailsSection.view";
+import FeaturedTrailsSectionView from "@/components/view/featuredTrailsSection/featuredTrailsSection.view";
 import StatisticsSectionView from "@/components/view/statisticsSection/statisticsSection.view";
 import hookScrollFadeIn from "@/utils/Animations/scrollFadeIn";
 
@@ -70,7 +70,7 @@ const MainPagePresenter: React.FC<MainPagePresenterProps> = (props) => {
     return(
         <>
             <HeroSearchSectionView/>
-            <FeaturedTrailsSection trailsFeatured={trailsFeaturedMock} goToFeaturedTrail={toFeaturedTrail}/>
+            <FeaturedTrailsSectionView trailsFeatured={trailsFeaturedMock} goToFeaturedTrail={toFeaturedTrail}/>
             <StatisticsSectionView numberOfUsers={100} numberOfTrails={69} numberOfLocations={42}/>
         </>
     );
