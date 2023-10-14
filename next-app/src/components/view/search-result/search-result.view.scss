@@ -17,23 +17,6 @@ $c: search-result;
         border-radius: 10px;
         margin-right: 5rem;
         flex-shrink: 0;
-
-        > .#{$c}-heart {
-            @include flex-column(true, true);
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            height: 6rem;
-            width: 6rem;
-            background-color: $baby-powder;
-            color: $our-red;
-            border-radius: 100%;
-
-            > img {
-                height: 4rem;
-                width: 4rem;
-            }
-        }
     }
 
     > .#{$c}-content {

@@ -19,9 +19,6 @@ const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
                     width={100}
                     height={100}
                 />
-                <div className="search-result-heart">
-                    <Image src="/Heart.svg" alt="heart" width={25} height={25}/>
-                </div>
             </div>
             <div className="search-result-content">
                 <div className={"search-result-title"}>{props.trail.name}</div>
