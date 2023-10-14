@@ -17,7 +17,7 @@ const LoginPresenter: React.FC<LoginPresenterProps> = props => {
 
     const router = useRouter();
     const [errorString, setErrorString] = useState<string>("");
-    const [ValidatingState, setValidatingState] = useState<Boolean>(false);
+    const [ValidatingState, setValidatingState] = useState<boolean>(false);
 
     const loginUser = async (user: Partial<IUser>) => {
         setValidatingState(true);

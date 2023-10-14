@@ -7,8 +7,8 @@ import "./register.scss";
 
 interface RegisterViewProps {
     validateForm: (data:RegisterFormFields) => void;
-    validating: Boolean;
-    registrationCompleted: Boolean;
+    validating: boolean;
+    registrationCompleted: boolean;
     errorString: string;
 }
 

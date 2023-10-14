@@ -11,7 +11,7 @@ export enum ButtonType {
 
 interface ButtonViewProps {
     text: string;
-    loading?: Boolean;
+    loading?: boolean;
     type: ButtonType;
     onClick?: () => void;
 }

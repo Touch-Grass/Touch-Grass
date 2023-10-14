@@ -6,7 +6,7 @@ import "./login.scss";
 
 interface LoginViewProps {
     handleForm: (data:LoginFormFields) => void;
-    validating: Boolean;
+    validating: boolean;
     errorString: string;
 }
 

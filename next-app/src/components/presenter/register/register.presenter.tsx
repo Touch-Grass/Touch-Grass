@@ -20,43 +20,41 @@ export interface RegisterFormFields{
 const RegisterPresenter: React.FC<RegisterPresenterProps> = props => {
     const router = useRouter();
     const [errorString, setErrorString] = useState<string>("");
-    const [ValidatingState, setValidatingState] = useState<Boolean>(false);
-    const [RegistrationCompleted, setRegistrationCompleted] = useState<Boolean>(false);
+    const [ValidatingState, setValidatingState] = useState<boolean>(false);
+    const [RegistrationCompleted, setRegistrationCompleted] = useState<boolean>(false);
 
     const registerUser = async (user: IUser) => {
         //Call register API
         setValidatingState(true);
-        await fetch("/api/users", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-          })
-            .then(async (response) => {
-                if (response.status === 500)
-                    setErrorString("Internal Server Error");
-                else if (!response.ok) {
-                    const errorData = await response.json();
-                    setErrorString(errorData.error);
-                }else{
-                    setRegistrationCompleted(true);
-                }
 
-            })
-            .catch((error) => {
+        try {
+            const response = await fetch("/api/users", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(user),
+            });
+
+            if (response.status === 500)
+                setErrorString("Internal Server Error");
+            else if (!response.ok) {
+                const errorData = await response.json();
+                setErrorString(errorData.error);
+            }else{
+                setRegistrationCompleted(true);
+            }
+        } catch (error: any) {
             if (error instanceof Response && error.status === 500){
                 setErrorString("Server Internal Error");
             } else {
                 console.error("Error:", error);
                 const errorString = error.toString();
                 setErrorString(errorString);
-              }
-            })
-            .finally(() => {
-              setValidatingState(false);
-            });
-
+            }
+        } finally {
+            setValidatingState(false);
+        }
     };
 
     const validateForm = (data: RegisterFormFields) => {
