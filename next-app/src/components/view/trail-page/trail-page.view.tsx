@@ -3,6 +3,7 @@ import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import "./trail-page.view.scss";
 import {ITrail} from "@/models/shared/trail/trail.interface";
 import dynamic from "next/dynamic";
+import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-meter.view";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -39,6 +40,12 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                             <div className={"trail-page-prop"}>
                                 <div className={"trail-page-prop-label"}>Terrain</div>
                                 <div className={"trail-page-prop-value"}>{trail.terrain}</div>
+                            </div>
+                        </div>
+                        <div className={"trail-page-difficulty"}>
+                            <div className={"trail-page-difficulty-label"}>Difficulty</div>
+                            <div className={"trail-page-difficulty-meter-container"}>
+                                <DifficultyMeterView difficulty={trail.difficulty}></DifficultyMeterView>
                             </div>
                         </div>
                         <div className={"trail-page-description"}>{trail.description}</div>

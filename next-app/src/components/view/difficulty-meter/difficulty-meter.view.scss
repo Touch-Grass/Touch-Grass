@@ -1,0 +1,51 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: difficulty-meter;
+
+$progress: var(--difficulty-meter-progress);
+
+.#{$c} {
+    height: 2rem;
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 5rem;
+    background: linear-gradient(90deg, #6DA075 0%, #F1A241 50%, #D4373E 100%);
+    position: relative;
+    overflow: hidden;
+
+    > .#{$c}-gray-out {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $light-gray;
+        width: calc((1 - $progress) * 100%);
+        height: 100%;
+    }
+
+    > .#{$c}-marker {
+        position: absolute;
+        top: 50%;
+        left: calc($progress * 100%);
+        height: 1.6rem;
+        width: 1.6rem;
+        background-color: white;
+        transform: translate(-50%, -50%);
+        border-radius: 100%;
+        box-sizing: border-box;
+        outline: 0.2rem solid $rich-black;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 100%;
+            background-color: $rich-black;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
