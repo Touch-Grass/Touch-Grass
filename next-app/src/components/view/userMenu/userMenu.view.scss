@@ -11,13 +11,13 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border-radius: 20px;
+    border-radius: 2rem;
     z-index: 2;
 }
 
 .menu-item {
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     padding: 0.2rem 0.2rem 0.2rem 0.5rem;
 }
 
@@ -36,10 +36,6 @@
 .menu-item a:visited {
     color: $rich-black;
 }
-
-/* #menu-trails-text{
-
-} */
 
 #menu-account-text {
     margin-top: 1.5rem;
