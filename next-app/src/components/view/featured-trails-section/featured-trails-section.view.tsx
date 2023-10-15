@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FeaturedTrailView from "@/components/view/featured-trail/featured-trail.view";
 import "./featured-trails-section.view.scss";
 import {ServerTrailWithID} from "@/models/server/trail/trail";
