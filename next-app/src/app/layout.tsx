@@ -4,8 +4,8 @@ import React from "react";
 import "leaflet/dist/leaflet.css";
 
 export const metadata: Metadata = {
-    title: "Touch Grass",
-    description: "Find the greener grass!",
+    title: "TouchGrass.",
+    description: "Time to take a hike.",
 };
 
 export default function RootLayout({

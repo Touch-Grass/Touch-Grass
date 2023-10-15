@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import UserIcon from "@/components/view/userIcon/userIcon.view";
+import UserIcon from "@/components/view/user-icon/user-icon.view";
 import ButtonView from "../button/button.view";
 import { ButtonType } from "../button/button.view";
 import { IUser } from "@/models/shared/user/user.interface";
@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = (
                     <div className='signin-container'>
                         {user ?
                             <UserIcon
-                                username={user.username}
+                                username={user.name + " " + user.surname}
                                 userProfilePic='/userIcon.png'
                             ></UserIcon>
                             :
