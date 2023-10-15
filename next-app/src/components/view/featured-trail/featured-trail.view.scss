@@ -8,22 +8,27 @@ $c: featured-trail;
     max-width: 35rem;
     cursor: pointer;
 
-    > .featured-trail-image {
+    > .#{$c}-image {
         width: 35rem;
         height: 35rem;
         border-radius: 1rem;
     }
-    > .featured-trail-location{
+    > .#{$c}-location{
         margin-top: 2rem;
         font-size: 2rem;
     }
-    > .featured-trail-name{
+    > .#{$c}-name{
         font-size: 3rem;
     }
-    > .featured-trail-details{
+    > .#{$c}-details{
+        @include flex-row(false, true);
+        margin-top: 2rem;
         width: 100%;
         font-size: 2rem;
-        > .featured-trail-detail{
+        > .#{$c}-detail{
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
         }
     }
 }

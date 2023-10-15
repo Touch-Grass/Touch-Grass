@@ -1,5 +1,3 @@
-import Image from "next/image";
-import {ITrail} from "@/models/shared/trail/trail.interface";
 import FeaturedTrailView from "@/components/view/featured-trail/featured-trail.view";
 import "./featured-trails-section.view.scss";
 import Link from "next/link";
@@ -13,12 +11,17 @@ const FeaturedTrailsSectionView: React.FC<FeaturedTrailsSectionViewProps> = (pro
     const {trails} = props;
 
     return (
+
         <div className={"featured-trails-section"}>
             <div className="featured-trails-column">
                 <div className="featured-trails-part">
                     <div className="featured-trails-header">Featured hiking trails</div>
                     <div className="featured-trails-view-container scroll-fade-in">
-                        {trails.map(trail => (<FeaturedTrailView key={trail._id.toString()} trail={trail}/>))}
+                        {trails.map(trail => (
+                            <Link key={trail._id.toString()} href={"/trail/" + trail._id.toString()}>
+                                <FeaturedTrailView trail={trail}/>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>

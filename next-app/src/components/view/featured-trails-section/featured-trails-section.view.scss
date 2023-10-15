@@ -29,6 +29,11 @@ $c: featured-trails;
                 justify-content: space-between;
                 align-items: flex-start;
                 width: 100%;
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
             }
         }
 
