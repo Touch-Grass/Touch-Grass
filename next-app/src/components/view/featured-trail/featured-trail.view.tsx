@@ -16,7 +16,7 @@ const FeaturedTrailView: React.FC<FeaturedTrailViewProps> = (props) => {
             <Image
                 className="featured-trail-image"
                 alt={trail.name}
-                src="/img/featured-trail.jpg"
+                src={trail.images[0]}
                 height={350}
                 width={350}
             />

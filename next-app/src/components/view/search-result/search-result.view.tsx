@@ -16,8 +16,8 @@ const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
                     src={props.trail.images[0]}
                     alt="image of the trail"
                     className={"search-result-image"}
-                    width={100}
-                    height={100}
+                    width={1000}
+                    height={1000}
                 />
             </div>
             <div className="search-result-content">
