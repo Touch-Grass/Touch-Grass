@@ -59,7 +59,7 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
     } = props;
 
     const duration = moment.duration(geoTrail.duration, "minutes");
-    const length = geoTrail.length;
+    const length = geoTrail.length.toFixed(1);
 
     return (
         <div className={"add-trail-page-full-width-container"}>
