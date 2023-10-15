@@ -7,6 +7,7 @@ import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-m
 import CommentComponent from "@/components/view/comment/comment";
 import { ServerCommentWithID } from "@/models/server/comment/comment";
 import { Nullable } from "@/models/shared/utility.types";
+import AddCommentView from "../add-comment/add-comment.view";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -69,7 +70,7 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                 <h1>Comments</h1>
 
                     <div className="trail-page-comment-editor">
-                        
+                        <AddCommentView/>
                     </div>
 
                     {
