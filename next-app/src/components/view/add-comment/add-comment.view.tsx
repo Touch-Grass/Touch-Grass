@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import "./add-comment.view.scss";
-import { CommentFormFields } from "@/components/presenter/add-comment/add-comment.presenter";
+import { IComment } from "@/models/shared/comment/comment.interface";
+import ButtonView, { ButtonType } from "../button/button.view";
 
 interface AddCommentViewProps {
-    addComment: (data:CommentFormFields) => void;
+    addComment: (comment: Partial<IComment>) => void;
     errorString: string;
+    loadingState: boolean;
 }
 
 const AddCommentView: React.FC<AddCommentViewProps> = (
     {
         addComment,
         errorString,
+        loadingState
     }
 ) => {
-
-    
-    const [formData, setFormData] = useState<CommentFormFields>({
+    const [formData, setFormData] = useState<Partial<IComment>>({
         title: "",
         text: "",
       });
+
 
       const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -28,9 +30,8 @@ const AddCommentView: React.FC<AddCommentViewProps> = (
           }));
       };
 
-      const sendComment = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        addComment(formData);
+      const sendComment = () => {
+        addComment(formData as Partial<IComment>);
       };
 
 
@@ -39,7 +40,7 @@ const AddCommentView: React.FC<AddCommentViewProps> = (
            <p className={"form-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
            <input name="title" type="text" placeholder="Title" onChange={inputChange}/>
            <input name="text" placeholder="What do you think about the trail?" className="add-comment-main-text" onChange={inputChange}/>
-           <input type="submit" className="add-comment-submit-button" value="Submit Comment" />
+           <ButtonView text="submit" type={ButtonType.DEFAULT} loading={loadingState} onClick={sendComment}/>
         </form>
     );
 };

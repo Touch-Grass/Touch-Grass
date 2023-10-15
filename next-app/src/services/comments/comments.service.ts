@@ -1,7 +1,8 @@
 import {IComment} from "@/models/shared/comment/comment.interface";
 import {
     ServerCommentWithID,
-    CommentModel
+    CommentModel,
+    Comment
 } from "@/models/server/comment/comment";
 import { Trail } from "@/models/server/trail/trail";
 import {Nullable, WithID} from "@/models/shared/utility.types";
@@ -20,7 +21,7 @@ export class CommentsService {
     }
 
 
-    public static async addComment(comment: IComment): Promise<Document> {
+    public static async addComment(comment: Comment): Promise<Document> {
         try{
             const record = new CommentModel({...comment});
             return await record.save();
@@ -28,5 +29,10 @@ export class CommentsService {
             throw new Error("Invalid");
         }
     }
+/*
+    public static async addComment(comment: ServerComment): Promise<Document> {
+        const record = new CommentModel({...comment});
+        return await record.save();
+    }*/
 
 }

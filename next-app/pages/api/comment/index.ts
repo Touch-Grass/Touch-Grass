@@ -1,28 +1,56 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import {RequestHandler} from "@/utils/HTTPHandler/HTTPHandler";
-import { TrailsService } from "@/services/trails/trails.service";
-import { Trail } from "@/models/server/trail/trail";
-import { ITrail } from "@/models/shared/trail/trail.interface";
 import { UserService } from "@/services/users/service";
 import { AuthService } from "@/services/auth/service";
-import { CookieService } from "@/services/cookies/service";
 import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
-import { CommentFormFields } from "@/components/presenter/add-comment/add-comment.presenter";
 import { IComment } from "@/models/shared/comment/comment.interface";
 import { CommentsService } from "@/services/comments/comments.service";
-import { IUser } from "@/models/shared/user/user.interface";
+import { Comment } from "@/models/server/comment/comment";
 
 class CommentHandler extends RequestHandler {
     constructor() {
         super(); // Call the constructor of the parent class
     }
 
-    public async getUser( response: NextApiResponse): Promise<IUser | null> {
+    public async handlePost(request: NextApiRequest, response: NextApiResponse): Promise<void> {
 
-            const commenterCookie= await AuthService.getUserInfoFromToken(CookieService.getCookie());
-            return(commenterCookie)
+        const token = request.cookies["TouchGrass-token"];
+
+        try{
+
+            try{
+                //If user is not authenticated
+                if(!token)
+                    throw new Error("Not authenticated");
+                await AuthService.performValidation(token);
+            }catch(error:any){
+                return sendCustomError(response, HttpStatus.UNAUTHORIZED,"");
+            }
+
+            if(!request.body.comment)
+                throw new Error("No comment content");
+            if(!request.body.trail)
+                throw new Error("No trail content");
+
+            let comment = new Comment(request.body.comment as IComment);
+            //Set creation date
+            comment.date = Date.now();
+            comment.trail=request.body.trail;
+
+            //Find comment creator reference based on provided token
+            const ref = await UserService.findOneReference(token);
+            comment.commenter = ref;
+
+            //Insert comment
+            const document = await CommentsService.addComment(comment);
+            const insertedTrailId = document._id;
+
+            return response.status(200).json({ insertedTrailId });
+
+        }catch(e: any){
+            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);;
         }
-    };
+    }
+}
 
-
-export default new CommentHandler().getUser;
+export default new CommentHandler().handlePost;
