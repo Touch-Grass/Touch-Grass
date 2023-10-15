@@ -1,19 +1,19 @@
 "use client";
 import {useEffect} from "react";
-import { useRouter } from "next/navigation";
+import {useRouter} from "next/navigation";
 
-interface LogoutProps {}
+interface LogoutProps {
+}
 
-const LogoutView: React.FC<LogoutProps> = () =>{
+const LogoutView: React.FC<LogoutProps> = () => {
     const router = useRouter();
 
-    useEffect(()=>{
+    useEffect(() => {
         router.refresh();
         router.push("/");
-    },[]);
+    }, [router]);
 
-
-    return(
+    return (
         <>
             <main className="logout">
             </main>

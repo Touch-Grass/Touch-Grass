@@ -73,11 +73,12 @@ $c: trail-page;
                 }
             }
         }
-        > .#{$c}-comments{
+
+        > .#{$c}-comments {
             margin-top: 2rem;
             margin-bottom: 2rem;
 
-            > h1{
+            > h1 {
                 font-size: 4rem;
             }
         }

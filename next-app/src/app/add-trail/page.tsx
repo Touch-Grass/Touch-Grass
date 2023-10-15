@@ -2,7 +2,7 @@ import React from "react";
 import "./page.scss";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
 import AddTrailPagePresenter from "@/components/presenter/add-trail-page/add-trail-page.presenter";
-import FooterPresenter from "@/components/presenter/footer/footer.presenter";
+import FooterView from "@/components/view/footer/footer.view";
 
 export const dynamic = "force-dynamic";
 export default function AddTrail() {
@@ -12,7 +12,7 @@ export default function AddTrail() {
             <main>
                 <AddTrailPagePresenter></AddTrailPagePresenter>
             </main>
-            <FooterPresenter></FooterPresenter>
+            <FooterView/>
         </div>
     );
 }

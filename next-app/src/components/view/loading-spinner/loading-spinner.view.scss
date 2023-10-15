@@ -1,0 +1,27 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+.loading-spinner {
+    @include flex-column(true, true);
+}
+
+.loading-spinner-fill-in {
+    border: 1rem solid rgba(0, 0, 0, 0.25);
+    border-left: 1rem solid $jade;
+    transform: translateZ(0);
+    animation: loading-spinner-anim 1.1s infinite cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+}
+
+@keyframes loading-spinner-anim {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

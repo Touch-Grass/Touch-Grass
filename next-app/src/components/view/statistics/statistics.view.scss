@@ -1,0 +1,56 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: statistics;
+
+.#{$c} {
+    @include flex-column(true, false);
+    min-height: 70rem;
+}
+
+.#{$c}-board {
+    @include flex-column(true, true);
+    position: relative;
+    background-color: $orange-peel;
+    width: $safe-col-width;
+    height: 70rem;
+    border-radius: 3rem;
+    margin-top: -20rem;
+    flex-shrink: 0;
+
+    > .#{$c}-entries {
+        @include flex-row(true, true);
+        width: 61.8%;
+        justify-content: space-between;
+
+        > .#{$c}-entry {
+            @include flex-column(true, true);
+
+            > .#{$c}-image {
+                position: absolute;
+                top: 10rem;
+                width: 8rem;
+                height: 8rem;
+            }
+
+            > .#{$c}-number {
+                font-size: 10rem;
+                color: $baby-powder;
+            }
+
+            > .#{$c}-unit {
+                font-size: 4rem;
+            }
+        }
+    }
+
+    > .#{$c}-slogan {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        bottom: 5rem;
+        font-size: 3.5rem;
+    }
+}
