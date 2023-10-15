@@ -9,7 +9,7 @@ import { ITrail } from "@/models/shared/trail/trail.interface";
 import { IUser } from "@/models/shared/user/user.interface";
 import dbConnect from "@/lib/dbConnection";
 import { UserValidation } from "@/models/shared/user/user.validation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { CommentValidation } from "@/models/shared/comment/comment.validation";
 import { cookies } from "next/headers";
 

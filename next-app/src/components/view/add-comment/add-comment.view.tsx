@@ -36,12 +36,12 @@ const AddCommentView: React.FC<AddCommentViewProps> = (
 
 
     return (
-        <form className={"add-comment-container"} onSubmit={sendComment}>
+        <div className={"add-comment-container"}>
            <p className={"form-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
            <input name="title" type="text" placeholder="Title" onChange={inputChange}/>
            <input name="text" placeholder="What do you think about the trail?" className="add-comment-main-text" onChange={inputChange}/>
            <ButtonView text="submit" type={ButtonType.DEFAULT} loading={loadingState} onClick={sendComment}/>
-        </form>
+        </div>
     );
 };
 
