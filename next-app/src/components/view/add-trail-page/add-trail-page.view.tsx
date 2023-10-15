@@ -82,7 +82,7 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
                     <label htmlFor="terrain">Terrain type</label>
                     <select name="terrain" placeholder="Terrain"
                             value={terrain} onChange={e => setTerrain(e.target.value)}>
-                        <option disabled selected value={""}>Select the terrain type</option>
+                        <option disabled value={""}>Select the terrain type</option>
                         <option value={"Forest"}>Forest</option>
                         <option value={"Rocks"}>Rocks</option>
                         <option value={"Swamp"}>Swamp</option>
@@ -92,7 +92,7 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
                     <label htmlFor="difficulty">Difficulty</label>
                     <select name="difficulty" placeholder="difficulty"
                             value={difficulty} onChange={e => setDifficulty(e.target.value)}>
-                        <option disabled selected value={""}>Select the difficutly</option>
+                        <option disabled value={""}>Select the difficulty</option>
                         <option value={"Easy"}>Easy</option>
                         <option value={"Medium"}>Medium</option>
                         <option value={"Hard"}>Hard</option>
