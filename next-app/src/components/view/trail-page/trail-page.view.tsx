@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import "./trail-page.view.scss";
@@ -7,11 +8,12 @@ import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-m
 import CommentComponent from "@/components/view/comment/comment";
 import {ServerCommentWithID} from "@/models/server/comment/comment";
 import {Nullable} from "@/models/shared/utility.types";
-import AddCommentView from "../add-comment/add-comment.view";
+import AddCommentPresenter from "@/components/presenter/add-comment/add-comment.presenter";
 import TrailPageHeaderView from "@/components/view/trail-page-header/trail-page-header.view";
 import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
 import moment from "moment";
 import LoadingSpinnerView from "@/components/view/loading-spinner/loading-spinner.view";
+
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -96,7 +98,7 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                 <h1>Comments</h1>
 
                     <div className="trail-page-comment-editor">
-                        <AddCommentView/>
+                        <AddCommentPresenter trail={trail}/>
                     </div>
 
                     {

@@ -1,4 +1,5 @@
 import {ITrail} from "@/models/shared/trail/trail.interface";
+import type {Ref} from "@typegoose/typegoose";
 import {
     PopulatedServerTrail,
     PopulatedServerTrailWithID,
@@ -90,5 +91,13 @@ export class TrailsService {
         }catch(error:any){
             throw new Error("Invalid trail");
         }
+    }
+
+    //Returns a document reference from the DB
+    public static async findOneReference(name: string): Promise<Ref<Trail>> {
+        const result = await TrailModel.findOne({ name: name}).exec();
+        if(result == null)
+            throw new Error("User not found");
+        return result;
     }
 }

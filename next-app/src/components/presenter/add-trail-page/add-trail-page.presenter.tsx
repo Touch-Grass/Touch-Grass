@@ -71,12 +71,12 @@ const AddTrailPagePresenter: React.FC = props => {
         const newDifficulty = refactorDifficulty();
         const imageArray = [imageURL];
         const trail : Partial<ITrail> = {
-            name: name.trim(),
-            description: description.trim(),
+            name: name,
+            description: description,
             difficulty: newDifficulty,
-            terrain: terrain.trim(),
-            location: location.trim(),
-            searchLocation: location.trim().toLowerCase(),
+            terrain: terrain,
+            location: location,
+            searchLocation: location,
             images: imageArray,
             waypoints: geoTrail.waypoints,
             polyline: geoTrail.polyline,
