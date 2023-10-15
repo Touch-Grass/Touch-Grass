@@ -1,6 +1,6 @@
 describe("Search functionalities", () => {
     beforeEach(() => {
-        cy.visit("http://localhost:3000");
+        cy.visit("/");
     });
 
     it("should be rendered", () => {
