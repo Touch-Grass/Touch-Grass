@@ -16,7 +16,7 @@ const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
     return (
         <div className="search-result-container">
             <div className="search-result-image-container">
-                <Image
+                <img
                     src={props.trail.images[0]}
                     alt="image of the trail"
                     className={"search-result-image"}
