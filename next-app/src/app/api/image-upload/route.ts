@@ -31,6 +31,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({url: `/uploads/${filename}`});
     } catch (e) {
         console.error("Error during image upload\n", e);
-        return NextResponse.json({error: "Error during image upload."}, {status: 500});
+        return NextResponse.json({error: "Error during image upload."}, {status: HttpStatus.INTERNAL_SERVER_ERROR});
     }
 }
