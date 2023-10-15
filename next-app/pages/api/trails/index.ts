@@ -6,20 +6,19 @@ import { ITrail } from "@/models/shared/trail/trail.interface";
 import { UserService } from "@/services/users/service";
 import { AuthService } from "@/services/auth/service";
 import { CookieService } from "@/services/cookies/service";
-
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
 
 class TrailHandler extends RequestHandler {
     constructor() {
         super(); // Call the constructor of the parent class
     }
 
-
     public async handlePost(request: NextApiRequest, response: NextApiResponse): Promise<void> {
         try{
             //If user is not authenticated
             const token = CookieService.getCookie();
             if(!AuthService.performValidation(token)){
-                response.writeHead(302, { Location: "/login" });
+                response.writeHead(HttpStatus.REDIRECT, { Location: "/login" });
                 throw new Error("Not authenticated");
             }
 
@@ -39,8 +38,7 @@ class TrailHandler extends RequestHandler {
             await TrailsService.insertOne(trail);
             response.status(200).end();
         }catch(e: any){
-            console.log(e?.message);
-            return response.status(400).json({ error: e?.message });
+            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);;
         }
     };
 

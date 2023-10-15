@@ -4,6 +4,7 @@ import { CookieService } from "@/services/cookies/service";
 import {AuthService} from "@/services/auth/service";
 import {IUser} from "@/models/shared/user/user.interface";
 import {UserValidation} from "@/models/shared/user/user.validation";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
 
 class LoginHandler extends RequestHandler {
     constructor() {
@@ -27,8 +28,7 @@ class LoginHandler extends RequestHandler {
             response = CookieService.setCookie(response, token);
             return response.status(200).json({ message: "Authentication successful" });
         }catch(e: any){
-            console.log(e);
-            return response.status(400).json({error: e?.message});
+            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
         }
     }
 }

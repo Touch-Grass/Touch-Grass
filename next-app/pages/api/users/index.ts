@@ -4,6 +4,8 @@ import {UserService} from "@/services/users/service";
 import {User} from "@/models/server/user/user";
 import {IUser} from "@/models/shared/user/user.interface";
 import {UserValidation} from "@/models/shared/user/user.validation";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
+
 class UserHandler extends RequestHandler {
     constructor() {
         super(); // Call the constructor of the parent class
@@ -28,8 +30,7 @@ class UserHandler extends RequestHandler {
             await UserService.insertOne(user);
             response.status(200).end();
         }catch(e: any){
-            console.log(e?.message);
-            return response.status(400).json({ error: e?.message });
+            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
         }
     }
 }
