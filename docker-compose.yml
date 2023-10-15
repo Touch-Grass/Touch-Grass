@@ -7,15 +7,20 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+      - ./system/db-init:/docker-entrypoint-initdb.d
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: touch-grass
     networks:
       - touch-grass-network
   next-app:
     build:
       context: next-app/
       dockerfile: Dockerfile
+    volumes:
+        - ./system/env.local:/usr/src/app/.env.local:ro
+        - ./system/images:/usr/src/app/public/uploads/
     ports:
       - "3001:3000"
     networks:
