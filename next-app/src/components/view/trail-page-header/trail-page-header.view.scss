@@ -1,0 +1,41 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: trail-header;
+
+.#{$c} {
+    @include flex-column;
+    position: relative;
+    width: 100%;
+    height: 45rem;
+    background-color: gray;
+    border-radius: 1.5rem;
+    margin-bottom: 4rem;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        object-fit: cover;
+    }
+    > .#{$c}-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+    }
+
+    > .#{$c}-label {
+        position: absolute;
+        $padding: 4rem;
+        left: $padding;
+        bottom: $padding;
+        font-size: 4rem;
+        color: white;
+        font-weight: 700;
+    }
+}

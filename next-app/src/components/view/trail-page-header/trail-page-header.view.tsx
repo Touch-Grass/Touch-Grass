@@ -1,7 +1,10 @@
 import React from "react";
+import Image from "next/image";
+import "./trail-page-header.view.scss";
 
 interface TrailPageHeaderViewProps {
     name: string;
+    imageURL: string;
 }
 
 /**
@@ -9,10 +12,16 @@ interface TrailPageHeaderViewProps {
  * @param props {TrailPageHeaderViewProps} The properties of this progress bar.
  */
 const TrailPageHeaderView: React.FC<TrailPageHeaderViewProps> = (props: TrailPageHeaderViewProps) => {
-
+    const {name, imageURL} = props;
 
     return (
-        <div>
+        <div className={"trail-header"}>
+            <Image src={imageURL}
+                   width={1000}
+                   height={1000}
+                   alt={"Trail image"}></Image>
+            <div className={"trail-header-overlay"}></div>
+            <div className={"trail-header-label"}>{name}</div>
         </div>
     );
 };
