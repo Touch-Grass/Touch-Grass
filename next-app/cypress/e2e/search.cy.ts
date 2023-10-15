@@ -4,7 +4,7 @@ describe("Search Bar Functionalities", () => {
     });
 
     it("should be rendered", () => {
-        cy.get("input").should("have.class", "hero-search-bar");
+        cy.get("input").should("have.class", "hero-search-bar").click();
     });
 
     it("should perform a search", () => {
@@ -13,4 +13,6 @@ describe("Search Bar Functionalities", () => {
         cy.url().should("include", "search?l=sandhamn");
         cy.contains("trails in sandhamn");
     });
+
+    // TODO: should also be able to search from search page.
 });
