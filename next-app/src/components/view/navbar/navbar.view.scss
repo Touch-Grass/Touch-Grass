@@ -25,7 +25,7 @@
 
         width: $safe-col-width;
 
-        > .navbar-logo {
+        > .navbar-logo, .navbar-logo > img {
             flex-shrink: 0;
             width: $navbar-height;
             height: $navbar-height;

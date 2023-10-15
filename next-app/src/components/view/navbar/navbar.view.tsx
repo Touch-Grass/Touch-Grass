@@ -22,7 +22,9 @@ const Navbar: React.FC<NavbarProps> = (
         <>
             <nav className={`navbar${fixed ? " fixed" : ""}`} >
                 <div className={"navbar-content"}>
-                    <Image className='navbar-logo' src='/logo-no-dots.svg' alt='logo' width={0} height={0} ></Image>
+                    <Link className={"navbar-logo"} href='/'>
+                        <Image src='/logo-no-dots.svg' alt='logo' width={0} height={0} ></Image>
+                    </Link>
                     <Link className={"navbar-title"} href='/'>TouchGrass.</Link>
                     <div className='signin-container'>
                         {user ?
