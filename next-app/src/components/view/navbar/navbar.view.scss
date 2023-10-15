@@ -63,5 +63,11 @@ $c: navbar;
 
     .signin-container {
         visibility: visible;
+        .#{$c}-logged-in {
+            @include flex-row(false, true);
+            > a {
+                margin-right: 4rem;
+            }
+        }
     }
 }
