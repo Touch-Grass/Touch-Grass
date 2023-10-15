@@ -25,6 +25,29 @@ const TrailCreatorContentView: React.FC<TrailCreatorContentViewProps> = props =>
         iconSize: [32, 32]
     });
 
+    const markerIconStart = icon({
+        iconUrl: "/img/trail/logo-green.png",
+        iconSize: [32, 32]
+    });
+
+    const markerIconEnd = icon({
+        iconUrl: "/img/trail/logo-red.png",
+        iconSize: [32, 32]
+    });
+
+    const decideIcon = (index: number) => {
+        if (index === 0) {
+            return markerIconStart;
+        }
+
+        if (index === waypoints.length -1) {
+            return markerIconEnd;
+        }
+
+        return markerIcon;
+    };
+
+
     const eventListenerMemo = useMemo(() => ({
         dragend(e: DragEndEvent) {
             const index = e.target.options["data-index"];
@@ -59,7 +82,7 @@ const TrailCreatorContentView: React.FC<TrailCreatorContentViewProps> = props =>
                         data-index={i}
                         draggable={true}
                         eventHandlers={eventListenerMemo}
-                        icon={markerIcon}
+                        icon={decideIcon(i)}
                         position={waypoint}></Marker>
             ))}
         </>
