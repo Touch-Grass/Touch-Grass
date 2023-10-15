@@ -13,6 +13,7 @@ interface TrailPagePresenterProps {
 }
 
 const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
+
     // GUARD: If the user does not supply a trail to search for, we bail out to 404.
     const trailId = props?.trailId;
     if (!trailId) {
@@ -46,6 +47,8 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
     try{
         comments= await CommentsService.findCommentsForTrail(clientTrail);
     }catch (e) {}
+
+
 
     return (
         <TrailPageView trail={trail} clientTrail={clientTrail} comments={comments}></TrailPageView>
