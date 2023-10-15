@@ -4,8 +4,10 @@
 import React, {useState} from "react";
 import {useMapEvents} from "react-leaflet";
 import TrailCreatorContentView from "@/components/view/trail-creator-content/trail-creator-content.view";
+import {ICompiledGeoTrail} from "@/models/shared/trail/trail.interface";
 
 interface TrailCreatorContentPresenterProps {
+    onUpdate: (compiledTrail: ICompiledGeoTrail) => void;
 }
 
 interface OSRMResponse {
@@ -18,6 +20,26 @@ interface OSRMResponse {
         distance: number;
     }[];
 }
+
+interface IntermediateTrailState {
+    polylines: [number, number][][];
+    lengths: number[];
+    durations: number[];
+}
+
+const compileData = (state: IntermediateTrailState, waypointsLatLng: [number, number][]): ICompiledGeoTrail => {
+    const polyline = state.polylines.map(segment => segment.flat()).flat();
+    const length = state.lengths.reduce((prev, curr) => prev + curr, 0);
+    const duration = state.durations.reduce((prev, curr) => prev + curr, 0);
+    const waypoints = waypointsLatLng.flat();
+
+    return {
+        polyline,
+        duration,
+        length,
+        waypoints
+    };
+};
 
 const retrieveRoute = async (start: [number, number], end: [number, number]): Promise<{duration: number, length: number, polyline: [number, number][]}> => {
     try {
@@ -65,55 +87,92 @@ const retrieveRoute = async (start: [number, number], end: [number, number]): Pr
  * @param props {TrailCreatorContentPresenterProps} The properties of this presenter.
  */
 const TrailCreatorContentPresenter: React.FC<TrailCreatorContentPresenterProps> = props => {
+    const {onUpdate} = props;
     const [waypoints, setWaypoints] = useState<[number, number][]>([]);
-    const [polylines, setPolylines] = useState<[number, number][][]>([]);
-    const [segmentLengths, setSegmentLengths] = useState<number[]>([]);
-    const [segmentDurations, setSegmentDurations] = useState<number[]>([]);
+    const [segments, setSegments] = useState<IntermediateTrailState>({
+        polylines: [],
+        lengths: [],
+        durations: []
+    });
 
     const addWaypoint = async (latlng: [number, number]) => {
         const newWaypoints = [...waypoints, latlng];
 
         if (newWaypoints.length < 2) {
             setWaypoints(newWaypoints);
-            // TODO: Compile data and push outside?
+            onUpdate(compileData(segments, newWaypoints));
             return;
         }
 
         const route = await retrieveRoute(newWaypoints[newWaypoints.length - 2], latlng);
 
-        const newPolylines = [...polylines, route.polyline];
-        const newSegmentLengths = [...segmentLengths, route.length];
-        const newSegmentDurations = [...segmentDurations, route.duration];
-        setWaypoints(newWaypoints);
-        setPolylines(newPolylines);
-        setSegmentLengths(newSegmentLengths);
-        setSegmentDurations(newSegmentDurations);
+        const polylines = [...segments.polylines, route.polyline];
+        const lengths = [...segments.lengths, route.length];
+        const durations = [...segments.durations, route.duration];
 
-        // TODO: Compile data and push outside?
+        const newSegments = {polylines, lengths,durations};
+
+        setWaypoints(newWaypoints);
+        setSegments(newSegments);
+        onUpdate(compileData(newSegments, newWaypoints));
     };
 
-    const removeWaypoint = (index: number) => {
+    const removeWaypoint = async (index: number) => {
         if (waypoints.length <= index || index < 0) {
             return;
         }
 
-        const hasPrecedingSegment = index > 0;
-        const hasSucceedingSegment = index < waypoints.length - 1;
-
         // Delete the waypoint and update waypoints.
         const newWaypoints = [...waypoints];
         newWaypoints.splice(index, 1);
+
+        if (newWaypoints.length < 2) {
+            const newSegments = {polylines: [], lengths: [], durations: []};
+            setWaypoints(newWaypoints);
+            setSegments(newSegments);
+            onUpdate(compileData(newSegments, newWaypoints));
+            return;
+        }
+
+
+        const polylines = [...segments.polylines];
+        const lengths = [...segments.lengths];
+        const durations = [...segments.durations];
+
+        const hasPrecedingSegment = index > 0;
+        const hasSucceedingSegment = index < waypoints.length - 1;
+
+        // In the case that there is a route segment that leads FROM this point,
+        // we remove it here.
+        if (hasSucceedingSegment) {
+            polylines.splice(index, 1);
+            lengths.splice(index, 1);
+            durations.splice(index, 1);
+        }
+
+        if (hasPrecedingSegment) {
+            const segmentIndex = index - 1;
+            if (newWaypoints.length > segmentIndex + 1) {
+                const route = await retrieveRoute(newWaypoints[segmentIndex], newWaypoints[segmentIndex + 1]);
+                polylines[segmentIndex] = route.polyline;
+                lengths[segmentIndex] = route.length;
+                durations[segmentIndex] = route.duration;
+            } else {
+                polylines.splice(segmentIndex, 1);
+                lengths.splice(segmentIndex, 1);
+                durations.splice(segmentIndex, 1);
+            }
+        }
+
+        const newSegments = {polylines, lengths, durations};
+
         setWaypoints(newWaypoints);
-
-
-
-        // TODO: Remove from waypoints
-        // TODO: Remove matching polyline segments (before and after)
-        // TODO: Recalculate new polilines if necessary
-        // TODO: Compile data and push outside?
+        setSegments(newSegments);
+        onUpdate(compileData(newSegments, newWaypoints));
     };
 
     const modifyWaypoint = async (index: number, latlng: [number, number]) => {
+        console.log("Modify Waypoints", waypoints);
         if (waypoints.length <= index || index < 0) {
             return;
         }
@@ -127,46 +186,48 @@ const TrailCreatorContentPresenter: React.FC<TrailCreatorContentPresenterProps> 
 
         if (!hasPrecedingSegment && !hasSucceedingSegment) {
             setWaypoints(newWaypoints);
-            // TODO: Compile data and push outside?
+            onUpdate(compileData(segments, newWaypoints));
             return;
         }
 
-        const newPolylines = [...polylines];
-        const newSegmentLengths = [...segmentLengths];
-        const newSegmentDurations = [...segmentDurations];
+        const polylines = [...segments.polylines];
+        const lengths = [...segments.lengths];
+        const durations = [...segments.durations];
 
         if (hasPrecedingSegment) {
             const segmentIndex = index - 1;
             const route = await retrieveRoute(newWaypoints[segmentIndex], latlng);
-            newPolylines[segmentIndex] = route.polyline;
-            newSegmentLengths[segmentIndex] = route.length;
-            newSegmentDurations[segmentIndex] = route.duration;
+            polylines[segmentIndex] = route.polyline;
+            lengths[segmentIndex] = route.length;
+            durations[segmentIndex] = route.duration;
         }
 
         if (hasSucceedingSegment) {
             const segmentIndex = index;
             const route = await retrieveRoute(latlng, newWaypoints[segmentIndex + 1]);
-            newPolylines[segmentIndex] = route.polyline;
-            newSegmentLengths[segmentIndex] = route.length;
-            newSegmentDurations[segmentIndex] = route.duration;
+            polylines[segmentIndex] = route.polyline;
+            lengths[segmentIndex] = route.length;
+            durations[segmentIndex] = route.duration;
         }
 
+        const newSegments = {polylines, lengths, durations};
+
         setWaypoints(newWaypoints);
-        setPolylines(newPolylines);
-        setSegmentLengths(newSegmentLengths);
-        setSegmentDurations(newSegmentDurations);
-        // TODO: Compile data and push outside?
+        setSegments(newSegments);
+        onUpdate(compileData(newSegments, newWaypoints));
     };
 
-    const map = useMapEvents({
+    useMapEvents({
         click(e) {
-            addWaypoint([e.latlng.lat, e.latlng.lng]);
+            if ((e.originalEvent.target as HTMLElement)?.classList?.contains("trail-creator-view")) {
+                addWaypoint([e.latlng.lat, e.latlng.lng]); // async.
+            }
         },
     });
 
     return (
         <TrailCreatorContentView waypoints={waypoints}
-                                 polylines={polylines}
+                                 polylines={segments.polylines}
                                  removeWaypoint={removeWaypoint}
                                  modifyWaypoint={modifyWaypoint}></TrailCreatorContentView>
     );

@@ -1,0 +1,16 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: add-trail-page;
+
+.#{$c}-full-width-container {
+    @include flex-column(true, false);
+    margin-top: 9rem;
+    width: 100%;
+
+    > .#{$c}-boxed-container {
+        @include flex-column;
+        width: $safe-col-width;
+    }
+}
