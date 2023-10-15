@@ -27,7 +27,7 @@ async function seedTrails() {
         return;
     }
 
-    const existingUser = await UserModel.findOne({}).exec();
+    const existingUser = await UserService.findOneReference(USER_ONE().username);
 
     // GUARD: If we do not have a user, we cannot attach a creator to the trails.
     if (!existingUser) {
