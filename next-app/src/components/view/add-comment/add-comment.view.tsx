@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./add-comment.view.scss";
 import { IComment } from "@/models/shared/comment/comment.interface";
 import ButtonView, { ButtonType } from "../button/button.view";
+import LoadingLayoutPresenter from "@/components/presenter/loading-layout/loading-layout.presenter";
 
 interface AddCommentViewProps {
     addComment: (comment: Partial<IComment>) => void;
@@ -40,7 +41,8 @@ const AddCommentView: React.FC<AddCommentViewProps> = (
            <p className={"form-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
            <input name="title" type="text" placeholder="Title" onChange={inputChange}/>
            <input name="text" placeholder="What do you think about the trail?" className="add-comment-main-text" onChange={inputChange}/>
-           <ButtonView text="submit" type={ButtonType.DEFAULT} loading={loadingState} onClick={sendComment}/>
+           <ButtonView text="submit" type={ButtonType.DEFAULT} onClick={sendComment}/>
+           <LoadingLayoutPresenter active={loadingState}/>
         </div>
     );
 };
