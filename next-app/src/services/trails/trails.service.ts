@@ -3,12 +3,13 @@ import {
     PopulatedServerTrail,
     PopulatedServerTrailWithID,
     ServerTrailWithID,
-    TrailModel
+    TrailModel,
+    ServerTrail
 } from "@/models/server/trail/trail";
-import {Nullable, WithID} from "@/models/shared/utility.types";
-import mongoose from "mongoose";
+import {Nullable} from "@/models/shared/utility.types";
+import {Document} from "mongoose";
 import {UserService} from "@/services/users/service";
-import {ReturnModelType} from "@typegoose/typegoose";
+import { TrailValidation } from "@/models/shared/trail/trail.validation";
 
 export class TrailsService {
     /**
@@ -78,5 +79,15 @@ export class TrailsService {
         delete (copy as any)["_id"];
         delete (copy as any)["__v"];
         return copy;
+    }
+
+    public static async insertOne(trail: ServerTrail): Promise<Document> {
+        try{
+            TrailValidation.validateTrail(trail);
+            const record = new TrailModel({...trail});
+            return await record.save();
+        }catch(error:any){
+            throw new Error("Invalid trail");
+        }
     }
 }

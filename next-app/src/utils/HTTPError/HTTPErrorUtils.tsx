@@ -1,6 +1,7 @@
 import {NextApiResponse} from "next";
 
 export enum HttpStatus {
+    REDIRECT = 302,
     BAD_REQUEST = 400,
     UNAUTHORIZED = 401,
     FORBIDDEN = 403,
@@ -13,12 +14,17 @@ export function sendError(res: NextApiResponse, status: HttpStatus): void {
     res.status(status).json({error: getStatusMessage(status)});
 }
 
+export function sendCustomError(res: NextApiResponse, status: HttpStatus, customError: string): void {
+    res.status(status).json({error: customError});
+}
+
 export function methodNotAllowed(res: NextApiResponse): void {
     sendError(res, HttpStatus.METHOD_NOT_ALLOWED);
 }
 
 // Define messages for each status code
 const statusMessages: Record<HttpStatus, string> = {
+    [HttpStatus.REDIRECT]: "Redirect",
     [HttpStatus.BAD_REQUEST]: "Bad Request",
     [HttpStatus.UNAUTHORIZED]: "Unauthorized",
     [HttpStatus.FORBIDDEN]: "Forbidden",

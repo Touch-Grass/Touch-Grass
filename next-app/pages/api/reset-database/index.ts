@@ -4,6 +4,7 @@ import dbConnect from "@/lib/dbConnection";
 import {UserModel} from "@/models/server/user/user";
 import {TrailModel} from "@/models/server/trail/trail";
 import {seed} from "@/seed/seed";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
 
 class ResetHandler extends RequestHandler {
     constructor() {
@@ -28,8 +29,7 @@ class ResetHandler extends RequestHandler {
             await seed();
             return response.status(200).json({message: "Database reset"});
         } catch (e: any) {
-            console.error(e);
-            return response.status(400).json({error: e?.message});
+            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
         }
     }
 }

@@ -1,8 +1,7 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import {RequestHandler} from "@/utils/HTTPHandler/HTTPHandler";
 import {AuthService} from "@/services/auth/service";
-import {IUser} from "@/models/shared/user/user.interface";
-import {UserValidation} from "@/models/shared/user/user.validation";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
 
 class ValidateHandler extends RequestHandler {
     constructor() {
@@ -21,7 +20,7 @@ class ValidateHandler extends RequestHandler {
             if(await AuthService.performValidation(request.body.token))
                 return response.status(200).json({ message: "Validation successful" });
         }catch(e: any){
-            return response.status(400).json({error: e?.message});
+            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);;
         }
     }
 }

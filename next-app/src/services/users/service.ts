@@ -2,6 +2,8 @@ import {Document} from "mongoose";
 import {UserModel} from "@/models/server/user/user";
 import {CryptographyUtils} from "@/utils/Cryptography/CryptographicUtils";
 import {IUser} from "@/models/shared/user/user.interface";
+import type {Ref} from "@typegoose/typegoose";
+import { User } from "@/models/server/user/user";
 
 export class UserService {
     /**
@@ -46,6 +48,14 @@ export class UserService {
             email: result.email,
             password: result.password
         };
+    }
+
+    //Returns a document reference from the DB
+    public static async findOneReference(username: string): Promise<Ref<User>> {
+        const result = await UserModel.findOne({ username: username}).exec();
+        if(result == null)
+            throw new Error("User not found");
+        return result;
     }
 
     /**

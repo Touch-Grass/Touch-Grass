@@ -1,6 +1,7 @@
 import {UserModel} from "@/models/server/user/user";
 import {UserService} from "@/services/users/service";
 import {TrailModel} from "@/models/server/trail/trail";
+import { TrailsService } from "@/services/trails/trails.service";
 import {TRAIL_ONE, TRAIL_THREE, TRAIL_TWO, USER_ONE} from "@/seed/data";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +27,7 @@ async function seedTrails() {
         return;
     }
 
-    const existingUser = await UserModel.findOne({}).exec();
+    const existingUser = await UserService.findOneReference(USER_ONE().username);
 
     // GUARD: If we do not have a user, we cannot attach a creator to the trails.
     if (!existingUser) {
@@ -36,9 +37,9 @@ async function seedTrails() {
 
     console.log("Creating trails...");
 
-    await TrailModel.insertOne(TRAIL_ONE(existingUser));
-    await TrailModel.insertOne(TRAIL_TWO(existingUser));
-    await TrailModel.insertOne(TRAIL_THREE(existingUser));
+    await TrailsService.insertOne(TRAIL_ONE(existingUser));
+    await TrailsService.insertOne(TRAIL_TWO(existingUser));
+    await TrailsService.insertOne(TRAIL_THREE(existingUser));
 
     console.log("Created trails.");
 }
