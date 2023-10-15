@@ -15,6 +15,15 @@ By following this simple convention, we categorize branches by their purpose, ma
 ## CSS Class Naming Convention
 
 In addition to our branch naming convention, we also maintain a CSS class naming convention to ensure consistency in our styles. This convention follows the "this-is-a-class" style, where class names are written in lowercase letters with hyphens between words.
+Additionally, we ensure that we always include a unique component name as a prefix, so styles do not overlap and pollute other components.
+
+Typically, to make this process easier, we will extract the component name as an SCSS variable like so:
+
+`$c: my-component;`
+
+This allows us a consistent-by-default approach:
+
+`.#{$c}-boxed-container` will resolve to `my-component-boxed-container`.
 
 ### Example CSS Class Names:
 

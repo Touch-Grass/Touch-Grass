@@ -27,7 +27,7 @@ const UserIcon: React.FC<UserIconProps> = ({username, userProfilePic}) => {
                     width={40}
                     height={40}
                 ></Image>
-                <Image className={"user-icon-chevrown-down" + (dropdownOpen? " open" : "")} src='/chevron-down.svg' alt='logo' width={25} height={25} ></Image>
+                <Image className={"user-icon-chevron-down" + (dropdownOpen? " open" : "")} src='/chevron-down.svg' alt='logo' width={25} height={25} ></Image>
             </div>
             <div className={"user-icon-container-menu" + (dropdownOpen? " open" : "")}>
                 <div className='user-icon-container-menu-content'>

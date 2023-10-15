@@ -20,7 +20,8 @@ const TrailMapContentView: React.FC<TrailMapContentViewProps> = props => {
 
     return (
         <>
-            <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution={"&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>"}/>
+            <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+                       attribution={"&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>"}/>
             <Polyline positions={polyline} color={"#FF0000"} weight={3} smoothFactor={1}></Polyline>
             {waypoints.map((waypoint, i) => (<Marker key={i} icon={markerIcon} position={waypoint}></Marker>))}
         </>

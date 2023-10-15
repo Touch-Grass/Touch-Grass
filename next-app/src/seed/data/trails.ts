@@ -653,7 +653,7 @@ export const TRAIL_TWO: TrailGenerator = <T>(creator: T) => ({
         " of Sweden's bright celebrations with its enigmatic past.",
     difficulty: 0.2,
     length: 30,
-    terrain: "The Floor Is All Snakes",
+    terrain: "Desert",
     duration: 169,
     location: "Sandhamn",
     searchLocation: "sandhamn",

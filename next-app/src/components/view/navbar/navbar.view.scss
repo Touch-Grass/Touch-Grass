@@ -2,7 +2,9 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-.navbar {
+$c: navbar;
+
+.#{$c} {
     @include flex-row(true, true);
     width: 100%;
 
@@ -18,20 +20,20 @@
         left: 0;
     }
 
-    > .navbar-content {
+    > .#{$c}-content {
         @include flex-row(false, true);
         justify-content: space-between;
         position: relative;
 
         width: $safe-col-width;
 
-        > .navbar-logo, .navbar-logo > img {
+        > .#{$c}-logo, .#{$c}-logo > img {
             flex-shrink: 0;
             width: $navbar-height;
             height: $navbar-height;
         }
 
-        > .navbar-title {
+        > .#{$c}-title {
             @include unselectable;
 
             // We center the title manually because here we cannot rely on flex space-between.
@@ -54,12 +56,12 @@
             }
         }
 
-    button{
-        margin-left: 2rem;
+        button {
+            margin-left: 2rem;
+        }
     }
-}
 
-    .signin-container{
+    .signin-container {
         visibility: visible;
     }
 }

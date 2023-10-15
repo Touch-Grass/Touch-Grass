@@ -10,6 +10,7 @@ import { Nullable } from "@/models/shared/utility.types";
 import AddCommentView from "../add-comment/add-comment.view";
 import TrailPageHeaderView from "@/components/view/trail-page-header/trail-page-header.view";
 import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
+import moment from "moment";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -28,6 +29,9 @@ const LazyLoadedTrailMapView = dynamic(
 const TrailPageView: React.FC<TrailPageViewProps> = props => {
     const {trail, clientTrail} = props;
 
+    // TODO: We REALLY should put this in some utils file...
+    const duration = moment.duration(props.trail.duration, "minutes");
+
     return (
         <div className={"trail-page-full-width-container"}>
             <div className={"trail-page-boxed-container"}>
@@ -41,6 +45,14 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                                 </div>
                                 <div className={"trail-page-prop-value"}>
                                     {trail.length.toFixed(1)} km
+                                </div>
+                            </div>
+                            <div className={"trail-page-prop"}>
+                                <div className={"trail-page-prop-label"}>
+                                    Duration
+                                </div>
+                                <div className={"trail-page-prop-value"}>
+                                    {Math.floor(duration.hours())}h {Math.round(duration.minutes())}m
                                 </div>
                             </div>
                             <div className={"trail-page-prop"}>
