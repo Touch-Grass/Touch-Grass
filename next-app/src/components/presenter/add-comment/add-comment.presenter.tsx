@@ -53,10 +53,13 @@ const AddCommentPresenter: React.FC<AddCommentPresenterProps> = props => {
             if (!response.ok) {
                 const errorData = await response.json();
                 setErrorString(errorData.error);
-            }else{
-                setRegistrationCompleted(true);
+            } else {
+                //Refresh components and push main page
+                const data = await response.json();
+                router.push("/trail/"+data.insertedTrailId);
             }
         } catch (error: any) {
+            console.error("Error:", error);
             const errorString = error.toString();
             setErrorString(errorString);
         } finally {
