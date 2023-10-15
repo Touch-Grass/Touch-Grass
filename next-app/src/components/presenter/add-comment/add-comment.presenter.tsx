@@ -12,6 +12,7 @@ import { UserValidation } from "@/models/shared/user/user.validation";
 import { useRouter } from "next/navigation";
 import { CommentValidation } from "@/models/shared/comment/comment.validation";
 import { cookies } from "next/headers";
+import { HttpStatus } from "@/utils/HTTPError/HTTPErrorUtils";
 
 
 interface AddCommentPresenterProps {
@@ -51,6 +52,9 @@ const AddCommentPresenter: React.FC<AddCommentPresenterProps> = props => {
             });
 
             if (!response.ok) {
+                if(response.status == HttpStatus.UNAUTHORIZED){
+                    router.push("/login");
+                }
                 const errorData = await response.json();
                 setErrorString(errorData.error);
             } else {
