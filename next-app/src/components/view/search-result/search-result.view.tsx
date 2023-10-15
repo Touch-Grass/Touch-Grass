@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import "./search-result.view.scss";
-import {ServerTrailWithID} from "@/models/server/trail/trail";
+import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-meter.view";
+import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
 
 interface SearchResultViewProps {
-    trail: ServerTrailWithID;
+    trail: PopulatedServerTrailWithID;
 }
 
 const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
@@ -39,6 +40,9 @@ const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
                         <span>{props.trail.terrain}</span>
                     </div>
                     <div className="search-result-user"></div>
+                </div>
+                <div className={"search-result-user"}>
+                    <UserRepresentationView userName={props.trail.creator.name + " " + props.trail.creator.surname}></UserRepresentationView>
                 </div>
             </div>
         </div>

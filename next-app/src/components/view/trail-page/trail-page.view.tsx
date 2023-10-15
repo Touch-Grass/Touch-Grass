@@ -9,6 +9,7 @@ import { ServerCommentWithID } from "@/models/server/comment/comment";
 import { Nullable } from "@/models/shared/utility.types";
 import AddCommentView from "../add-comment/add-comment.view";
 import TrailPageHeaderView from "@/components/view/trail-page-header/trail-page-header.view";
+import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -58,6 +59,9 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                             </div>
                         </div>
                         <div className={"trail-page-description"}>{trail.description}</div>
+                        <div className={"trail-page-user"}>
+                            <UserRepresentationView userName={trail.creator.name + " " + trail.creator.surname}></UserRepresentationView>
+                        </div>
                     </div>
                     <div className={"trail-page-right"}>
                         <LazyLoadedTrailMapView trail={clientTrail}></LazyLoadedTrailMapView>

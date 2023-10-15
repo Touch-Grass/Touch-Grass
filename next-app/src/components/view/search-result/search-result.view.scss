@@ -49,6 +49,10 @@ $c: search-result;
             line-height: normal;
         }
 
+        > .#{$c}-user {
+            flex-shrink: 0;
+        }
+
         > .#{$c}-extras {
             @include flex-row;
             margin: 3.5rem 0;

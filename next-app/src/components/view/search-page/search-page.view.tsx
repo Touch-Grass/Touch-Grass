@@ -23,7 +23,7 @@ const TrailPageView: React.FC<SearchPageViewProps> = props => {
                 </div>
                 {trails.map((trail) => (
                     <Link key={trail._id.toString()} href={"/trail/" + trail._id.toString()}>
-                        <SearchResultView trail={trail as any}/>
+                        <SearchResultView trail={trail}/>
                     </Link>
                 ))}
             </div>

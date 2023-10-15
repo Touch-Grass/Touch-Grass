@@ -1,0 +1,25 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: user-representation;
+
+.#{$c} {
+    @include flex-row(false, true);
+    font-size: 2rem;
+
+    .#{$c}-icon {
+        @include flex-column(true, true);
+        height: 4.2rem;
+        width: 4.2rem;
+        background-color: $rich-black;
+        border-radius: 100%;
+        overflow: hidden;
+        margin-right: 4rem;
+
+        svg {
+            width: 3.2rem;
+            height: 3.2rem;
+        }
+    }
+}
