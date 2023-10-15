@@ -4,12 +4,15 @@ import "./search-result.view.scss";
 import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-meter.view";
 import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
+import moment from "moment/moment";
 
 interface SearchResultViewProps {
     trail: PopulatedServerTrailWithID;
 }
 
 const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
+    const duration = moment.duration(props.trail.duration, "minutes");
+
     return (
         <div className="search-result-container">
             <div className="search-result-image-container">
@@ -33,13 +36,16 @@ const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
                 <div className="search-result-extras">
                     <div className={"search-result-extra"}>
                         <span>Length</span>
-                        <span>{props.trail.length} km</span>
+                        <span>{props.trail.length.toFixed(1)} km</span>
+                    </div>
+                    <div className={"search-result-extra"}>
+                        <span>Duration</span>
+                        <span>{Math.floor(duration.hours())}h {Math.round(duration.minutes())}m</span>
                     </div>
                     <div className={"search-result-extra"}>
                         <span>Terrain</span>
                         <span>{props.trail.terrain}</span>
                     </div>
-                    <div className="search-result-user"></div>
                 </div>
                 <div className={"search-result-user"}>
                     <UserRepresentationView userName={props.trail.creator.name + " " + props.trail.creator.surname}></UserRepresentationView>

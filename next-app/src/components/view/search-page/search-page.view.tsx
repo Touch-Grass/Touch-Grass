@@ -22,6 +22,7 @@ const TrailPageView: React.FC<SearchPageViewProps> = props => {
                         <SmallSearchBarPresenter initialValue={location}></SmallSearchBarPresenter>
                     </div>
                 </div>
+                {trails.length === 0 ? (<div className={"search-page-not-found"}>No trails found. :(</div>) : (<></>)}
                 {trails.map((trail) => (
                     <Link key={trail._id.toString()} href={"/trail/" + trail._id.toString()}>
                         <SearchResultView trail={trail}/>
