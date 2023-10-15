@@ -5,7 +5,7 @@
 .footer{
     @include flex-row(true, true);
     width: 100%;
-    height: 35vh;
+    height: $footer-height;
     background-color: $rich-black;
     color: $baby-powder;
     > .footer-title{

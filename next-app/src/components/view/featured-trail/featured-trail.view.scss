@@ -12,6 +12,8 @@ $c: featured-trail;
         width: 35rem;
         height: 35rem;
         border-radius: 1rem;
+        object-fit: cover;
+        object-position: center;
     }
     > .#{$c}-location{
         margin-top: 2rem;
@@ -21,7 +23,14 @@ $c: featured-trail;
         font-size: 3rem;
     }
     > .#{$c}-details{
+        @include flex-row(false, true);
+        margin-top: 2rem;
         width: 100%;
         font-size: 2rem;
+        > .#{$c}-detail{
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
     }
 }

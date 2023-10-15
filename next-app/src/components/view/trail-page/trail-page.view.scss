@@ -48,6 +48,11 @@ $c: trail-page;
 
                 > .#{$c}-description {
                     margin-top: 4rem;
+
+                }
+
+                > .#{$c}-user {
+                    margin-top: 4rem;
                 }
 
                 > .#{$c}-basic-properties {
@@ -66,26 +71,6 @@ $c: trail-page;
                         }
                     }
                 }
-            }
-        }
-
-        > .trail-header {
-            @include flex-column;
-            position: relative;
-            width: 100%;
-            height: 45rem;
-            background-color: gray;
-            border-radius: 1.5rem;
-            margin-bottom: 4rem;
-
-            > .trail-header-label {
-                position: absolute;
-                $padding: 4rem;
-                left: $padding;
-                bottom: $padding;
-                font-size: 4rem;
-                color: white;
-                font-weight: 700;
             }
         }
         > .#{$c}-comments{

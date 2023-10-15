@@ -8,6 +8,8 @@ import CommentComponent from "@/components/view/comment/comment";
 import { ServerCommentWithID } from "@/models/server/comment/comment";
 import { Nullable } from "@/models/shared/utility.types";
 import AddCommentView from "../add-comment/add-comment.view";
+import TrailPageHeaderView from "@/components/view/trail-page-header/trail-page-header.view";
+import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -29,10 +31,7 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
     return (
         <div className={"trail-page-full-width-container"}>
             <div className={"trail-page-boxed-container"}>
-                {/* TODO: Put trail-header into seperate component*/}
-                <div className={"trail-header"}>
-                    <div className={"trail-header-label"}>{trail.name}</div>
-                </div>
+                <TrailPageHeaderView name={trail.name} imageURL={trail.images[0]}></TrailPageHeaderView>
                 <div className={"trail-page-split"}>
                     <div className={"trail-page-left"}>
                         <div className={"trail-page-basic-properties"}>
@@ -60,6 +59,9 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                             </div>
                         </div>
                         <div className={"trail-page-description"}>{trail.description}</div>
+                        <div className={"trail-page-user"}>
+                            <UserRepresentationView userName={trail.creator.name + " " + trail.creator.surname}></UserRepresentationView>
+                        </div>
                     </div>
                     <div className={"trail-page-right"}>
                         <LazyLoadedTrailMapView trail={clientTrail}></LazyLoadedTrailMapView>

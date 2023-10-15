@@ -640,7 +640,7 @@ export const TRAIL_ONE: TrailGenerator = <T>(creator: T) => ({
         59.299552,
         18.159006
     ],
-    images: ["/api/trail-images/1.png"],
+    images: ["/img/demo-trail/1.jpg"]
 });
 
 export const TRAIL_TWO: TrailGenerator = <T>(creator: T) => ({
@@ -1016,7 +1016,7 @@ export const TRAIL_TWO: TrailGenerator = <T>(creator: T) => ({
         59.289013,
         18.911235
     ],
-    images: ["/api/trail-images/2.png", "/api/trail-images/3.png", "/api/trail-images/4.png"]
+    images: ["/img/demo-trail/2.jpg"]
 });
 
 export const TRAIL_THREE: TrailGenerator = <T>(creator: T) => ({
@@ -1658,5 +1658,5 @@ export const TRAIL_THREE: TrailGenerator = <T>(creator: T) => ({
         59.299552,
         18.159006
     ],
-    images: ["/api/trail-images/3.png"],
+    images: ["/img/demo-trail/3.jpg"]
 });

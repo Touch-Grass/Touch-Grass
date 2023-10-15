@@ -10,7 +10,7 @@
     z-index: 1;
 
     box-sizing: border-box;
-    padding-top: 2rem;
+    padding-top: $navbar-spacing;
 
     &.fixed {
         position: absolute;
@@ -27,8 +27,8 @@
 
         > .navbar-logo {
             flex-shrink: 0;
-            width: 10rem;
-            height: 10rem;
+            width: $navbar-height;
+            height: $navbar-height;
         }
 
         > .navbar-title {

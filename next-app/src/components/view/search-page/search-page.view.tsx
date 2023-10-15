@@ -3,6 +3,7 @@ import {PopulatedServerTrailWithID} from "@/models/server/trail/trail";
 import "./search-page.view.scss";
 import SearchResultView from "@/components/view/search-result/search-result.view";
 import Link from "next/link";
+import SmallSearchBarPresenter from "@/components/presenter/small-search-bar/small-search-bar.presenter";
 
 interface SearchPageViewProps {
     trails: PopulatedServerTrailWithID[];
@@ -18,12 +19,13 @@ const TrailPageView: React.FC<SearchPageViewProps> = props => {
                 <div className={"search-page-title-row"}>
                     <div className={"search-page-title"}>{trails.length} trails in {location} </div>
                     <div className={"search-page-auxilliary-title-content"}>
-                        <input className="search-page-input" defaultValue={location}/>
+                        <SmallSearchBarPresenter initialValue={location}></SmallSearchBarPresenter>
                     </div>
                 </div>
+                {trails.length === 0 ? (<div className={"search-page-not-found"}>No trails found. :(</div>) : (<></>)}
                 {trails.map((trail) => (
                     <Link key={trail._id.toString()} href={"/trail/" + trail._id.toString()}>
-                        <SearchResultView trail={trail as any}/>
+                        <SearchResultView trail={trail}/>
                     </Link>
                 ))}
             </div>
