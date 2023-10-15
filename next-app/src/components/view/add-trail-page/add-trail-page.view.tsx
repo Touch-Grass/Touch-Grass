@@ -123,8 +123,8 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
                         accept="image/png, image/jpeg"
                     />
                     <div className={"add-trail-page-image-display"}>
-                        {!!imageURL ? (<Image src={imageURL} width={1000} height={1000}
-                                              alt={"Your image"}></Image>) : (<span>No image selected</span>)}
+                        {!!imageURL ? (<img src={imageURL} width={1000} height={1000}
+                                              alt={"Your image"}></img>) : (<span>No image selected</span>)}
                     </div>
                 </div>
                 <div className={"add-trail-page-creator-section"}>

@@ -13,7 +13,7 @@ const FeaturedTrailView: React.FC<FeaturedTrailViewProps> = (props) => {
 
     return (
         <div className="featured-trail" key={trail.name}>
-            <Image
+            <img
                 className="featured-trail-image"
                 alt={trail.name}
                 src={trail.images[0]}

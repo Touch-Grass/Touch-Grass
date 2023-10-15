@@ -16,10 +16,10 @@ const TrailPageHeaderView: React.FC<TrailPageHeaderViewProps> = (props: TrailPag
 
     return (
         <div className={"trail-header"}>
-            <Image src={imageURL}
+            <img  src={imageURL}
                    width={1000}
                    height={1000}
-                   alt={"Trail image"}></Image>
+                   alt={"Trail image"}></img>
             <div className={"trail-header-overlay"}></div>
             <div className={"trail-header-label"}>{name}</div>
         </div>

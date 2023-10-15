@@ -14,15 +14,16 @@ export class Comment implements Mutable<ServerComment>{
     @prop()
     title: string;
     @prop()
-    public text: string;
+    text: string;
     @prop()
     date: number;
     @prop()
     trail: Ref<Trail>;
 
-    public static async addComment(comment: ServerComment): Promise<Document> {
-        const record = new CommentModel({...comment});
-        return await record.save();
+    //Constructor based on a user interface
+    constructor(comment: IComment) {
+        this.title = comment.title;
+        this.text = comment.text;
     }
 }
 
