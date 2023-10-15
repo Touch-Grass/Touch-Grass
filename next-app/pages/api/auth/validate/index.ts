@@ -17,8 +17,8 @@ class ValidateHandler extends RequestHandler {
     public async handlePost(request: NextApiRequest, response: NextApiResponse): Promise<void> {
         //Try validating
         try{
-            if(await AuthService.performValidation(request.body.token))
-                return response.status(200).json({ message: "Validation successful" });
+            await AuthService.performValidation(request.body.token);
+            return response.status(200).json({ message: "Validation successful" });
         }catch(e: any){
             return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);;
         }

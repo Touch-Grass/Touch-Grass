@@ -17,6 +17,8 @@ interface AddTrailPageViewProps {
     difficulty: string;
     imageURL: string;
     done: boolean;
+    errorString: string;
+    validatingState: boolean;
 
     setGeoTrail: (e: ICompiledGeoTrail) => void;
     setName: (e: string) => void;
@@ -40,6 +42,8 @@ const LazyLoadedTrailCreatorView = dynamic(
 
 const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
     const {
+        errorString,
+        validatingState,
         geoTrail,
         name,
         location,
@@ -65,7 +69,6 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
         <div className={"add-trail-page-full-width-container"}>
             <div className={"add-trail-page-boxed-container"}>
                 <div className={"add-trail-page-header"}>Add your own trail</div>
-
                 <div className={"add-trail-page-fields"}>
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" placeholder="Name"
@@ -140,8 +143,10 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
                     </div>
                 </div>
                 <div className={"add-trail-page-submit-section"}>
-                    <ButtonView disabled={!done} text={"Submit"} type={ButtonType.DEFAULT}></ButtonView>
+                    <ButtonView loading={validatingState} disabled={!done} text={"Submit"} type={ButtonType.DEFAULT} onClick={send}></ButtonView>
+                    {(errorString.length == 0? "" : <p className="form-error">{errorString}</p>)}
                 </div>
+
             </div>
         </div>
     );

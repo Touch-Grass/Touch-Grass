@@ -38,10 +38,9 @@ export class AuthService {
      *   - `true` if the token is valid, the public key is available, and the user exists.
      *   - `false` if any of the validation steps fail.
      */
-    public static async performValidation(token:string):Promise<boolean> {
-        try{
+    public static async performValidation(token:string) {
             if (!token || token.length == 0)
-            throw new Error("Token is empty");
+                throw new Error("Token is empty");
 
             //Check existance of private key
             if (!process.env.PUBLIC_KEY)
@@ -54,13 +53,6 @@ export class AuthService {
             const userData = await UserService.findOne(user);
             if (!userData)
                 throw new Error("User does not exist");
-
-            //Validation correct
-            return true;
-
-        }catch(error : any){
-            return false;
-        }
     }
 
     public static async getUserInfoFromToken(token:string):Promise<IUser|null> {
