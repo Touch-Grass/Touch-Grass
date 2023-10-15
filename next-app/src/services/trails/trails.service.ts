@@ -3,10 +3,11 @@ import {
     PopulatedServerTrail,
     PopulatedServerTrailWithID,
     ServerTrailWithID,
-    TrailModel
+    TrailModel,
+    ServerTrail
 } from "@/models/server/trail/trail";
 import {Nullable, WithID} from "@/models/shared/utility.types";
-import mongoose from "mongoose";
+import {Document} from "mongoose";
 import {UserService} from "@/services/users/service";
 import {ReturnModelType} from "@typegoose/typegoose";
 
@@ -78,5 +79,11 @@ export class TrailsService {
         delete (copy as any)["_id"];
         delete (copy as any)["__v"];
         return copy;
+    }
+
+    public static async insertOne(trail: ServerTrail): Promise<Document> {
+        const record = new TrailModel({...trail});
+        // TODO: Perform validation. Especially type matching and check for additional/missing props. Can typegoose handle parts of this?
+        return await record.save();
     }
 }
