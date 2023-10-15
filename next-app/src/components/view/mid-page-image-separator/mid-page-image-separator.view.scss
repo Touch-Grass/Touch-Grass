@@ -1,0 +1,11 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: mid-page-image-separator;
+
+.#{$c} {
+    width: 100%;
+    height: 40rem;
+    background: url("/img/lukasz-szmigiel-jFCViYFYcus-unsplash.jpg") no-repeat center/cover;
+}
