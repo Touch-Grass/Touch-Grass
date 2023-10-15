@@ -1,4 +1,4 @@
-describe("Search Bar Functionalities", () => {
+describe("Search functionalities", () => {
     beforeEach(() => {
         cy.visit("http://localhost:3000");
     });

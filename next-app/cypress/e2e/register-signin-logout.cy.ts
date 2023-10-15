@@ -1,4 +1,4 @@
-describe("Register and Login Functionalities", () => {
+describe("Register, login, logout functionalities", () => {
     let name: string = "John";
     let surname: string = "Doe";
     let email: string = `email${Date.now()}@example.com`;
@@ -51,7 +51,7 @@ describe("Register and Login Functionalities", () => {
         cy.contains(username);
     });
 
-    it("log in should work", () => {
+    it("log in and log out should work", () => {
         cy.get(".button-login:first").click();
         cy.url().should("include", "/login");
         cy.contains("Log in.");
@@ -65,5 +65,9 @@ describe("Register and Login Functionalities", () => {
         cy.get(".button-default").should("have.text", "Log in").click();
         cy.contains("Hello there");
         cy.contains(username);
+        cy.get(".user-icon-chevrown-down").click();
+        cy.contains("Log Out").click();
+        cy.get(".button-signin");
+        cy.get(".button-login");
     });
 });
