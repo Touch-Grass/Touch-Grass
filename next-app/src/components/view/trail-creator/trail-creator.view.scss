@@ -2,7 +2,9 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-.trail-creator-view {
+$c: trail-creator;
+
+.#{$c}-view {
     height: 80rem;
     width: 100%;
 }

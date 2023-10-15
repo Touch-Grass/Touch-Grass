@@ -2,19 +2,21 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-#hero-search-section{
+$c: hero;
+
+.#{$c}-search-section{
     @include flex-column(true, true);
     background: url("/img/hero-bg.png") no-repeat center/cover;
     height: 100vh;
     width: 100%;
     overflow: hidden;
 
-    > .hero-column {
+    > .#{$c}-column {
         @include flex-column(true, true);
         width: $safe-col-width;
         height: 100%;
 
-        > .hero-tagline {
+        > .#{$c}-tagline {
             font-size: 6.9rem;
             text-align: center;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -33,12 +35,12 @@
             }
         }
 
-        > .hero-search-container {
+        > .#{$c}-search-container {
             @include flex-row(false, true);
             width: 70%;
             margin-top: 5rem;
 
-            > .hero-search-button {
+            > .#{$c}-search-button {
                 cursor: pointer;
                 background: $rich-black;
                 box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.67);
@@ -58,7 +60,7 @@
                 }
             }
 
-            > .hero-search-bar {
+            > .#{$c}-search-bar {
                 padding: 1rem 2.68rem;
                 font-size: 2.2rem;
                 flex-grow: 1;
@@ -74,7 +76,7 @@
             }
         }
     }
-    > .hero-scroll-tip {
+    > .#{$c}-scroll-tip {
         position: relative;
         bottom: 5rem;
         color: #fff;

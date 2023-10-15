@@ -28,10 +28,19 @@ const Navbar: React.FC<NavbarProps> = (
                     <Link className={"navbar-title"} href='/'>TouchGrass.</Link>
                     <div className='signin-container'>
                         {user ?
-                            <UserIcon
-                                username={user.name + " " + user.surname}
-                                userProfilePic='/userIcon.png'
-                            ></UserIcon>
+                            <>
+                                <div className={"navbar-logged-in"}>
+                                    <Link href='/add-trail'>
+                                        <ButtonView text="New trail" loading={false} type={ButtonType.SEARCH}/>
+                                    </Link>
+                                    <UserIcon
+                                        username={user.name}
+                                        userProfilePic='/userIcon.png'
+                                    ></UserIcon>
+                                </div>
+
+                            </>
+
                             :
                             <div>
                                 <Link href='/register'><ButtonView text="Register" loading={false} type={ButtonType.SIGNIN}/></Link>

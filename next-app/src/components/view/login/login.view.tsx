@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { LoginFormFields } from "@/components/presenter/login/login.presenter";
 import ButtonView from "../button/button.view";
 import { ButtonType } from "../button/button.view";
-import "./login.scss";
+import "./login.view.scss";
 
 interface LoginViewProps {
     handleForm: (data:LoginFormFields) => void;

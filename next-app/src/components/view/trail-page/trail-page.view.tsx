@@ -6,11 +6,14 @@ import {ITrail} from "@/models/shared/trail/trail.interface";
 import dynamic from "next/dynamic";
 import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-meter.view";
 import CommentComponent from "@/components/view/comment/comment";
-import { ServerCommentWithID } from "@/models/server/comment/comment";
-import { Nullable } from "@/models/shared/utility.types";
+import {ServerCommentWithID} from "@/models/server/comment/comment";
+import {Nullable} from "@/models/shared/utility.types";
+import AddCommentView from "../add-comment/add-comment.view";
 import TrailPageHeaderView from "@/components/view/trail-page-header/trail-page-header.view";
 import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
-import AddCommentPresenter from "@/components/presenter/add-comment/add-comment.presenter";
+import moment from "moment";
+import LoadingSpinnerView from "@/components/view/loading-spinner/loading-spinner.view";
+
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -22,12 +25,26 @@ const LazyLoadedTrailMapView = dynamic(
     () => import("../trail-map/trail-map.view"),
     {
         ssr: false,
-        loading: () => (<div>loading...</div>), // TODO: Loading spinner
+        loading: () => (
+            <div style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <LoadingSpinnerView></LoadingSpinnerView>
+            </div>
+        ),
     }
 );
 
 const TrailPageView: React.FC<TrailPageViewProps> = props => {
     const {trail, clientTrail} = props;
+
+    // TODO: We REALLY should put this in some utils file...
+    const duration = moment.duration(props.trail.duration, "minutes");
 
     return (
         <div className={"trail-page-full-width-container"}>
@@ -42,6 +59,14 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                                 </div>
                                 <div className={"trail-page-prop-value"}>
                                     {trail.length.toFixed(1)} km
+                                </div>
+                            </div>
+                            <div className={"trail-page-prop"}>
+                                <div className={"trail-page-prop-label"}>
+                                    Duration
+                                </div>
+                                <div className={"trail-page-prop-value"}>
+                                    {Math.floor(duration.hours())}h {Math.round(duration.minutes())}m
                                 </div>
                             </div>
                             <div className={"trail-page-prop"}>
@@ -81,7 +106,7 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                         props.comments?.map((comment) => (
                         <CommentComponent key={comment._id.toString()}comment={comment}user={comment.commenter}/>))
                     }
-            </div>
+                </div>
             </div>
         </div>
     );

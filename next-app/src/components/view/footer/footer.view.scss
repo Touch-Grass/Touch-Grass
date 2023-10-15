@@ -2,21 +2,26 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-.footer{
+$c: footer;
+
+.#{$c} {
     @include flex-row(true, true);
     width: 100%;
     height: $footer-height;
     background-color: $rich-black;
     color: $baby-powder;
-    > .footer-title{
+
+    > .#{$c}-title {
         font-size: 4rem;
         margin-left: 5rem;
     }
-    > .team-members{
+
+    > .#{$c}-team-members {
         @include flex-column(false, true);
         font-size: 2rem;
         margin-left: 40%;
-        > .team-member{
+
+        > .#{$c}-team-member {
             margin-top: 10%;
         }
     }

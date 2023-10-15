@@ -44,7 +44,7 @@ const AddTrailPagePresenter: React.FC = props => {
             });
 
             const data: {url: string} = await res.json();
-            setImageURL(data.url);
+            setImageURL(data.url ?? "");
         } catch (error) {
             console.error("something went wrong, check your console.");
         }

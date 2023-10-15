@@ -1,8 +1,8 @@
 import React from "react";
 import "./page.scss";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
-import FooterPresenter from "@/components/presenter/footer/footer.presenter";
 import MainPagePresenter from "@/components/presenter/main-page/main-page.presenter";
+import FooterView from "@/components/view/footer/footer.view";
 
 // Unfortunately, since we display dynamic data in the statistics section,
 // we cannot have the home page render statically.
@@ -15,7 +15,7 @@ export default async function Home() {
             <NavbarPresenter fixed={true}/>
             <main className={"hero"}>
                 <MainPagePresenter/>
-                <FooterPresenter/>
+                <FooterView/>
             </main>
         </>
     );

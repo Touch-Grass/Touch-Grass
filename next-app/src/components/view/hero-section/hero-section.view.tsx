@@ -10,7 +10,7 @@ const HeroSectionView: React.FC<HeroSectionViewProps> = (props) => {
     const {searchString, onSearchStringChange, onSearch} = props;
 
     return (
-        <div className="homepage-section" id="hero-search-section">
+        <div className="hero-search-section">
             <div className={"hero-column"}>
                 <div className="hero-tagline">
                     You should <a href="https://youtu.be/JSnUF4d9CBk?si=gHwIQvNeDnCqP77d">touch grass</a> today.

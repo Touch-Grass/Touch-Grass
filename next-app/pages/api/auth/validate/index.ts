@@ -20,7 +20,7 @@ class ValidateHandler extends RequestHandler {
             await AuthService.performValidation(request.body.token);
             return response.status(200).json({ message: "Validation successful" });
         }catch(e: any){
-            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);;
+            return sendCustomError(response, HttpStatus.UNAUTHORIZED, e?.message);
         }
     }
 }
