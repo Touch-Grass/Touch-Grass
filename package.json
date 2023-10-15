@@ -4,9 +4,11 @@
     "private": true,
     "description": "",
     "scripts": {
+        "ci-install-e2e": "cd e2e-tests && npm ci",
         "ci-install-next-app": "cd next-app && npm ci",
         "lint-next-app": "cd next-app && npm run lint",
         "build-next-app": "cd next-app && npm run build",
+        "e2e": "cd e2e-tests && npm run ci-test",
         "start": "cd next-app && npm run dev"
     },
     "repository": {

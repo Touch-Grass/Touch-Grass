@@ -55,7 +55,7 @@ const RegisterView: React.FC<RegisterViewProps> = (
             </div>
             :
             <form onSubmit={handleSubmit}>
-                <h2>Sign in.</h2>
+                <h2>Sign up.</h2>
                 <p className={"form-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
                 <div className="form-label-division">
                     <div>
