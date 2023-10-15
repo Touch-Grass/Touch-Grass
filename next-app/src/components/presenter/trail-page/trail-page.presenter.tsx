@@ -45,8 +45,12 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
     let comments: Nullable<ServerCommentWithID[]>=null;
 
     try{
-        comments= await CommentsService.findCommentsForTrail(clientTrail);
-    }catch (e) {}
+
+        console.log("ID------------------",trail._id.toString());
+        comments = await CommentsService.findCommentsForTrail(trail._id);
+    }catch (e) {
+        console.log(e);
+    }
 
 
 
