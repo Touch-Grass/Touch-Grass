@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = (
                             ></UserIcon>
                             :
                             <div>
-                                <Link href='/register'><ButtonView text="Sign in" loading={false} type={ButtonType.SIGNIN}/></Link>
+                                <Link href='/register'><ButtonView text="Register" loading={false} type={ButtonType.SIGNIN}/></Link>
                                 <Link href='/login'><ButtonView text="Log in" loading={false} type={ButtonType.LOGIN}/></Link>
                             </div>
                         }
