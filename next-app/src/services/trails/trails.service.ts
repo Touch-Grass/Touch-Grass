@@ -6,10 +6,10 @@ import {
     TrailModel,
     ServerTrail
 } from "@/models/server/trail/trail";
-import {Nullable, WithID} from "@/models/shared/utility.types";
+import {Nullable} from "@/models/shared/utility.types";
 import {Document} from "mongoose";
 import {UserService} from "@/services/users/service";
-import {ReturnModelType} from "@typegoose/typegoose";
+import { TrailValidation } from "@/models/shared/trail/trail.validation";
 
 export class TrailsService {
     /**
@@ -82,8 +82,12 @@ export class TrailsService {
     }
 
     public static async insertOne(trail: ServerTrail): Promise<Document> {
-        const record = new TrailModel({...trail});
-        // TODO: Perform validation. Especially type matching and check for additional/missing props. Can typegoose handle parts of this?
-        return await record.save();
+        try{
+            TrailValidation.validateTrail(trail);
+            const record = new TrailModel({...trail});
+            return await record.save();
+        }catch(error:any){
+            throw new Error("Invalid trail");
+        }
     }
 }

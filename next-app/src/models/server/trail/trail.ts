@@ -40,6 +40,21 @@ export class Trail implements Mutable<ServerTrail> {
     @prop()
     public featured: boolean;
 
+    //Constructor based on a user interface
+    constructor(trail: ITrail) {
+        this.name = trail.name;
+        this.description = trail.description;
+        this.waypoints = trail.waypoints;
+        this.polyline = trail.polyline;
+        this.difficulty = trail.difficulty;
+        this.length = trail.length;
+        this.terrain = trail.terrain;
+        this.duration = trail.duration;
+        this.location = trail.location;
+        this.images = trail.images;
+        this.searchLocation = trail.searchLocation;
+        this.featured = trail.featured;
+    }
 }
 
 type TrailModelType = ReturnModelType<typeof Trail>;
