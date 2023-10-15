@@ -5,12 +5,13 @@ import {ITrail} from "@/models/shared/trail/trail.interface";
 import dynamic from "next/dynamic";
 import DifficultyMeterView from "@/components/view/difficulty-meter/difficulty-meter.view";
 import CommentComponent from "@/components/view/comment/comment";
-import { ServerCommentWithID } from "@/models/server/comment/comment";
-import { Nullable } from "@/models/shared/utility.types";
+import {ServerCommentWithID} from "@/models/server/comment/comment";
+import {Nullable} from "@/models/shared/utility.types";
 import AddCommentView from "../add-comment/add-comment.view";
 import TrailPageHeaderView from "@/components/view/trail-page-header/trail-page-header.view";
 import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
 import moment from "moment";
+import LoadingSpinnerView from "@/components/view/loading-spinner/loading-spinner.view";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -22,7 +23,18 @@ const LazyLoadedTrailMapView = dynamic(
     () => import("../trail-map/trail-map.view"),
     {
         ssr: false,
-        loading: () => (<div>loading...</div>), // TODO: Loading spinner
+        loading: () => (
+            <div style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center"
+            }}>
+                <LoadingSpinnerView></LoadingSpinnerView>
+            </div>
+        ),
     }
 );
 
@@ -92,7 +104,7 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                         props.comments?.map((comment) => (
                         <CommentComponent key={comment._id.toString()}comment={comment}user={comment.commenter}/>))
                     }
-            </div>
+                </div>
             </div>
         </div>
     );

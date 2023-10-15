@@ -7,6 +7,7 @@ import "./add-trail-page.view.scss";
 import moment from "moment";
 import ButtonView, {ButtonType} from "@/components/view/button/button.view";
 import Image from "next/image";
+import LoadingSpinnerView from "@/components/view/loading-spinner/loading-spinner.view";
 
 interface AddTrailPageViewProps {
     geoTrail: ICompiledGeoTrail;
@@ -35,7 +36,19 @@ const LazyLoadedTrailCreatorView = dynamic(
     () => import("../trail-creator/trail-creator.view"),
     {
         ssr: false,
-        loading: () => (<div>loading...</div>), // TODO: Loading spinner
+        loading: () => (
+            <div style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                transform: "scale(2)"
+            }}>
+                <LoadingSpinnerView></LoadingSpinnerView>
+            </div>
+        ),
     }
 );
 
