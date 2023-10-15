@@ -43,3 +43,21 @@ jobs:
 
             -   name: Build
                 run: npm run build-next-app
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Check out latest commit
+                uses: actions/checkout@v4
+
+            -   name: Install node.js
+                uses: actions/setup-node@v3
+                with:
+                    node-version: latest
+
+            -   name: Build docker image
+                run: docker-compose build --no-cache
+
+            -   name: Run docker image
+                run: docker-compose up -d
+
