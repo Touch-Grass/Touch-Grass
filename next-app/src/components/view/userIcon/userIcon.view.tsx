@@ -35,7 +35,7 @@ const UserIcon: React.FC<UserIconProps> = ({username, userProfilePic}) => {
                         <p>Trails</p>
                         <li><Link href='/'>Saved Trails</Link></li>
                         <li><Link href='/'>My Trails</Link></li>
-                        <li><Link href='/'>Add Trails</Link></li>
+                        <li><Link href='/add-trail'>Add Trails</Link></li>
                         <p>My account</p>
                         <li><Link href='/'>Edit account</Link></li>
                         <li><Link href='/api/auth/logout'>Log Out</Link></li>

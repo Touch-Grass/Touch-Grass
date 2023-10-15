@@ -34,6 +34,7 @@
         "@types/leaflet": "^1.9.6",
         "@types/mime": "^3.0.2",
         "@types/uuid": "^9.0.5",
+        "cypress-file-upload": "^5.0.8",
         "sass": "^1.68.0"
     }
 }
