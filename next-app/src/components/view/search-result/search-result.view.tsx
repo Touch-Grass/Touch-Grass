@@ -32,7 +32,7 @@ const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
                 <div className="search-result-extras">
                     <div className={"search-result-extra"}>
                         <span>Length</span>
-                        <span>{props.trail.length}</span>
+                        <span>{props.trail.length} km</span>
                     </div>
                     <div className={"search-result-extra"}>
                         <span>Terrain</span>
