@@ -150,9 +150,15 @@ $c: add-trail-page;
 
 
         > .#{$c}-submit-section {
-            @include flex-column(true, true);
+            @include flex-column(false, true);
             margin-top: 8rem;
             margin-bottom: 11rem;
+
+            >.form-error{
+                color: $our-red;
+                font-size: 2.2rem;
+                font-weight: bold;
+            }
         }
     }
 }

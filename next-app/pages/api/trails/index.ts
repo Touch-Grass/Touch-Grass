@@ -14,10 +14,15 @@ class TrailHandler extends RequestHandler {
     }
 
     public async handlePost(request: NextApiRequest, response: NextApiResponse): Promise<void> {
+
+        const token = request.cookies["TouchGrass-token"];
         try{
-            //If user is not authenticated
-            const token = CookieService.getCookie();
-            if(!AuthService.performValidation(token)){
+            try{
+                //If user is not authenticated
+                if(!token)
+                    throw new Error("Not authenticated");
+                await AuthService.performValidation(token);
+            }catch(error:any){
                 response.writeHead(HttpStatus.REDIRECT, { Location: "/login" });
                 throw new Error("Not authenticated");
             }
@@ -33,10 +38,11 @@ class TrailHandler extends RequestHandler {
                 throw new Error("Could not find user in database");
             const ref = await UserService.findOneReference(user.username);
             trail.creator = ref;
-
             //Insert user
-            await TrailsService.insertOne(trail);
-            response.status(200).end();
+            const document = await TrailsService.insertOne(trail);
+            const insertedTrailId = document._id;
+
+            return response.status(200).json({ insertedTrailId });
         }catch(e: any){
             return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);;
         }

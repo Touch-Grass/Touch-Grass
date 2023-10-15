@@ -4,7 +4,8 @@ import {
     PopulatedServerTrailWithID,
     ServerTrailWithID,
     TrailModel,
-    ServerTrail
+    ServerTrail,
+    Trail
 } from "@/models/server/trail/trail";
 import {Nullable} from "@/models/shared/utility.types";
 import {Document} from "mongoose";
@@ -81,7 +82,7 @@ export class TrailsService {
         return copy;
     }
 
-    public static async insertOne(trail: ServerTrail): Promise<Document> {
+    public static async insertOne(trail: Trail): Promise<Document> {
         try{
             TrailValidation.validateTrail(trail);
             const record = new TrailModel({...trail});

@@ -1,3 +1,4 @@
+import { ITrail } from "./trail.interface";
 import { Trail } from "@/models/server/trail/trail";
 
 export namespace TrailValidation {
@@ -75,13 +76,13 @@ export namespace TrailValidation {
     }
 
 
-    export function validateTrail(trail: Trail){
+    export function validateTrail(trail: Partial<ITrail> | Trail){
         if (!trail.name)
             throw new Error("Unexistent trail name");
         if (typeof trail.name !== "string")
             throw new Error("Invalid trail name type");
         validateName(trail.name);
-        console.log("MARKER------------------------------------");
+        
         if (!trail.description)
             throw new Error("Unexistent trail description");
         if (typeof trail.description !== "string")
@@ -108,23 +109,11 @@ export namespace TrailValidation {
             throw new Error("Invalid trail difficulty type");
         validateDifficulty(trail.difficulty);
 
-        if (!trail.length)
-            throw new Error("Unexistent trail length");
-        if (typeof trail.length !== "number")
-            throw new Error("Invalid trail length type");
-        validateLength(trail.length);
-
         if (!trail.terrain)
             throw new Error("Unexistent trail terrain");
         if (typeof trail.terrain !== "string")
             throw new Error("Invalid trail terrain type");
         validateTerrain(trail.terrain);
-
-        if (!trail.duration)
-            throw new Error("Unexistent trail duration");
-        if (typeof trail.duration !== "number")
-            throw new Error("Invalid trail duration type");
-        validateDuration(trail.duration);
 
         if (!trail.location)
             throw new Error("Unexistent trail location");
@@ -144,10 +133,5 @@ export namespace TrailValidation {
         if (typeof trail.searchLocation !== "string")
             throw new Error("Invalid trail search location type");
         validateSearchLocation(trail.searchLocation);
-
-        if (!trail.featured)
-            throw new Error("Unexistent trail featured");
-        if (typeof trail.featured !== "boolean")
-            throw new Error("Invalid trail featured type");
     }
 }
