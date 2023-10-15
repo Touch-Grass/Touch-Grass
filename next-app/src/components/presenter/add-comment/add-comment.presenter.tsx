@@ -42,7 +42,7 @@ const AddCommentPresenter: React.FC<AddCommentPresenterProps> = props => {
             };
 
             //Send comment
-            const response = await fetch("/api/comments", {
+            const response = await fetch("/api/comment", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
@@ -58,9 +58,8 @@ const AddCommentPresenter: React.FC<AddCommentPresenterProps> = props => {
                 const errorData = await response.json();
                 setErrorString(errorData.error);
             } else {
-                //Refresh components and push main page
-                const data = await response.json();
-                router.push("/trail/"+data.insertedTrailId);
+                //Refresh components
+                router.refresh();
             }
         } catch (error: any) {
             console.error("Error:", error);

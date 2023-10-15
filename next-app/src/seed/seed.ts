@@ -3,6 +3,10 @@ import {UserService} from "@/services/users/service";
 import {TrailModel} from "@/models/server/trail/trail";
 import { TrailsService } from "@/services/trails/trails.service";
 import {TRAIL_ONE, TRAIL_THREE, TRAIL_TWO, USER_ONE} from "@/seed/data";
+import { CommentModel } from "@/models/server/comment/comment";
+import { CommentsService } from "@/services/comments/comments.service";
+import { COMMENT_ONE, COMMENT_TWO, COMMENT_THREE } from "./data/comments";
+import { ITrail } from "@/models/shared/trail/trail.interface";
 
 export const dynamic = "force-dynamic";
 async function seedUsers() {
@@ -43,11 +47,31 @@ async function seedTrails() {
 
     console.log("Created trails.");
 }
+async function seedComments() {
+    // GUARD: If we already have users in the database, we assume that this step has been done already.
+    const existingComment = await CommentModel.findOne({}).exec();
+    if (!!existingComment) {
+        console.log("Skipping comment creation, comment exist.");
+        return;
+    }
 
+    console.log("Creating comment...");
+
+    const existingUser = await UserService.findOneReference(USER_ONE().username);
+    const existingTrail = await TrailsService.findOneReference(TRAIL_ONE(existingUser).name);
+
+
+    await CommentsService.addComment(COMMENT_ONE(existingUser, existingTrail));
+    await CommentsService.addComment(COMMENT_TWO(existingUser, existingTrail));
+    await CommentsService.addComment(COMMENT_THREE(existingUser, existingTrail));
+
+    console.log("Created comments.");
+}
 export async function seed() {
     const SEED_FUNCTIONS: (() => Promise<void>)[] = [
         seedUsers,
         seedTrails,
+        seedComments,
     ];
 
     // We seed these sequentially because there might be dependencies between entities.

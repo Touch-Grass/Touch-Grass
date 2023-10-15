@@ -23,6 +23,7 @@ class CommentHandler extends RequestHandler {
                 if(!token)
                     throw new Error("Not authenticated");
                 await AuthService.performValidation(token);
+
             }catch(error:any){
                 return sendCustomError(response, HttpStatus.UNAUTHORIZED,"");
             }
@@ -38,7 +39,10 @@ class CommentHandler extends RequestHandler {
             comment.trail=request.body.trail;
 
             //Find comment creator reference based on provided token
-            const ref = await UserService.findOneReference(token);
+            const user = await AuthService.getUserInfoFromToken(token);
+            if(!user)
+                throw new Error("No user found through token");
+            const ref = await UserService.findOneReference(user?.username);
             comment.commenter = ref;
 
             //Insert comment

@@ -5,6 +5,7 @@ import AddTrailPageView from "@/components/view/add-trail-page/add-trail-page.vi
 import { ITrail, ICompiledGeoTrail } from "@/models/shared/trail/trail.interface";
 import { TrailValidation } from "@/models/shared/trail/trail.validation";
 import { useRouter } from "next/navigation";
+import { HttpStatus } from "@/utils/HTTPError/HTTPErrorUtils";
 
 const AddTrailPagePresenter: React.FC = props => {
 
@@ -70,12 +71,12 @@ const AddTrailPagePresenter: React.FC = props => {
         const newDifficulty = refactorDifficulty();
         const imageArray = [imageURL];
         const trail : Partial<ITrail> = {
-            name: name.trim(),
-            description: description.trim(),
+            name: name,
+            description: description,
             difficulty: newDifficulty,
-            terrain: terrain.trim(),
-            location: location.trim(),
-            searchLocation: location.trim().toLowerCase(),
+            terrain: terrain,
+            location: location,
+            searchLocation: location,
             images: imageArray,
             waypoints: geoTrail.waypoints,
             polyline: geoTrail.polyline,
@@ -98,6 +99,9 @@ const AddTrailPagePresenter: React.FC = props => {
             });
 
             if (!response.ok) {
+                if(response.status == HttpStatus.UNAUTHORIZED){
+                    router.push("/login");
+                }
                 const errorData = await response.json();
                 setErrorString(errorData.error);
             } else {
@@ -106,7 +110,6 @@ const AddTrailPagePresenter: React.FC = props => {
                 router.push("/trail/"+data.insertedTrailId);
             }
         } catch (error: any) {
-            console.error("Error:", error);
             const errorString = error.toString();
             setErrorString(errorString);
         } finally {
