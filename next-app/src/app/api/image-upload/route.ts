@@ -6,9 +6,18 @@ import {mkdir, writeFile} from "fs/promises";
 import {HttpStatus} from "@/utils/HTTPError/HTTPErrorUtils";
 import {Nullable} from "@/models/shared/utility.types";
 import {existsSync} from "fs";
+import {AuthService} from "@/services/auth/service";
 
 export async function POST(request: NextRequest) {
-    // TODO: Secure this with auth
+    try {
+        const token = request.cookies.get("TouchGrass-token")?.value ?? "";
+        if (!token) {
+            throw new Error("Not authenticated");
+        }
+        await AuthService.performValidation(token);
+    } catch (e) {
+        return NextResponse.json({error: "Not authenticated."}, {status: HttpStatus.UNAUTHORIZED});
+    }
 
     const formData = await request.formData();
 
