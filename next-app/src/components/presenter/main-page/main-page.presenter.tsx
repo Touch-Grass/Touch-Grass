@@ -1,9 +1,8 @@
 import React from "react";
 import {IUser} from "@/models/shared/user/user.interface";
-import {ITrail} from "@/models/shared/trail/trail.interface";
 import MainPageView from "@/components/view/main-page/main-page.view";
 import {TrailsService} from "@/services/trails/trails.service";
-import {PopulatedServerTrailWithID, ServerTrailWithID, Trail} from "@/models/server/trail/trail";
+import {ServerTrailWithID} from "@/models/server/trail/trail";
 import {UserService} from "@/services/users/service";
 import dbConnect from "@/lib/dbConnection";
 

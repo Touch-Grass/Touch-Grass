@@ -1,13 +1,13 @@
 import React from "react";
 import "./comment.scss";
 import { IUser } from "@/models/shared/user/user.interface";
-import { ITrail } from "@/models/shared/trail/trail.interface";
 import { ServerCommentWithID } from "@/models/server/comment/comment";
-import { IComment } from "@/models/shared/comment/comment.interface";
+import { User } from "@/models/server/user/user";
+import type {Ref} from "@typegoose/typegoose";
 
 interface Commentprops {
     comment:ServerCommentWithID;
-    user: IComment;
+    user: Ref<User>;
 }
 
 const CommentComponent: React.FC<Commentprops> = (props) => {
@@ -18,7 +18,7 @@ const CommentComponent: React.FC<Commentprops> = (props) => {
         <div className="comment-title">{comment.title}</div>
         <div className="comment-text">{comment.text}</div>
         <div className="comment-user"> 
-        <div className="comment-commenter">{user.commenter.username}</div> </div>
+        <div className="comment-commenter">{user.id}</div> </div>
         </div>
         </>
     );

@@ -64,14 +64,20 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                         <LazyLoadedTrailMapView trail={clientTrail}></LazyLoadedTrailMapView>
                     </div>
                 </div>
-            </div>
-            <div className="trail-page-comments">
+
+                <div className="trail-page-comments">
                 <h1>Comments</h1>
+
+                    <div className="trail-page-comment-editor">
+                        
+                    </div>
+
                     {
-                        /*mismatch between user type and comment type 
+
                         props.comments?.map((comment) => (
-                        <CommentComponent key={comment._id.toString()}comment={comment}user={comment}/>))*/
+                        <CommentComponent key={comment._id.toString()}comment={comment}user={comment.commenter}/>))
                     }
+            </div>
             </div>
         </div>
     );

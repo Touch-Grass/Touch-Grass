@@ -88,5 +88,9 @@ $c: trail-page;
                 font-weight: 700;
             }
         }
+        > .#{$c}-comments{
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
     }
 }

@@ -18,7 +18,7 @@ const TrailPageView: React.FC<SearchPageViewProps> = props => {
                 <div className={"search-page-title-row"}>
                     <div className={"search-page-title"}>{trails.length} trails in {location} </div>
                     <div className={"search-page-auxilliary-title-content"}>
-                        <input className="search-page-input" value={location}/>
+                        <input className="search-page-input" defaultValue={location}/>
                     </div>
                 </div>
                 {trails.map((trail) => (
