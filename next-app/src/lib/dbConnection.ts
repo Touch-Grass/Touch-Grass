@@ -24,7 +24,7 @@ export default async function dbConnect(): Promise<Connection> {
 
         try {
             console.log("Seeding database...");
-            seed();
+            await seed();
             console.log("Seeded database...");
         } catch (e) {
             console.error("Error during data seeding:\n", e);

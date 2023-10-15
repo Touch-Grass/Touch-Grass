@@ -11,13 +11,14 @@ export enum ButtonType {
 interface ButtonViewProps {
     text: string;
     loading?: boolean;
+    disabled?: boolean;
     type: ButtonType;
     onClick?: () => void;
 }
 
-const ButtonView: React.FC<ButtonViewProps> = ({text, loading, type, onClick}) => {
+const ButtonView: React.FC<ButtonViewProps> = ({text, disabled, loading, type, onClick}) => {
     return(
-        <button className={type+" loading"} title={text} onClick={onClick}>
+        <button className={type+" loading"} disabled={!!disabled} title={text} onClick={onClick}>
             {(loading? <div className="button-loading-spinner"></div> : text)}
         </button>
     );

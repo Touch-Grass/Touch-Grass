@@ -74,6 +74,12 @@ button {
         height: 2rem;
         animation: spin 2s linear infinite;
     }
+    &:disabled {
+        background-color: gray;
+        cursor: inherit;
+        pointer-events: none;
+    }
+
 }
 
 //Animations
