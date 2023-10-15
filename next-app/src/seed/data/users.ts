@@ -7,5 +7,5 @@ export const USER_ONE: UserGenerator = () => ({
     name: "Frodo",
     surname: "Baggins",
     email: "onering@mordor.tld",
-    password: "MtDoomHike"
+    password: "MtDoomHike1!"
 });

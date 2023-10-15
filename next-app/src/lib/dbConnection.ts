@@ -16,7 +16,6 @@ export default async function dbConnect(): Promise<Connection> {
 
     try {
         const opts: mongoose.ConnectOptions = {
-            bufferCommands: false
         };
 
         const connection = await mongoose.connect(MONGODB_URI, opts);
