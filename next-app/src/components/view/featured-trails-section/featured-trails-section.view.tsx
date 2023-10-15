@@ -1,8 +1,5 @@
-import Image from "next/image";
-import {ITrail} from "@/models/shared/trail/trail.interface";
 import FeaturedTrailView from "@/components/view/featured-trail/featured-trail.view";
 import "./featured-trails-section.view.scss";
-import Link from "next/link";
 import {ServerTrailWithID} from "@/models/server/trail/trail";
 
 interface FeaturedTrailsSectionViewProps {
