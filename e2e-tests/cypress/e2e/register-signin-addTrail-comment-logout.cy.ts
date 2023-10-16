@@ -59,19 +59,12 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get('input[type="file"]').attachFile(imageUrl);
 
         cy.get(".trail-creator-view").then(($element) => {
+            const ratios = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
             const width = $element.width();
             const height = $element.height();
-
-            const relativeX1 = width * 0.3;
-            const relativeY1 = height * 0.3;
-            const relativeX2 = width * 0.6;
-            const relativeY2 = height * 0.6;
-            const relativeX3 = width * 0.9;
-            const relativeY3 = height * 0.9;
-
-            cy.wrap($element).click(relativeX1, relativeY1);
-            cy.wrap($element).click(relativeX2, relativeY2);
-            cy.wrap($element).click(relativeX3, relativeY3);
+            for (const ratio of ratios) {
+                cy.wrap($element).click(width * ratio, height * ratio);
+            }
         });
         // .then(() => {
         //     cy.get(".add-trail-page-creator-stats").within(() => {
