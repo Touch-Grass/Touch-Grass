@@ -48,9 +48,7 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.contains("Log in.");
         cy.get('input[name="username"]').type(username);
         cy.get('input[name="password"]').type(password);
-        cy.get(".button-default")
-            .should("have.text", "Log in")
-            .click({ timeout: 10000 });
+        cy.get(".button-default").should("have.text", "Log in").click();
         cy.contains(name);
         cy.contains("New trail").click();
         cy.get('input[name="name"]').type(trailName);
@@ -69,9 +67,25 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.contains(description);
     });
 
-    // it("should be able to leave comments", () => {
-    //     cy.get('input[name="title"]').type("");
-    // });
+    it("should be able to leave comments", () => {
+        const commentTitle = `comment-title-${username.slice(-10)}`;
+        const commentText = `comment-text-${username}`;
+        cy.get(".button-login:first").click();
+        cy.url().should("include", "/login");
+        cy.contains("Log in.");
+        cy.get('input[name="username"]').type(username);
+        cy.get('input[name="password"]').type(password);
+        cy.get(".button-default").should("have.text", "Log in").click();
+        cy.get(".featured-trail:first").click();
+        cy.contains("Comments");
+        cy.get('input[type="text"][name="title"]').type(commentTitle);
+        cy.get(
+            'input.add-comment-main-text[placeholder="What do you think about the trail?"]'
+        ).type(commentText);
+        cy.get('button.button-default[title="submit"]').click();
+        cy.get("div.comment-title").contains(commentTitle);
+        cy.get("div.comment-text").contains(commentText);
+    });
 
     it("should be able to log out", () => {
         cy.get(".button-login:first").click();
