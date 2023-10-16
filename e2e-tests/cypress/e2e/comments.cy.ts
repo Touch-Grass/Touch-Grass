@@ -16,9 +16,7 @@ describe("Comments functionalities", () => {
         cy.get(".featured-trail").first().click();
         cy.contains("Comments");
         cy.get('input[type="text"][name="title"]').type(commentTitle);
-        cy.get(
-            'textarea.add-comment-main-text[placeholder="What do you think about the trail?"]'
-        ).type(commentText);
+        cy.get("textarea.add-comment-main-text").type(commentText);
         cy.get('button.button-default[title="Submit"]').click();
         cy.wait(1000);
         cy.get("div.comment-title").contains(commentTitle);

@@ -30,10 +30,5 @@ export class CommentsService {
             throw new Error("Invalid");
         }
     }
-/*
-    public static async addComment(comment: ServerComment): Promise<Document> {
-        const record = new CommentModel({...comment});
-        return await record.save();
-    }*/
 
 }

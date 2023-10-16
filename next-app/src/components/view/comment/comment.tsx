@@ -6,6 +6,7 @@ import { User } from "@/models/server/user/user";
 import type {Ref} from "@typegoose/typegoose";
 import UserRepresentationView from "../user-representation/user-representation.view";
 import moment from "moment";
+import ButtonView, { ButtonType } from "../button/button.view";
 
 interface Commentprops {
     comment:ServerCommentWithID;
@@ -14,6 +15,7 @@ interface Commentprops {
 
 const CommentComponent: React.FC<Commentprops> = (props) => {
     const {comment, user} = props;
+
     return (
       <>
         <div className="comment-container">
