@@ -42,7 +42,7 @@ class TrailHandler extends RequestHandler {
 
             return response.status(200).json({ insertedTrailId });
         }catch(e: any){
-            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
+            return sendCustomError(response, HttpStatus.INTERNAL_SERVER_ERROR, e?.message);
         }
     };
 

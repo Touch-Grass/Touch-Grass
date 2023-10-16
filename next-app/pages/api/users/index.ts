@@ -30,7 +30,7 @@ class UserHandler extends RequestHandler {
             await UserService.insertOne(user);
             response.status(200).end();
         }catch(e: any){
-            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
+            return sendCustomError(response, HttpStatus.INTERNAL_SERVER_ERROR, e?.message);
         }
     }
 }

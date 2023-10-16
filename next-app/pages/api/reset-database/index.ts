@@ -5,6 +5,7 @@ import {UserModel} from "@/models/server/user/user";
 import {TrailModel} from "@/models/server/trail/trail";
 import {seed} from "@/seed/seed";
 import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPUtils";
+import { CommentModel } from "@/models/server/comment/comment";
 
 class ResetHandler extends RequestHandler {
     constructor() {
@@ -25,11 +26,12 @@ class ResetHandler extends RequestHandler {
 
             await UserModel.deleteMany({});
             await TrailModel.deleteMany({});
+            await CommentModel.deleteMany({})
 
             await seed();
             return response.status(200).json({message: "Database reset"});
         } catch (e: any) {
-            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
+            return sendCustomError(response, HttpStatus.INTERNAL_SERVER_ERROR, e?.message);
         }
     }
 }
