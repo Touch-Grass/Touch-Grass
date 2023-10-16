@@ -5,7 +5,7 @@ import AddTrailPageView from "@/components/view/add-trail-page/add-trail-page.vi
 import { ITrail, ICompiledGeoTrail } from "@/models/shared/trail/trail.interface";
 import { TrailValidation } from "@/models/shared/trail/trail.validation";
 import { useRouter } from "next/navigation";
-import { HttpStatus } from "@/utils/HTTPError/HTTPErrorUtils";
+import { HttpStatus } from "@/utils/HTTPError/HTTPUtils";
 
 const AddTrailPagePresenter: React.FC = props => {
 

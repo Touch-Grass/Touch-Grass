@@ -5,7 +5,7 @@ import { Trail } from "@/models/server/trail/trail";
 import { ITrail } from "@/models/shared/trail/trail.interface";
 import { UserService } from "@/services/users/service";
 import { AuthService } from "@/services/auth/service";
-import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPUtils";
 
 class TrailHandler extends RequestHandler {
     constructor() {
@@ -42,7 +42,7 @@ class TrailHandler extends RequestHandler {
 
             return response.status(200).json({ insertedTrailId });
         }catch(e: any){
-            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
+            return sendCustomError(response, HttpStatus.INTERNAL_SERVER_ERROR, e?.message);
         }
     };
 

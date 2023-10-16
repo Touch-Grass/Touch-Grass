@@ -4,7 +4,7 @@ import {UserService} from "@/services/users/service";
 import {User} from "@/models/server/user/user";
 import {IUser} from "@/models/shared/user/user.interface";
 import {UserValidation} from "@/models/shared/user/user.validation";
-import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPUtils";
 
 class UserHandler extends RequestHandler {
     constructor() {
@@ -30,7 +30,7 @@ class UserHandler extends RequestHandler {
             await UserService.insertOne(user);
             response.status(200).end();
         }catch(e: any){
-            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
+            return sendCustomError(response, HttpStatus.INTERNAL_SERVER_ERROR, e?.message);
         }
     }
 }
