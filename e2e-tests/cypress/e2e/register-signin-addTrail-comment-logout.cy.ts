@@ -61,6 +61,7 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get(".trail-creator-view").click("right");
         cy.get(".trail-creator-view").click("bottom");
         cy.get(".trail-creator-view").click("top");
+        cy.get(".trail-creator-view").click("left");
         cy.contains("Submit").click();
         cy.url().should("include", "/trail");
         cy.contains("Length");
