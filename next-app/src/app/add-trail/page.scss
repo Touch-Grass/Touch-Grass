@@ -1,6 +1,6 @@
 @import "vars/mixins";
 
-.register-page-wrapper {
+.add-trail-page-wrapper {
     @include flex-column(true, false);
     width: 100%;
     min-height: 100vh;

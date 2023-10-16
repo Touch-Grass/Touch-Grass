@@ -7,7 +7,7 @@ import AddTrailServerPresenter from "@/components/presenter/add-trail-page/add-t
 export const dynamic = "force-dynamic";
 export default function AddTrail() {
     return (
-        <div className={"register-page-wrapper"}>
+        <div className={"add-trail-page-wrapper"}>
             <NavbarPresenter fixed={false}/>
             <main>
                 <AddTrailServerPresenter/>
