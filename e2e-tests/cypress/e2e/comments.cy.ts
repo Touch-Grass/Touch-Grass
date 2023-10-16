@@ -12,7 +12,7 @@ describe("Comments functionalities", () => {
     it("should be able to leave comments", () => {
         cy.clearCookies();
         loginFromHomePageAsFrodoBaggins();
-        cy.get(".featured-trail:first").click();
+        cy.get(".featured-trail-image").first().click();
         cy.contains("Comments");
         cy.get('input[type="text"][name="title"]').type(commentTitle);
         cy.get(
