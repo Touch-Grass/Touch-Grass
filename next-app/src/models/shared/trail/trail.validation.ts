@@ -3,13 +3,13 @@ import { Trail } from "@/models/server/trail/trail";
 
 export namespace TrailValidation {
     export function validateName(name: string) {
-        const namePattern = /^[A-Za-z0-9\s\-',.]{2,30}$/;
+        const namePattern = /^[A-Za-z0-9\s\-',.\u00C0-\u00FF]{2,30}$/;
         if (!namePattern.test(name))
             throw new Error("Invalid trail name");
     }
 
     export function validateDescription(description: string) {
-        const descriptionPattern = /^[A-Za-z0-9\s!@#$%^&*()-_+=,.;:'"<>?/\\[\]{}`~]*$/;
+        const descriptionPattern = /^[A-Za-z0-9\s!@#$%^&*()-_+=,.;:'"<>?/\\[\]{}`~\u00C0-\u00FF]*$/;
         if (!descriptionPattern.test(description))
             throw new Error("Invalid trail description");
     }
@@ -35,7 +35,7 @@ export namespace TrailValidation {
     }
 
     export function validateTerrain(terrain: string) {
-        const terrainPattern = /^[A-Za-z0-9\s\-',.]{2,30}$/;
+        const terrainPattern = /^[A-Za-z0-9\s\-',.\u00C0-\u00FF]{2,30}$/;
         if (!terrainPattern.test(terrain))
             throw new Error("Invalid trail terrain");
     }
@@ -46,7 +46,7 @@ export namespace TrailValidation {
     }
 
     export function validateLocation(location: string) {
-        const locationPattern = /^[A-Za-z0-9\s\-',.]{2,30}$/;
+        const locationPattern = /^[A-Za-z0-9\s\-',.\u00C0-\u00FF]{2,30}$/;
         if (!locationPattern.test(location))
             throw new Error("Invalid trail location");
     }
@@ -70,7 +70,7 @@ export namespace TrailValidation {
     }
 
     export function validateSearchLocation(searchLocation: string) {
-        const searchLocationPattern = /^[A-Za-z0-9\s\-',.]{2,30}$/;
+        const searchLocationPattern = /^[A-Za-z0-9\s\-',.\u00C0-\u00FF]{2,30}$/;
         if (!searchLocationPattern.test(searchLocation))
             throw new Error("Invalid trail search location");
     }
@@ -82,7 +82,7 @@ export namespace TrailValidation {
         if (typeof trail.name !== "string")
             throw new Error("Invalid trail name type");
         validateName(trail.name);
-        
+
         if (!trail.description)
             throw new Error("Unexistent trail description");
         if (typeof trail.description !== "string")
