@@ -4,6 +4,7 @@ import ButtonView from "../button/button.view";
 import { ButtonType } from "../button/button.view";
 import Link from "next/link";
 import "./register.view.scss";
+import LoadingLayoutPresenter from "@/components/presenter/loading-layout/loading-layout.presenter";
 
 interface RegisterViewProps {
     validateForm: (data:RegisterFormFields) => void;
@@ -54,7 +55,7 @@ const RegisterView: React.FC<RegisterViewProps> = (
             </div>
             :
             <form onSubmit={handleSubmit}>
-                <h2>Sign in.</h2>
+                <h2>Sign up.</h2>
                 <p className={"form-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
                 <div className="form-label-division">
                     <div>
@@ -81,9 +82,10 @@ const RegisterView: React.FC<RegisterViewProps> = (
                         <input type="password" placeholder="Enter Password" name="passwordRepeat" required value={formData.passwordRepeat} onChange={handleChange}/>
                     </div>
                 </div>
-                <ButtonView text="Register" loading={validating} type={ButtonType.DEFAULT}/>
+                <ButtonView text="Register" type={ButtonType.DEFAULT}/>
             </form>
             )}
+        <LoadingLayoutPresenter active={validating}/>
         </div>
     );
 };

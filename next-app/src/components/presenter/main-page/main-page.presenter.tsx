@@ -17,6 +17,7 @@ const userMock: IUser = {
 };
 
 const MainPagePresenter: React.FC<MainPagePresenterProps> = async (props) => {
+    let loadingActive = true;
     await dbConnect();
 
     // TODO: We might want to move this into a StatisticsPresenter, however, that means that we need to move the animations
@@ -27,7 +28,7 @@ const MainPagePresenter: React.FC<MainPagePresenterProps> = async (props) => {
     const stats = {users, locations, trails};
 
     const featuredTrails: ServerTrailWithID[] = await TrailsService.findRandomFeatured();
-
+    loadingActive = false;
     return (
         <MainPageView featuredTrails={featuredTrails} statistics={stats}></MainPageView>
     );

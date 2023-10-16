@@ -6,8 +6,7 @@ import {ICompiledGeoTrail} from "@/models/shared/trail/trail.interface";
 import "./add-trail-page.view.scss";
 import moment from "moment";
 import ButtonView, {ButtonType} from "@/components/view/button/button.view";
-import Image from "next/image";
-import LoadingSpinnerView from "@/components/view/loading-spinner/loading-spinner.view";
+import LoadingLayoutPresenter from "@/components/presenter/loading-layout/loading-layout.presenter";
 
 interface AddTrailPageViewProps {
     geoTrail: ICompiledGeoTrail;
@@ -46,7 +45,6 @@ const LazyLoadedTrailCreatorView = dynamic(
                 justifyContent: "center",
                 transform: "scale(2)"
             }}>
-                <LoadingSpinnerView></LoadingSpinnerView>
             </div>
         ),
     }
@@ -123,8 +121,8 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
                         accept="image/png, image/jpeg"
                     />
                     <div className={"add-trail-page-image-display"}>
-                        {!!imageURL ? (<Image src={imageURL} width={1000} height={1000}
-                                              alt={"Your image"}></Image>) : (<span>No image selected</span>)}
+                        {!!imageURL ? (<img src={imageURL} width={1000} height={1000}
+                                              alt={"Your image"}></img>) : (<span>No image selected</span>)}
                     </div>
                 </div>
                 <div className={"add-trail-page-creator-section"}>
@@ -156,10 +154,10 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
                     </div>
                 </div>
                 <div className={"add-trail-page-submit-section"}>
-                    <ButtonView loading={validatingState} disabled={!done} text={"Submit"} type={ButtonType.DEFAULT} onClick={send}></ButtonView>
+                    <ButtonView disabled={!done} text={"Submit"} type={ButtonType.DEFAULT} onClick={send}></ButtonView>
                     {(errorString.length == 0? "" : <p className="form-error">{errorString}</p>)}
                 </div>
-
+                <LoadingLayoutPresenter active={validatingState}/>
             </div>
         </div>
     );

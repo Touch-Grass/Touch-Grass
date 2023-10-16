@@ -3,21 +3,31 @@ version: "3"
 services:
   mongo:
     image: mongo:latest
-    ports:
-      - "27017:27017"
     volumes:
       - mongo-data:/data/db
+      - ./system/db-init:/docker-entrypoint-initdb.d
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: touch-grass
     networks:
       - touch-grass-network
+  nginx:
+      image: nginx:latest
+      ports:
+          - "127.0.0.1:8080:8080"
+      volumes:
+          - ./system/nginx.conf:/etc/nginx/conf.d/default.conf
+          - ./system/images:/opt/uploads
+      networks:
+          - touch-grass-network
   next-app:
     build:
       context: next-app/
       dockerfile: Dockerfile
-    ports:
-      - "3001:3000"
+    volumes:
+        - ./system/env.local:/usr/src/app/.env.local:ro
+        - ./system/images:/usr/src/app/public/uploads/
     networks:
       - touch-grass-network
 

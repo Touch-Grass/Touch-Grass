@@ -1,0 +1,21 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+
+.loading-layout{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(1, 22, 39, 60%);
+    z-index: 999;
+    display: none;
+    &.active{
+        display: block;
+    }
+    >.loading-layout-content{
+        @include flex-column(true, true);
+        width: 100%;
+        height: 100%;
+    }
+}

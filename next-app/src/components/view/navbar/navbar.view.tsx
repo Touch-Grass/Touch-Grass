@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = (
                             <>
                                 <div className={"navbar-logged-in"}>
                                     <Link href='/add-trail'>
-                                        <ButtonView text="New trail" loading={false} type={ButtonType.SEARCH}/>
+                                        <ButtonView text="New trail" type={ButtonType.SEARCH}/>
                                     </Link>
                                     <UserIcon
                                         username={user.name}
@@ -43,8 +43,8 @@ const Navbar: React.FC<NavbarProps> = (
 
                             :
                             <div>
-                                <Link href='/register'><ButtonView text="Register" loading={false} type={ButtonType.SIGNIN}/></Link>
-                                <Link href='/login'><ButtonView text="Log in" loading={false} type={ButtonType.LOGIN}/></Link>
+                                <Link href='/register'><ButtonView text="Register" type={ButtonType.SIGNIN}/></Link>
+                                <Link href='/login'><ButtonView text="Log in" type={ButtonType.LOGIN}/></Link>
                             </div>
                         }
                     </div>
