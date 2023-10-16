@@ -18,7 +18,7 @@ describe("Comments functionalities", () => {
         cy.get(
             'textarea.add-comment-main-text[placeholder="What do you think about the trail?"]'
         ).type(commentText);
-        cy.get('button.button-default[title="submit"]').click();
+        cy.get('button.button-default[title="Submit"]').click();
         cy.wait(1000);
         cy.get("div.comment-title").contains(commentTitle);
         cy.get("div.comment-text").contains(commentText);
