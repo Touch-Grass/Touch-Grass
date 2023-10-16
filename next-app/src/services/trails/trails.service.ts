@@ -43,7 +43,13 @@ export class TrailsService {
      * @param id The id to match.
      */
     public static async findPopulatedById(id: string): Promise<Nullable<PopulatedServerTrailWithID>> {
-        return await TrailModel.findById(id).populate("creator").exec() as unknown as Nullable<PopulatedServerTrailWithID>;
+        const trail = await TrailModel.findById(id).populate("creator").exec();
+        if (trail) {
+            delete (trail as any).creator["password"];
+            delete (trail as any).creator["email"];
+        }
+
+        return trail as unknown as Nullable<PopulatedServerTrailWithID>;
     }
 
     public static async findByLocation(
@@ -55,8 +61,13 @@ export class TrailsService {
             query = query.populate("creator");
         }
 
-        // TODO: I guess types need more fixing
-        return await query.exec() as unknown as PopulatedServerTrailWithID[];
+        const results =  await query.exec();
+        for (const result of results) {
+            delete (result as any).creator["password"];
+            delete (result as any).creator["email"];
+        }
+
+        return results as unknown as PopulatedServerTrailWithID[];
     }
 
     public static async countTrails(): Promise<number> {
@@ -76,7 +87,6 @@ export class TrailsService {
     }
 
     public static convertPopulatedToClientModel(record: PopulatedServerTrail): ITrail {
-        // TODO: Fix this, this is messed up...
         const copy = {...(record as any)["_doc"], creator: UserService.convertToClientModel((record as any)["_doc"].creator)};
         delete (copy as any)["_id"];
         delete (copy as any)["__v"];
