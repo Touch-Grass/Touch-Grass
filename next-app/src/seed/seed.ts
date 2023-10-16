@@ -2,7 +2,7 @@ import {UserModel} from "@/models/server/user/user";
 import {UserService} from "@/services/users/service";
 import {TrailModel} from "@/models/server/trail/trail";
 import { TrailsService } from "@/services/trails/trails.service";
-import {TRAIL_ONE, TRAIL_THREE, TRAIL_TWO, USER_ONE} from "@/seed/data";
+import {TRAIL_ONE, TRAIL_THREE, TRAIL_TWO, USER_ONE, USER_TWO} from "@/seed/data";
 import { CommentModel } from "@/models/server/comment/comment";
 import { CommentsService } from "@/services/comments/comments.service";
 import { COMMENT_ONE, COMMENT_TWO, COMMENT_THREE } from "./data/comments";
@@ -20,6 +20,7 @@ async function seedUsers() {
     console.log("Creating users...");
 
     await UserService.insertOne(USER_ONE());
+    await UserService.insertOne(USER_TWO());
 
     console.log("Created users.");
 }
