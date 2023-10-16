@@ -24,11 +24,14 @@ $c: comment;
     font-size: 2rem;
 }
 
-.#{$c}-user{
+.#{$c}-user-date{
+    @include flex-row;
+    justify-content: space-between;
     text-align:left;
     font-weight:400;
     color:$rich-black;
     font-size: 2rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    width: 100%;
 }
