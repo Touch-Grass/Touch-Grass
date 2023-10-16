@@ -33,6 +33,7 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get('input[name="username"]').type(username);
         cy.get('input[name="password"]').type(password);
         cy.get(".button-default").should("have.text", "Log in").click();
+        cy.wait(1000);
         cy.contains(name);
     });
 
@@ -56,7 +57,9 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get('textarea[name="description"]').type(description);
         cy.get('select[name="terrain"]').select(terrain);
         cy.get('select[name="difficulty"]').select(difficulty);
+        cy.wait(1000);
         cy.get('input[type="file"]').attachFile(imageUrl);
+        cy.wait(1000);
 
         cy.get(".trail-creator-view")
             .then(($element) => {
@@ -90,7 +93,7 @@ describe("Register, login, add-trail, logout functionalities", () => {
                             cy.wrap(duration).should("not.eq", "0h0m");
                         });
                 });
-
+                cy.wait(1000);
                 cy.contains("Submit").click();
                 cy.url().should("include", "/trail");
                 cy.contains("Length");
@@ -114,6 +117,7 @@ describe("Register, login, add-trail, logout functionalities", () => {
             'textarea.add-comment-main-text[placeholder="What do you think about the trail?"]'
         ).type(commentText);
         cy.get('button.button-default[title="submit"]').click();
+        cy.wait(1000);
         cy.get("div.comment-title").contains(commentTitle);
         cy.get("div.comment-text").contains(commentText);
     });
@@ -127,6 +131,7 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get(".button-default").should("have.text", "Log in").click();
         cy.contains(name).click();
         cy.contains("Log Out").click();
+        cy.wait(1000);
         cy.get(".button-signin");
         cy.get(".button-login");
     });
