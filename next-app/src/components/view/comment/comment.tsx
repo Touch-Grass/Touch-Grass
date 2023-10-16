@@ -15,14 +15,13 @@ interface Commentprops {
 
 const CommentComponent: React.FC<Commentprops> = (props) => {
     const {comment, user} = props;
-    
+
     return (
       <>
         <div className="comment-container">
         <div className="comment-title">{comment.title}</div>
         <div className="comment-text">{comment.text}</div>
         <div className="comment-user-date"> <UserRepresentationView userName={user.username}></UserRepresentationView> <div>{moment(comment.date).format("DD/MM/YYYY")}</div></div>
-        <ButtonView disabled={true} text={"Delete"} type={ButtonType.DEFAULT} onClick={()=>{}}></ButtonView>
         </div>
         </>
     );
