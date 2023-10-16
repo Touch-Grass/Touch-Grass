@@ -1,6 +1,7 @@
 import React from "react";
 import TrailPagePresenter from "@/components/presenter/trail-page/trail-page.presenter";
 import NavbarPresenter from "@/components/presenter/navbar/navbar.presenter";
+import FooterView from "@/components/view/footer/footer.view";
 
 interface ServerSideProps {
     params?: {
@@ -15,6 +16,7 @@ export default async function TrailPage(props: ServerSideProps) {
         <>
             <NavbarPresenter fixed={false}/>
             <TrailPagePresenter trailId={slug}/>
+            <FooterView></FooterView>
         </>
     );
 }

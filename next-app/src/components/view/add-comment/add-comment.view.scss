@@ -2,25 +2,39 @@
 @import "vars/mixins";
 @import "vars/sizes";
 
-$s:add-comment;
+$s: add-comment;
 
-.#{$s}-container{
+.#{$s}-container {
     @include flex-column;
     width: $safe-col-width;
     row-gap: 1rem;
     margin-bottom: 3rem;
 
-    > input
-    {
-      width: 100%;
-      margin-bottom: 0.5rem;
-      font-family: 'Space Grotesk';
-      font-size: 2rem;
+    > input {
+        padding: 0.8rem;
+        font-family: "Space Grotesk", sans-serif;
+        width: 100%;
+        border-radius: 0.5rem;
+        border: 1px solid $dark-jade;
+        font-size: 1.8rem;
+        height: 4.3rem;
+        box-sizing: border-box;
+        flex-shrink: 0;
     }
-
-    >.#{$s}-main-text{
-      width: 100%;
-      font-size: 1.5rem;
+    > .#{$s}-error-string {
+        color: $our-red;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+    > .#{$s}-main-text {
+        font-family: "Space Grotesk", sans-serif;
+        width: 100%;
+        border: 1px solid $dark-jade;
+        border-radius: 0.5rem;
+        padding: 0.8rem;
+        box-sizing: border-box;
+        font-size: 1.8rem;
     }
 
 }
