@@ -7,6 +7,15 @@ import { UserService } from "@/services/users/service";
 import { AuthService } from "@/services/auth/service";
 import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPUtils";
 
+export const config = {
+    api: {
+        bodyParser: {
+            // Yea that's a bit much for this but right now we don't have a good estimate for what users can produce
+            sizeLimit: "20mb",
+        },
+    },
+};
+
 class TrailHandler extends RequestHandler {
     constructor() {
         super(); // Call the constructor of the parent class
