@@ -9,7 +9,7 @@ export const TRAIL_ONE: TrailGenerator = <T>(creator: T) => ({
         " you might stumble upon remnants of traditional Midsummer feasts, or even the eerier side of celebrations, " +
         "echoing the mysterious lore of sacrifices. Both enchanting and unsettling, this trail combines the beauty " +
         "of Swedish summer with its ancient, darker tales.",
-    difficulty: 0.9,
+    difficulty: 0.8,
     length: 120,
     terrain: "Quicksand",
     duration: 120,
@@ -1027,7 +1027,7 @@ export const TRAIL_THREE: TrailGenerator = <T>(creator: T) => ({
         "age-old gathering sites. With the dawn, the forest reveals its transformation, echoing both the mirthful songs" +
         " of Midsummer's past and the haunting chants of forgotten ceremonies. This trail is a true test of endurance and" +
         " spirit, asking travelers to embrace the full spectrum of Sweden's enigmatic Midsummer heritage.",
-    difficulty: 0.3,
+    difficulty: 0.6,
     length: 110,
     terrain: "Meatballs",
     duration: 100,
