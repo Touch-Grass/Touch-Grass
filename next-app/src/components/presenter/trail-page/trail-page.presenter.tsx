@@ -40,6 +40,7 @@ const TrailPagePresenter: React.FC<TrailPagePresenterProps> = async props => {
     // while other features need, for example, the ID.
     // TODO: Maybe we can do better here? WithId<ITrail, string>?
     const clientTrail = TrailsService.convertPopulatedToClientModel(trail);
+    console.log(clientTrail, trail);
 
     //try to find the comments on that trail
     let comments: Nullable<ServerCommentWithID[]>=null;

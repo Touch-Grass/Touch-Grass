@@ -15,27 +15,18 @@ import { TrailValidation } from "@/models/shared/trail/trail.validation";
 
 export class TrailsService {
     /**
-     * Gets all trails matching the criteria.
-     * @param criteria The criteria to match.
-     */
-    public static async getAll(criteria: Partial<ITrail>): Promise<ServerTrailWithID[]> {
-        return await TrailModel.find(criteria).exec();
-    }
-
-    /**
-     * Finds one trail matching the criteria.
-     * @param criteria The criteria to match.
-     */
-    public static async findOne(criteria: Partial<ITrail>): Promise<Nullable<ServerTrailWithID>> {
-        return await TrailModel.findOne(criteria).exec();
-    }
-
-    /**
      * Finds one trail with id.
      * @param id The id to match.
      */
     public static async findById(id: string): Promise<Nullable<ServerTrailWithID>> {
-        return await TrailModel.findById(id).exec();
+        const result =await TrailModel.findById(id).exec();
+
+        if (result) {
+            delete (result as any).creator["password"];
+            delete (result as any).creator["email"];
+        }
+
+        return result;
     }
 
     /**
@@ -80,10 +71,17 @@ export class TrailsService {
     }
 
     public static async findRandomFeatured(): Promise<ServerTrailWithID[]> {
-        return await TrailModel.aggregate([
+        const results = await TrailModel.aggregate([
             {$match: {featured: true}},
             {$sample: {size: 3}}
         ]).exec();
+
+        for (const result of results) {
+            delete (result as any).creator["password"];
+            delete (result as any).creator["email"];
+        }
+
+        return results;
     }
 
     public static convertPopulatedToClientModel(record: PopulatedServerTrail): ITrail {
