@@ -9,9 +9,16 @@ interface NavbarPresenterProps {
 
 const NavbarPresenter: React.FC<NavbarPresenterProps> = async props => {
     // Ensure that the database connection is available.
-    await dbConnect();
-    const token = CookieService.getCookie();
-    const userInfo = await AuthService.getUserInfoFromToken(token);
+    let userInfo=null;
+    try{
+        await dbConnect();
+        const token = CookieService.getCookie();
+        userInfo = await AuthService.getUserInfoFromToken(token);
+    }catch(error:any){
+        console.error("");
+        return;
+    }
+
 
     return (
         <Navbar fixed={props.fixed} user={userInfo}/>

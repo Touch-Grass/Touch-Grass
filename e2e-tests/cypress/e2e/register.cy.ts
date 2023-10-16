@@ -1,11 +1,11 @@
 import registerFromHomePage from "cypress/utils/register.utils";
 
 describe("Register functionalities", () => {
-    let name = "John";
-    let surname = "Doe";
-    let email = `email${Date.now()}@example.com`;
-    let username = `username${Date.now()}`;
-    let password = "testPassword111*";
+    const name: string = "John";
+    const surname: string = "Doe";
+    const email: string = `email${Date.now()}@example.com`;
+    const username: string = `username${Date.now()}`;
+    const password: string = "testPassword111*";
 
     beforeEach(() => {
         cy.visit("/");
@@ -28,6 +28,7 @@ describe("Register functionalities", () => {
         cy.wait(1000);
 
         // go back to home page with user's name
+        cy.contains("You should");
         cy.contains(name);
     });
 });

@@ -3,7 +3,7 @@ import mime from "mime";
 import {v4} from "uuid";
 import {join} from "path";
 import {mkdir, writeFile} from "fs/promises";
-import {HttpStatus} from "@/utils/HTTPError/HTTPErrorUtils";
+import {HttpStatus} from "@/utils/HTTPError/HTTPUtils";
 import {Nullable} from "@/models/shared/utility.types";
 import {existsSync} from "fs";
 import {AuthService} from "@/services/auth/service";

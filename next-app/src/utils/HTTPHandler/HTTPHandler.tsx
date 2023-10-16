@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import dbConnect from "@/lib/dbConnection";
-import * as ErrorUtils from "@/utils/HTTPError/HTTPErrorUtils";
+import * as ErrorUtils from "@/utils/HTTPError/HTTPUtils";
 
 export class RequestHandler {
 
