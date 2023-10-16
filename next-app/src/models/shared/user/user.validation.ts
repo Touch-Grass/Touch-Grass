@@ -21,7 +21,7 @@ export namespace UserValidation {
     }
 
     export function validateEmail(email: string) {
-        const emailPattern = /^[a-zA-Z0-9._%+-]{6,30}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]{1,30}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailPattern.test(email))
             throw new Error("Invalid email");
     }

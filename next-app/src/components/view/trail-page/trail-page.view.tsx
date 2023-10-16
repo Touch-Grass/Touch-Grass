@@ -13,7 +13,7 @@ import TrailPageHeaderView from "@/components/view/trail-page-header/trail-page-
 import UserRepresentationView from "@/components/view/user-representation/user-representation.view";
 import moment from "moment";
 import LoadingSpinnerView from "@/components/view/loading-spinner/loading-spinner.view";
-
+import { User } from "@/models/server/user/user";
 
 interface TrailPageViewProps {
     trail: PopulatedServerTrailWithID;
@@ -104,7 +104,7 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                     {
 
                         props.comments?.map((comment) => (
-                        <CommentComponent key={comment._id.toString()}comment={comment}user={comment.commenter}/>))
+                        <CommentComponent key={comment._id.toString()}comment={comment}user={comment.commenter as User}/>))
                     }
                 </div>
             </div>
