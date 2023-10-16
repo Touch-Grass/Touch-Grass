@@ -57,11 +57,32 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get('select[name="terrain"]').select(terrain);
         cy.get('select[name="difficulty"]').select(difficulty);
         cy.get('input[type="file"]').attachFile(imageUrl);
-        cy.get(".trail-creator-view").click("center");
-        cy.get(".trail-creator-view").click("right");
-        cy.get(".trail-creator-view").click("bottom");
-        cy.get(".trail-creator-view").click("top");
-        cy.get(".trail-creator-view").click("left");
+        cy.get(".trail-creator-view")
+            .click(550, 150)
+            .click(650, 400)
+            .click(200, 400)
+            .click(500, 250)
+            .click(450, 650)
+            .click(650, 300)
+            .click(500, 700)
+            .click(400, 250);
+        cy.get(".add-trail-page-creator-stats").within(() => {
+            cy.contains("Current Length")
+                .next()
+                .invoke("text")
+                .then((lengthText) => {
+                    const length = lengthText.trim();
+                    cy.log(`Length: ${length}`);
+                });
+
+            cy.contains("Current Duration")
+                .next()
+                .invoke("text")
+                .then((durationText) => {
+                    const duration = durationText.trim();
+                    cy.log(`Duration: ${duration}`);
+                });
+        });
         cy.contains("Submit").click();
         cy.url().should("include", "/trail");
         cy.contains("Length");
