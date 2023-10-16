@@ -17,7 +17,7 @@ export default function addTrail(
     cy.wait(1000);
     cy.get(".trail-creator-view")
         .then(($element) => {
-            const ratios = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
+            const ratios = [0.2, 0.4, 0.6, 0.7, 0.8];
             const width = $element.width();
             const height = $element.height();
             for (const ratioX of ratios) {
