@@ -7,7 +7,7 @@
         "open": "cypress open",
         "open-prod": "npx cypress open --config baseUrl=https://touch-grass.mwagner.se",
         "test": "npx cypress run --browser chrome",
-        "ci-test": "npx cypress run --browser chrome --config video=false,baseUrl=http://localhost:8080",
+        "ci-test": "npx cypress run --browser chrome --config baseUrl=http://localhost:8080",
         "lint": "eslint cypress/**/*.ts"
     },
     "author": "",

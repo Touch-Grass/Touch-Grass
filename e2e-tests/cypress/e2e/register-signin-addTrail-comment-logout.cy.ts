@@ -19,19 +19,19 @@ describe("Register, login, add-trail, logout functionalities", () => {
         email = `email${Date.now()}@example.com`;
         username = `username${Date.now()}`;
         password = "testPassword111*";
-        cy.get('input[name="name"]').type(name);
-        cy.get('input[name="surname"]').type(surname);
-        cy.get('input[name="email"]').type(email);
-        cy.get('input[name="username"]').type(username);
-        cy.get('input[name="password"]').type(password);
-        cy.get('input[name="passwordRepeat"]').type(password);
+        cy.get("input[name=\"name\"]").type(name);
+        cy.get("input[name=\"surname\"]").type(surname);
+        cy.get("input[name=\"email\"]").type(email);
+        cy.get("input[name=\"username\"]").type(username);
+        cy.get("input[name=\"password\"]").type(password);
+        cy.get("input[name=\"passwordRepeat\"]").type(password);
         cy.get(".button-default").should("have.text", "Register").click();
         cy.contains("Registration completed!");
         cy.get(".button-default").should("have.text", "Log in").click();
         cy.url().should("include", "/login");
         cy.contains("Log in.");
-        cy.get('input[name="username"]').type(username);
-        cy.get('input[name="password"]').type(password);
+        cy.get("input[name=\"username\"]").type(username);
+        cy.get("input[name=\"password\"]").type(password);
         cy.get(".button-default").should("have.text", "Log in").click();
         cy.contains(name);
     });
@@ -46,17 +46,20 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get(".button-login:first").click();
         cy.url().should("include", "/login");
         cy.contains("Log in.");
-        cy.get('input[name="username"]').type(username);
-        cy.get('input[name="password"]').type(password);
+        cy.get("input[name=\"username\"]").type(username);
+        cy.get("input[name=\"password\"]").type(password);
         cy.get(".button-default").should("have.text", "Log in").click();
         cy.contains(name);
         cy.contains("New trail").click();
-        cy.get('input[name="name"]').type(trailName);
-        cy.get('input[name="location"]').type(location);
-        cy.get('textarea[name="description"]').type(description);
-        cy.get('select[name="terrain"]').select(terrain);
-        cy.get('select[name="difficulty"]').select(difficulty);
-        cy.get('input[type="file"]').attachFile(imageUrl);
+        cy.get("input[name=\"name\"]").type(trailName);
+        cy.get("input[name=\"location\"]").type(location);
+        cy.get("textarea[name=\"description\"]").type(description);
+        cy.get("select[name=\"terrain\"]").select(terrain);
+        cy.get("select[name=\"difficulty\"]").select(difficulty);
+
+        cy.wait(1000);
+        cy.get("input[type=\"file\"]").attachFile(imageUrl);
+        cy.wait(1000);
 
         cy.get(".trail-creator-view")
             .then(($element) => {
@@ -90,12 +93,12 @@ describe("Register, login, add-trail, logout functionalities", () => {
                             cy.wrap(duration).should("not.eq", "0h0m");
                         });
                 });
-
-                cy.contains("Submit").click();
-                cy.url().should("include", "/trail");
-                cy.contains("Length");
-                cy.contains(description);
             });
+        cy.wait(2000);
+        cy.contains("Submit").click();
+        cy.url().should("include", "/trail");
+        cy.contains("Length");
+        cy.contains(description);
     });
 
     it("should be able to leave comments", () => {
@@ -104,16 +107,16 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get(".button-login:first").click();
         cy.url().should("include", "/login");
         cy.contains("Log in.");
-        cy.get('input[name="username"]').type(username);
-        cy.get('input[name="password"]').type(password);
+        cy.get("input[name=\"username\"]").type(username);
+        cy.get("input[name=\"password\"]").type(password);
         cy.get(".button-default").should("have.text", "Log in").click();
         cy.get(".featured-trail:first").click();
         cy.contains("Comments");
-        cy.get('input[type="text"][name="title"]').type(commentTitle);
+        cy.get("input[type=\"text\"][name=\"title\"]").type(commentTitle);
         cy.get(
-            'textarea.add-comment-main-text[placeholder="What do you think about the trail?"]'
+            "textarea.add-comment-main-text[placeholder=\"What do you think about the trail?\"]"
         ).type(commentText);
-        cy.get('button.button-default[title="submit"]').click();
+        cy.get("button.button-default[title=\"submit\"]").click();
         cy.get("div.comment-title").contains(commentTitle);
         cy.get("div.comment-text").contains(commentText);
     });
@@ -122,8 +125,8 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get(".button-login:first").click();
         cy.url().should("include", "/login");
         cy.contains("Log in.");
-        cy.get('input[name="username"]').type(username);
-        cy.get('input[name="password"]').type(password);
+        cy.get("input[name=\"username\"]").type(username);
+        cy.get("input[name=\"password\"]").type(password);
         cy.get(".button-default").should("have.text", "Log in").click();
         cy.contains(name).click();
         cy.contains("Log Out").click();

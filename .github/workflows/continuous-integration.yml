@@ -67,3 +67,10 @@ jobs:
             -   name: E2E Test
                 run: npm run e2e
 
+            -   name: Archive videos
+                if: always()
+                uses: actions/upload-artifact@v3
+                with:
+                    name: test-videos
+                    path: e2e-tests/cypress/videos
+
