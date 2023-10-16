@@ -11,7 +11,14 @@ export class CommentsService {
      * @param trailmodel The trail we're looking for
      */
     public static async findCommentsForTrail(trailID: Types.ObjectId): Promise<ServerCommentWithID[]> {
-        return await CommentModel.find({ "trail._id": trailID }).exec();
+        const resp = await CommentModel.find({ "trail._id": trailID }).exec();
+        for (const comment of resp) {
+            if (comment.commenter) {
+                delete (comment.commenter as any)["email"];
+                delete (comment.commenter as any)["password"];
+            }
+        }
+        return resp;
     }
 
 
