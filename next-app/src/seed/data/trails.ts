@@ -15,7 +15,7 @@ export const TRAIL_ONE: TrailGenerator = <T>(creator: T) => ({
     duration: 120,
     location: "Stockholm",
     searchLocation: "stockholm",
-    createdDate: 1,
+    createdDate: 1597468021905,
     featured: true,
     creator,
     waypoints: [

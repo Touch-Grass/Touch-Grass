@@ -85,6 +85,7 @@ const TrailPageView: React.FC<TrailPageViewProps> = props => {
                             </div>
                         </div>
                         <div className={"trail-page-description"}>{trail.description}</div>
+                        <div className={"trail-page-date"}><span>Submitted</span>: {moment(trail.createdDate).format("DD/MM/YYYY")}</div>
                         <div className={"trail-page-user"}>
                             <UserRepresentationView userName={trail.creator.name + " " + trail.creator.surname}></UserRepresentationView>
                         </div>

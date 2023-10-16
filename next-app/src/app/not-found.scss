@@ -1,9 +1,6 @@
 @import "vars/color-palette";
 @import "vars/mixins";
 
-html, body {
-    background-color: $dark-jade;
-}
 
 .missing-page-wrapper {
     @include flex-column(true, false);

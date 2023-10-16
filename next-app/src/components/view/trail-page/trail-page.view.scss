@@ -55,6 +55,15 @@ $c: trail-page;
                     margin-top: 4rem;
                 }
 
+                > .#{$c}-date {
+                    font-size: 1.6rem;
+                    margin-top: 4rem;
+
+                    > span {
+                        font-weight: 700;
+                    }
+                }
+
                 > .#{$c}-basic-properties {
                     @include flex-row(false, true);
 
