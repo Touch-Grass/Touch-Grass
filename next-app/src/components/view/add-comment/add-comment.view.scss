@@ -8,32 +8,20 @@ $s:add-comment;
     @include flex-column;
     width: $safe-col-width;
     row-gap: 1rem;
+    margin-bottom: 3rem;
 
     > input
     {
       width: 100%;
       margin-bottom: 0.5rem;
+      font-family: 'Space Grotesk';
+      font-size: 2rem;
     }
 
     >.#{$s}-main-text{
       width: 100%;
+      font-size: 1.5rem;
     }
 
-    > .#{$s}-submit-button{
-      height: 100%;
-      width: auto;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 2rem;
-      padding: 1rem 4rem;
-      border-radius: 5rem;
-      border-width: 0px;
-      cursor: pointer;
-      background-color: $rich-black;
-      color: $baby-powder;
-    }
-
-    > .#{$s}-submit-button:hover{
-        background-color: $jade;
-    }
 }
 

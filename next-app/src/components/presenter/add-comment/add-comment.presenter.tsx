@@ -1,17 +1,11 @@
 "use client";
 import AddCommentView from "@/components/view/add-comment/add-comment.view";
 import React, { useState } from "react";
-import { CommentsService } from "@/services/comments/comments.service";
 import { IComment } from "@/models/shared/comment/comment.interface";
-import { CookieService } from "@/services/cookies/service";
-import { AuthService } from "@/services/auth/service";
 import { ITrail } from "@/models/shared/trail/trail.interface";
 import { IUser } from "@/models/shared/user/user.interface";
-import dbConnect from "@/lib/dbConnection";
-import { UserValidation } from "@/models/shared/user/user.validation";
 import { useRouter } from "next/navigation";
 import { CommentValidation } from "@/models/shared/comment/comment.validation";
-import { cookies } from "next/headers";
 import { HttpStatus } from "@/utils/HTTPError/HTTPErrorUtils";
 
 

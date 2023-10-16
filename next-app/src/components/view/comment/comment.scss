@@ -9,20 +9,29 @@ $c: comment;
     width:$safe-col-width;
     padding-top:2rem;
     row-gap: 1rem;
+    border-top: 3px solid $light-gray;
 }
 .#{$c}-title{
     text-align:left;
     font-weight:700;
+    font-size: 2.5rem;
 }
 .#{$c}-text{
     text-align: left;
     padding: 1rem;
     font-weight: 400;
     color: $rich-black;
+    font-size: 2rem;
 }
 
-.#{$c}-commenter{
+.#{$c}-user-date{
+    @include flex-row;
+    justify-content: space-between;
     text-align:left;
     font-weight:400;
     color:$rich-black;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
 }
