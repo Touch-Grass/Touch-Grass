@@ -58,33 +58,39 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get('select[name="difficulty"]').select(difficulty);
         cy.get('input[type="file"]').attachFile(imageUrl);
 
-        cy.get(".trail-creator-view").then(($element) => {
-            const ratios = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
-            const width = $element.width();
-            const height = $element.height();
-            for (const ratio of ratios) {
-                cy.wrap($element).click(width * ratio, height * ratio);
-            }
-        });
-        // .then(() => {
-        //     cy.get(".add-trail-page-creator-stats").within(() => {
-        //         cy.contains("Current Length")
-        //             .next()
-        //             .invoke("text")
-        //             .then((lengthText) => {
-        //                 const length = lengthText.split("km")[0].trim();
-        //                 cy.wrap(length).should("not.eq", "0.0");
-        //             });
+        cy.get(".trail-creator-view")
+            .then(($element) => {
+                const ratios = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
+                const width = $element.width();
+                const height = $element.height();
+                for (const ratioX of ratios) {
+                    for (const ratioY of ratios) {
+                        cy.wrap($element).click(
+                            width * ratioX,
+                            height * ratioY
+                        );
+                    }
+                }
+            })
+            .then(() => {
+                cy.get(".add-trail-page-creator-stats").within(() => {
+                    cy.contains("Current Length")
+                        .next()
+                        .invoke("text")
+                        .then((lengthText) => {
+                            const length = lengthText.trim();
+                            cy.wrap(length).should("not.eq", "0.0km");
+                        });
 
-        //         cy.contains("Current Duration")
-        //             .next()
-        //             .invoke("text")
-        //             .then((durationText) => {
-        //                 const duration = durationText.trim();
-        //                 cy.wrap(duration).should("not.eq", "0h0m");
-        //             });
-        //     });
-        // });
+                    cy.contains("Current Duration")
+                        .next()
+                        .invoke("text")
+                        .then((durationText) => {
+                            const duration = durationText.trim();
+                            cy.wrap(duration).should("not.eq", "0h0m");
+                        });
+                });
+            });
 
         cy.contains("Submit").click();
         cy.url().should("include", "/trail");
