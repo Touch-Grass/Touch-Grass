@@ -72,6 +72,8 @@ export class AuthService {
             if (!userData)
                 throw new Error("User does not exist");
 
+            delete (userData as any)["password"];
+
             //Validation correct
             return userData;
 

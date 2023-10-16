@@ -7,6 +7,7 @@ import "./add-trail-page.view.scss";
 import moment from "moment";
 import ButtonView, {ButtonType} from "@/components/view/button/button.view";
 import LoadingLayoutPresenter from "@/components/presenter/loading-layout/loading-layout.presenter";
+import LoadingSpinnerView from "@/components/view/loading-spinner/loading-spinner.view";
 
 interface AddTrailPageViewProps {
     geoTrail: ICompiledGeoTrail;
@@ -29,6 +30,8 @@ interface AddTrailPageViewProps {
 
     onFileChange: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
     send: () => void;
+
+    uploading: boolean;
 }
 
 const LazyLoadedTrailCreatorView = dynamic(
@@ -70,6 +73,7 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
         setTerrain,
         setDifficulty,
         onFileChange,
+        uploading,
         send
     } = props;
 
@@ -121,8 +125,9 @@ const AddTrailPageView: React.FC<AddTrailPageViewProps> = props => {
                         accept="image/png, image/jpeg"
                     />
                     <div className={"add-trail-page-image-display"}>
-                        {!!imageURL ? (<img src={imageURL} width={1000} height={1000}
-                                              alt={"Your image"}></img>) : (<span>No image selected</span>)}
+                        {uploading ? (<LoadingSpinnerView></LoadingSpinnerView>) :
+                            (!!imageURL ? (<img src={imageURL} width={1000} height={1000}
+                                                alt={"Your image"}></img>) : (<span>No image selected</span>))}
                     </div>
                 </div>
                 <div className={"add-trail-page-creator-section"}>

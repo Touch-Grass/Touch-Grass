@@ -25,6 +25,8 @@ const AddTrailPagePresenter: React.FC = props => {
     const [terrain, setTerrain] = useState<string>("");
     const [difficulty, setDifficulty] = useState<string>("");
 
+    const [uploading, setUploading] = useState<boolean>(false);
+
     const onFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
         const fileInput = e.target;
 
@@ -33,6 +35,8 @@ const AddTrailPagePresenter: React.FC = props => {
         }
 
         const [file] = fileInput.files;
+
+        setUploading(true);
 
         const formData = new FormData();
         formData.append("file", file);
@@ -47,6 +51,8 @@ const AddTrailPagePresenter: React.FC = props => {
             setImageURL(data.url ?? "");
         } catch (error) {
             console.error("something went wrong, check your console.");
+        } finally {
+            setUploading(false);
         }
     };
 
@@ -115,7 +121,6 @@ const AddTrailPagePresenter: React.FC = props => {
         } finally {
             setValidatingState(false);
         }
-
     };
 
     const done = !!name.trim() &&
@@ -134,6 +139,7 @@ const AddTrailPagePresenter: React.FC = props => {
                           terrain={terrain}
                           difficulty={difficulty}
                           done={done}
+                          uploading={uploading}
                           setName={setName}
                           setLocation={setLocation}
                           setDescription={setDescription}
