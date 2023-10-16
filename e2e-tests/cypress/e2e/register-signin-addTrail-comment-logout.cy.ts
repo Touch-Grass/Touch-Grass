@@ -90,12 +90,12 @@ describe("Register, login, add-trail, logout functionalities", () => {
                             cy.wrap(duration).should("not.eq", "0h0m");
                         });
                 });
-            });
 
-        cy.contains("Submit").click();
-        cy.url().should("include", "/trail");
-        cy.contains("Length");
-        cy.contains(description);
+                cy.contains("Submit").click();
+                cy.url().should("include", "/trail");
+                cy.contains("Length");
+                cy.contains(description);
+            });
     });
 
     it("should be able to leave comments", () => {
