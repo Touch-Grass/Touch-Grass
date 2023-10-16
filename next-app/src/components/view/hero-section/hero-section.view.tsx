@@ -18,7 +18,7 @@ const HeroSectionView: React.FC<HeroSectionViewProps> = (props) => {
                 <div className={"hero-search-container"}>
                     <input type="text"
                            value={searchString}
-                           placeholder="Where do you want to go?"
+                           placeholder="Where do you want to go? (e.g. Stockholm)"
                            onChange={event => onSearchStringChange(event.target.value)}
                            onKeyDown={event => {
                                if (event.key === "Enter") {
