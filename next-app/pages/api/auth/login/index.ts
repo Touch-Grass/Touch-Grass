@@ -4,7 +4,7 @@ import { CookieService } from "@/services/cookies/service";
 import {AuthService} from "@/services/auth/service";
 import {IUser} from "@/models/shared/user/user.interface";
 import {UserValidation} from "@/models/shared/user/user.validation";
-import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
+import { HttpStatus, sendOkResponse, sendCustomError } from "@/utils/HTTPError/HTTPUtils";
 
 class LoginHandler extends RequestHandler {
     constructor() {
@@ -19,16 +19,23 @@ class LoginHandler extends RequestHandler {
      */
     public async handlePost(request: NextApiRequest, response: NextApiResponse): Promise<void> {
         //Try authenticating
+        let token;
         try{
             //Check data
             UserValidation.validateAuthUser(request.body as IUser);
             //Try authentication
-            const token = await AuthService.performAuthentication(request.body);
+            token = await AuthService.performAuthentication(request.body);
+        }catch(e: any){
+            return sendCustomError(response, HttpStatus.UNAUTHORIZED, e?.message);
+        }
+
+        //Try set cookie
+        try{
             //Set cookie
             response = CookieService.setCookie(response, token);
-            return response.status(200).json({ message: "Authentication successful" });
+            return sendOkResponse(response, "Authentication successful");
         }catch(e: any){
-            return sendCustomError(response, HttpStatus.BAD_REQUEST, e?.message);
+            return sendCustomError(response, HttpStatus.INTERNAL_SERVER_ERROR, e?.message);
         }
     }
 }

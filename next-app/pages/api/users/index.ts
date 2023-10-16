@@ -4,7 +4,7 @@ import {UserService} from "@/services/users/service";
 import {User} from "@/models/server/user/user";
 import {IUser} from "@/models/shared/user/user.interface";
 import {UserValidation} from "@/models/shared/user/user.validation";
-import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPUtils";
 
 class UserHandler extends RequestHandler {
     constructor() {

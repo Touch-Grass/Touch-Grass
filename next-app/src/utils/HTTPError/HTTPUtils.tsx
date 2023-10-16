@@ -1,6 +1,7 @@
 import {NextApiResponse} from "next";
 
 export enum HttpStatus {
+    OK = 200,
     REDIRECT = 302,
     BAD_REQUEST = 400,
     UNAUTHORIZED = 401,
@@ -8,6 +9,14 @@ export enum HttpStatus {
     NOT_FOUND = 404,
     METHOD_NOT_ALLOWED = 405,
     INTERNAL_SERVER_ERROR = 500,
+}
+
+export function sendOkResponse(res: NextApiResponse, message: string): void {
+    res.status(HttpStatus.OK).json({message: message});
+}
+
+export function sendOkObject(res: NextApiResponse, object: Object): void {
+    res.status(HttpStatus.OK).json(object);
 }
 
 export function sendError(res: NextApiResponse, status: HttpStatus): void {
@@ -24,6 +33,7 @@ export function methodNotAllowed(res: NextApiResponse): void {
 
 // Define messages for each status code
 const statusMessages: Record<HttpStatus, string> = {
+    [HttpStatus.OK]: "OK",
     [HttpStatus.REDIRECT]: "Redirect",
     [HttpStatus.BAD_REQUEST]: "Bad Request",
     [HttpStatus.UNAUTHORIZED]: "Unauthorized",

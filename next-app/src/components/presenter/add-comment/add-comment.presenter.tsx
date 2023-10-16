@@ -6,7 +6,7 @@ import { ITrail } from "@/models/shared/trail/trail.interface";
 import { IUser } from "@/models/shared/user/user.interface";
 import { useRouter } from "next/navigation";
 import { CommentValidation } from "@/models/shared/comment/comment.validation";
-import { HttpStatus } from "@/utils/HTTPError/HTTPErrorUtils";
+import { HttpStatus } from "@/utils/HTTPError/HTTPUtils";
 
 
 interface AddCommentPresenterProps {

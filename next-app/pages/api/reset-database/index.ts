@@ -4,7 +4,7 @@ import dbConnect from "@/lib/dbConnection";
 import {UserModel} from "@/models/server/user/user";
 import {TrailModel} from "@/models/server/trail/trail";
 import {seed} from "@/seed/seed";
-import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPErrorUtils";
+import { HttpStatus, sendCustomError } from "@/utils/HTTPError/HTTPUtils";
 
 class ResetHandler extends RequestHandler {
     constructor() {
