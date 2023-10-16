@@ -3,13 +3,13 @@ import { Trail } from "@/models/server/trail/trail";
 
 export namespace TrailValidation {
     export function validateName(name: string) {
-        const namePattern = /^[A-Za-z0-9\s\-',.\u00C0-\u00FF]{2,30}$/;
+        const namePattern = /^[A-Za-z0-9\s\-',.äöåÄÖÅ]{2,30}$/;
         if (!namePattern.test(name))
             throw new Error("Invalid trail name");
     }
 
     export function validateDescription(description: string) {
-        const descriptionPattern = /^[A-Za-z0-9\s!@#$%^&*()-_+=,.;:'"<>?/\\[\]{}`~\u00C0-\u00FF]*$/;
+        const descriptionPattern = /^[A-Za-z0-9\s!@#$%^&*()-_+=,.;:'"<>?/\\[\]{}`~äöåÄÖÅ]*$/;
         if (!descriptionPattern.test(description))
             throw new Error("Invalid trail description");
     }

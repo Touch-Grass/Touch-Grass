@@ -9,27 +9,26 @@ export namespace UserValidation {
     }
 
     export function validateName(name: string) {
-        const namePattern = /^[A-Za-z\u00C0-\u00FF\s]{2,30}$/;
+        const namePattern = /^[A-Za-zäöåÄÖÅ\s]{2,30}$/;
         if (!namePattern.test(name))
             throw new Error("Invalid name");
     }
 
     export function validateSurname(surname: string) {
-        const surnamePattern = /^[A-Za-z\u00C0-\u00FF\s]{2,30}$/;
+        const surnamePattern = /^[A-Za-zäöåÄÖÅ\s]{2,30}$/;
         if (!surnamePattern.test(surname))
             throw new Error("Invalid surname");
     }
 
     export function validateEmail(email: string) {
-        const emailPattern = /^[a-zA-Z0-9._%+-\u00C0-\u00FF]{1,30}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-äöåÄÖÅ]{1,30}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailPattern.test(email))
             throw new Error("Invalid email");
     }
 
     export function validatePassword(password: string) {
-        const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=!*()])(?=.*[\u00C0-\u00FF])(?!.*\s).{8,20}$/;
-        if (!passwordPattern.test(password))
-            throw new Error("Invalid password type. It needs to contain 8 to 20 letters. At least one letter in lower case, another one in upper case, one number and one special character");
+        if (password.length < 8)
+            throw new Error("Invalid password type. It needs to contain at least 8 characters.");
     }
 
     export function validateAuthUser(user: IUser) {
