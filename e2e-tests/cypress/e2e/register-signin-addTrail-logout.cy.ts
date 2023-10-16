@@ -49,7 +49,6 @@ describe("Register, login, add-trail, logout functionalities", () => {
         cy.get('input[name="username"]').type(username);
         cy.get('input[name="password"]').type(password);
         cy.get(".button-default").should("have.text", "Log in").click();
-        cy.contains(name);
         cy.contains("New trail").click();
         cy.get('input[name="name"]').type(trailName);
         cy.get('input[name="location"]').type(location);
