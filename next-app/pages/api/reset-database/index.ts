@@ -26,7 +26,7 @@ class ResetHandler extends RequestHandler {
 
             await UserModel.deleteMany({});
             await TrailModel.deleteMany({});
-            await CommentModel.deleteMany({})
+            await CommentModel.deleteMany({});
 
             await seed();
             return response.status(200).json({message: "Database reset"});
