@@ -3,7 +3,7 @@ import {User} from "@/models/server/user/user";
 
 export namespace UserValidation {
     export function validateUsername(username: string) {
-        const usernamePattern = /^[A-Za-z0-9\u00C0-\u00FF\s]{2,30}$/;
+        const usernamePattern = /^[A-Za-z0-9äöåÄÖÅ\s]{2,30}$/;
         if (!usernamePattern.test(username))
             throw new Error("Invalid username");
     }
