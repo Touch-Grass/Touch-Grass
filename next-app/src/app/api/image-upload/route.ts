@@ -8,6 +8,14 @@ import {Nullable} from "@/models/shared/utility.types";
 import {existsSync} from "fs";
 import {AuthService} from "@/services/auth/service";
 
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: "20mb",
+        },
+    },
+};
+
 export async function POST(request: NextRequest) {
     try {
         const token = request.cookies.get("TouchGrass-token")?.value ?? "";
