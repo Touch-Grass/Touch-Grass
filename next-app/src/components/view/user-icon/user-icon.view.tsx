@@ -32,7 +32,8 @@ const UserIcon: React.FC<UserIconProps> = ({username, userProfilePic}) => {
             <div className={"user-icon-container-menu" + (dropdownOpen? " open" : "")}>
                 <div className='user-icon-container-menu-content'>
                     <ul>
-                        <li><Link href='/api/auth/logout'>Log Out</Link></li>
+                        <li><a href='/my-trails'>My Trails</a></li>
+                        <li style={{marginTop: "3rem"}}><Link href='/api/auth/logout'>Log Out</Link></li>
                     </ul>
                 </div>
             </div>

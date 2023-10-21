@@ -4,6 +4,7 @@
 import React, {useMemo} from "react";
 import {Marker, Polyline, TileLayer} from "react-leaflet";
 import {DragEndEvent, icon, LeafletMouseEvent} from "leaflet";
+import {FullscreenControl} from "react-leaflet-fullscreen";
 
 interface TrailCreatorContentViewProps {
     waypoints: [number, number][];
@@ -85,6 +86,7 @@ const TrailCreatorContentView: React.FC<TrailCreatorContentViewProps> = props =>
                         icon={decideIcon(i)}
                         position={waypoint}></Marker>
             ))}
+            <FullscreenControl />
         </>
     );
 };

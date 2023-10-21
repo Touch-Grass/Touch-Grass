@@ -8,6 +8,7 @@ import moment from "moment/moment";
 
 interface SearchResultViewProps {
     trail: PopulatedServerTrailWithID;
+    locationInsteadOfUser?: boolean;
 }
 
 const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
@@ -47,9 +48,16 @@ const SearchResultView: React.FC<SearchResultViewProps> = (props) => {
                         <span>{props.trail.terrain}</span>
                     </div>
                 </div>
-                <div className={"search-result-user"}>
-                    <UserRepresentationView userName={props.trail.creator.name + " " + props.trail.creator.surname}></UserRepresentationView>
-                </div>
+                {!props.locationInsteadOfUser ? (
+                    <div className={"search-result-user"}>
+                        <UserRepresentationView userName={props.trail.creator.name + " " + props.trail.creator.surname}></UserRepresentationView>
+                    </div>
+                ) : (
+                    <div className={"search-result-location"}>
+                        <span>Location</span>
+                        <span>{props.trail.location}</span>
+                    </div>
+                )}
             </div>
         </div>
     );

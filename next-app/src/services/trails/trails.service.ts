@@ -61,6 +61,22 @@ export class TrailsService {
         return results as unknown as PopulatedServerTrailWithID[];
     }
 
+    public static async findByUserName(
+        userName: string
+    ): Promise<PopulatedServerTrailWithID[]> {
+        const results: Ref<Trail>[] = await TrailModel.find({
+            "creator.username": userName
+        }).exec();
+
+        for (const result of results) {
+            delete (result as any).creator["password"];
+            delete (result as any).creator["email"];
+        }
+
+        return results as unknown as PopulatedServerTrailWithID[];
+    }
+
+
     public static async countTrails(): Promise<number> {
         return await TrailModel.count().exec();
     }

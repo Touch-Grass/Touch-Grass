@@ -1,0 +1,47 @@
+@import "vars/color-palette";
+@import "vars/mixins";
+@import "vars/sizes";
+
+$c: my-trails-page;
+
+.#{$c}-wrapper {
+    @include flex-column(true, false);
+    width: 100%;
+    min-height: calc(100vh - $footer-height - $navbar-real-estate);
+
+    > .#{$c}-container {
+        @include flex-column;
+        width: $safe-col-width;
+        margin-bottom: 11rem;
+        margin-top: 11rem;
+
+        > a {
+            text-decoration: none;
+            color: black;
+        }
+        > .#{$c}-not-found {
+            @include flex-row(true, true);
+            width: $safe-col-width;
+            margin-top: 16rem;
+            font-size: 2rem;
+            color: $grey;
+        }
+
+        > .#{$c}-title-row {
+            @include flex-row(false, true);
+            width: $safe-col-width;
+            align-items: center;
+            font-size: 2rem;
+
+            > .#{$c}-title {
+                font-weight: 700;
+                font-size: 4rem;
+            }
+
+            > .#{$c}-auxilliary-title-content {
+                @include flex-row(false, true);
+                margin-left: auto;
+            }
+        }
+    }
+}

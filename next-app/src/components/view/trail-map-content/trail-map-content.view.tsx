@@ -4,6 +4,7 @@
 import React from "react";
 import {Marker, Polyline, TileLayer} from "react-leaflet";
 import {icon} from "leaflet";
+import {FullscreenControl} from "react-leaflet-fullscreen";
 
 interface TrailMapContentViewProps {
     polyline: [number, number][];
@@ -24,6 +25,7 @@ const TrailMapContentView: React.FC<TrailMapContentViewProps> = props => {
                        attribution={"&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>"}/>
             <Polyline positions={polyline} color={"#FF0000"} weight={3} smoothFactor={1}></Polyline>
             {waypoints.map((waypoint, i) => (<Marker key={i} icon={markerIcon} position={waypoint}></Marker>))}
+            <FullscreenControl />
         </>
     );
 };

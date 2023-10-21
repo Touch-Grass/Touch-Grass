@@ -53,6 +53,16 @@ $c: search-result;
             flex-shrink: 0;
         }
 
+        > .#{$c}-location {
+            @include flex-row(false, true);
+            font-size: 2rem;
+
+            > span:first-child {
+                font-weight: 700;
+                margin-right: 2rem;
+            }
+        }
+
         > .#{$c}-extras {
             @include flex-row;
             margin: 3.5rem 0;
