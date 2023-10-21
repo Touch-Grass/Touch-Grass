@@ -25,7 +25,7 @@ const MyTrailsPagePresenter: React.FC = async props => {
             redirect("/");
         }
     } catch (error: any) {
-        redirect("/login");
+        redirect("/login?error=" + encodeURIComponent(error));
     }
 
     // Query the resulting trails from our database.

@@ -35,8 +35,6 @@ const AddCommentView: React.FC<AddCommentViewProps> = (
       const sendComment = () => {
         addComment(formData as Partial<IComment>);
         setFormData({title:" ", text:" "});
-        //document.getElementById("title-id")!.innerText= document.getElementById("title-id")!.innerText;
-       // document.getElementById("text-id")!.innerText= document.getElementById("text-id")!.innerText;
       };
 
     return (
