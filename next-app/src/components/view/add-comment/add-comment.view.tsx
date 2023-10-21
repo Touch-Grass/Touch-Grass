@@ -34,14 +34,16 @@ const AddCommentView: React.FC<AddCommentViewProps> = (
 
       const sendComment = () => {
         addComment(formData as Partial<IComment>);
+        setFormData({title:" ", text:" "});
+        document.getElementById("title-id")!.innerText= document.getElementById("title-id")!.innerText;
+        document.getElementById("text-id")!.innerText= document.getElementById("text-id")!.innerText;
       };
-
 
     return (
         <div className={"add-comment-container"}>
            <p className={"add-comment-error-string" + (errorString.length > 0 ? "" : "hidden")}>{errorString}</p>
-           <input name="title" type="text" placeholder="Title" onChange={(e)=>inputChange(e.target.name, e.target.value)}/>
-           <textarea name="text" placeholder="What do you think about the trail? Be careful with your words, they cannot be removed." className="add-comment-main-text" rows={5} onChange={(e)=>inputChange(e.target.name, e.target.value) }/>
+           <input name="title" id="title-id" type="text" placeholder="Title" onChange={(e)=>inputChange(e.target.name, e.target.value)}/>
+           <textarea name="text" id="text-id" placeholder="What do you think about the trail? Be careful with your words, they cannot be removed." className="add-comment-main-text" rows={5} onChange={(e)=>inputChange(e.target.name, e.target.value) }/>
            <ButtonView text="Submit" type={ButtonType.DEFAULT} onClick={sendComment}/>
            <LoadingLayoutPresenter active={loadingState}/>
         </div>
