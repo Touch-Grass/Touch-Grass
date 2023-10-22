@@ -33,7 +33,10 @@ const UserIcon: React.FC<UserIconProps> = ({username, userProfilePic}) => {
                 <div className='user-icon-container-menu-content'>
                     <ul>
                         <li><a href='/my-trails'>My Trails</a></li>
-                        <li style={{marginTop: "3rem"}}><Link href='/api/auth/logout'>Log Out</Link></li>
+                        <li style={{marginTop: "3rem"}}>
+                            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                            <a href='/api/auth/logout'>Log Out</a>
+                        </li>
                     </ul>
                 </div>
             </div>
